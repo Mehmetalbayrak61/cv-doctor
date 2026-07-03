@@ -1,0 +1,16 @@
+{
+  "app": {
+    "name": "CV Doktoru",
+    "tagline": "Build your CV. Match it to the job. Apply stronger."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "cvBuilder": "Build CV",
+    "jobMatch": "Job Match",
+    "applicationAssistant": "Application Assistant",
+    "interviewPrep": "Interview Prep",
+    "login": "Log In",
+    "register": "Sign Up",
+    "logout": "Log Out"
+  }
+}

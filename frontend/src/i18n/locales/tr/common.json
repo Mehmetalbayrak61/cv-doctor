@@ -1,0 +1,16 @@
+{
+  "app": {
+    "name": "CV Doktoru",
+    "tagline": "CV'ni hazırla. İlanla eşleştir. Daha güçlü başvur."
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "cvBuilder": "CV Oluştur",
+    "jobMatch": "İlan Eşleştir",
+    "applicationAssistant": "Başvuru Yardımcısı",
+    "interviewPrep": "Mülakat Hazırlığı",
+    "login": "Giriş Yap",
+    "register": "Kayıt Ol",
+    "logout": "Çıkış Yap"
+  }
+}
