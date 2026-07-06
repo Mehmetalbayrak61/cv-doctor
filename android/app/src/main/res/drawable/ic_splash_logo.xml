@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash arka planı marka tealı (@color/brand_primary) olduğundan bu işaret tamamen
+     beyaz çizilir. Bkz. ic_launcher_foreground.xml'deki placeholder notu. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,22 L66,22 L78,34 L78,86 L32,86 Z" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.55"
+        android:pathData="M66,22 L78,34 L66,34 Z" />
+
+    <path
+        android:strokeColor="#006B70"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M40,56 L49,66 L71,42" />
+</vector>

@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: cv-doktor-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cvdoktor}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD gerekli}
+      POSTGRES_DB: ${POSTGRES_DB:-cvdoktor}
+    # Postgres portu dışa açılmaz; yalnızca backend servisi iç ağ üzerinden erişir.
+    volumes:
+      - cv_doktor_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cvdoktor}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+    container_name: cv-doktor-backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-cvdoktor}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD gerekli}@postgres:5432/${POSTGRES_DB:-cvdoktor}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Yalnızca reverse proxy (Caddy) container'ından erişilir, dışa doğrudan açılmaz.
+    expose:
+      - "8000"
+    volumes:
+      - cv_doktor_storage:/app/storage_data
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:-https://example.com/api/v1}
+    container_name: cv-doktor-frontend
+    restart: unless-stopped
+    expose:
+      - "80"
+
+volumes:
+  cv_doktor_pg_data:
+  cv_doktor_storage:

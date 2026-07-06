@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Basit "CV + onay işareti" işareti: köşesi kıvrık bir sayfa + kontrol işareti.
+  NOT: Bu, marka rengiyle (frontend/src/index.css primary token) tutarlı ama geçici bir
+  placeholder'dır. Gerçek marka logosu hazır olduğunda bu dosya değiştirilmelidir
+  (bkz. android/RELEASE.md, "İkon/Splash" notu). Adaptive icon güvenli alanı (66dp/108dp)
+  gözetilerek çizildi.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Sayfa (köşesi kıvrık dosya simgesi) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,22 L66,22 L78,34 L78,86 L32,86 Z" />
+
+    <!-- Kıvrık köşe -->
+    <path
+        android:fillColor="@color/ic_launcher_background"
+        android:fillAlpha="0.55"
+        android:pathData="M66,22 L78,34 L66,34 Z" />
+
+    <!-- Onay işareti -->
+    <path
+        android:strokeColor="@color/ic_launcher_background"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M40,56 L49,66 L71,42" />
+</vector>

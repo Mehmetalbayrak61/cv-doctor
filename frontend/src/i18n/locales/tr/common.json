@@ -4,13 +4,691 @@
     "tagline": "CV'ni hazırla. İlanla eşleştir. Daha güçlü başvur."
   },
   "nav": {
-    "dashboard": "Panel",
+    "dashboard": "Dashboard",
     "cvBuilder": "CV Oluştur",
-    "jobMatch": "İlan Eşleştir",
+    "jobMatch": "İş İlanları",
     "applicationAssistant": "Başvuru Yardımcısı",
     "interviewPrep": "Mülakat Hazırlığı",
+    "pricing": "Fiyatlandırma",
     "login": "Giriş Yap",
     "register": "Kayıt Ol",
-    "logout": "Çıkış Yap"
+    "logout": "Çıkış Yap",
+    "admin": "Yönetim Paneli",
+    "openMenu": "Menüyü aç"
+  },
+  "common": {
+    "cancel": "Vazgeç",
+    "retry": "Tekrar Dene",
+    "back": "Geri",
+    "close": "Kapat"
+  },
+  "errors": {
+    "generic": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
+  },
+  "footer": {
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları",
+    "contact": "İletişim",
+    "copyright": "© {{year}} CV Doktoru. Tüm hakları saklıdır."
+  },
+  "auth": {
+    "layout": {
+      "headline": "CV'niz için ikinci bir göz — saniyeler içinde.",
+      "highlights": [
+        "Yapay zeka destekli, ATS uyumluluk taraması",
+        "Türkçe karakter desteğiyle PDF ve DOCX analizi",
+        "Her analiz sürümüyle birlikte saklanır"
+      ],
+      "footnote": "Verileriniz yalnızca sizin hesabınıza bağlıdır."
+    },
+    "login": {
+      "title": "Giriş Yap",
+      "subtitle": "Devam etmek için hesabınıza giriş yapın.",
+      "submit": "Giriş Yap",
+      "submitting": "Giriş yapılıyor…",
+      "noAccount": "Hesabınız yok mu?",
+      "registerLink": "Kayıt olun",
+      "invalidCredentials": "E-posta veya şifre hatalı.",
+      "forgotPassword": "Şifremi unuttum"
+    },
+    "forgotPassword": {
+      "title": "Şifremi Unuttum",
+      "subtitle": "E-posta adresinizi girin, sıfırlama bağlantısı gönderelim.",
+      "submit": "Sıfırlama Bağlantısı Gönder",
+      "submitting": "Gönderiliyor…",
+      "success": "E-posta adresinize kayıtlıysa bir şifre sıfırlama bağlantısı gönderdik.",
+      "backToLogin": "Girişe dön"
+    },
+    "resetPassword": {
+      "title": "Şifreyi Sıfırla",
+      "subtitle": "Hesabınız için yeni bir şifre belirleyin.",
+      "newPassword": "Yeni Şifre",
+      "confirmPassword": "Yeni Şifre (Tekrar)",
+      "passwordMismatch": "Şifreler eşleşmiyor.",
+      "submit": "Şifreyi Sıfırla",
+      "submitting": "Sıfırlanıyor…",
+      "success": "Şifreniz başarıyla güncellendi. Artık yeni şifrenizle giriş yapabilirsiniz.",
+      "missingToken": "Sıfırlama bağlantısı geçersiz. Lütfen e-postanızdaki bağlantıyı tekrar kontrol edin."
+    },
+    "verifyEmail": {
+      "title": "E-posta Doğrulama",
+      "subtitle": "E-posta adresiniz doğrulanıyor.",
+      "missingToken": "Doğrulama bağlantısı geçersiz. Lütfen e-postanızdaki bağlantıyı tekrar kontrol edin.",
+      "success": "E-posta adresiniz başarıyla doğrulandı.",
+      "goToDashboard": "Panele Git",
+      "goToLogin": "Girişe Git"
+    },
+    "register": {
+      "title": "Kayıt Ol",
+      "subtitle": "Ücretsiz hesabınızı oluşturun.",
+      "submit": "Kayıt Ol",
+      "submitting": "Kayıt olunuyor…",
+      "haveAccount": "Zaten hesabınız var mı?",
+      "loginLink": "Giriş yapın",
+      "emailTaken": "Bu e-posta adresi zaten kayıtlı."
+    },
+    "fields": {
+      "email": "E-posta",
+      "password": "Şifre",
+      "firstName": "Ad",
+      "lastName": "Soyad"
+    },
+    "validation": {
+      "emailInvalid": "Geçerli bir e-posta adresi girin.",
+      "passwordMin": "Şifre en az 8 karakter olmalı.",
+      "required": "Bu alan zorunludur."
+    }
+  },
+  "dashboard": {
+    "title": "CV'lerim",
+    "subtitle": "CV'lerinizi yükleyin, analiz edin ve sonuçları takip edin.",
+    "upload": {
+      "title": "CV yüklemek için tıklayın veya sürükleyin",
+      "hint": "PDF, DOC veya DOCX · en fazla {{size}} MB",
+      "browse": "Dosya Seç",
+      "uploading": "Yükleniyor…",
+      "success": "\"{{name}}\" başarıyla yüklendi.",
+      "errorType": "Sadece PDF, DOC veya DOCX dosyaları yüklenebilir.",
+      "errorSize": "Dosya boyutu {{size}} MB sınırını aşıyor."
+    },
+    "verifyBanner": {
+      "title": "E-postanızı doğrulayın",
+      "description": "AI destekli analiz, yeniden yazma ve ilan eşleştirme özelliklerini kullanabilmek için e-posta adresinizi doğrulamanız gerekiyor.",
+      "resend": "Tekrar Gönder",
+      "resendSuccess": "Doğrulama e-postası tekrar gönderildi."
+    },
+    "list": {
+      "heading": "Yüklenen CV'ler",
+      "view": "Görüntüle",
+      "delete": "Sil",
+      "deleteConfirmTitle": "CV'yi sil",
+      "deleteConfirmDescription": "\"{{name}}\" kalıcı olarak silinecek. Bu işlem geri alınamaz.",
+      "deleteConfirm": "Sil",
+      "deleteSuccess": "CV silindi.",
+      "errorTitle": "CV listesi yüklenemedi.",
+      "emptyTitle": "Henüz CV yüklemediniz",
+      "emptyDescription": "Analiz başlatmak için yukarıdan ilk CV'nizi yükleyin."
+    }
+  },
+  "overview": {
+    "welcome": "Hoş geldin, {{name}} 👋",
+    "subtitle": "İşte kariyer yolculuğunuzun özeti.",
+    "weeklySummary_one": "Bu hafta {{count}} AI işlemi tamamladınız.",
+    "weeklySummary_other": "Bu hafta {{count}} AI işlemi tamamladınız.",
+    "errorTitle": "Genel bakış yüklenemedi.",
+    "recentAnalyses": "Son Analizler",
+    "recentActivity": "Son AI İşlemleri",
+    "kpi": {
+      "overallScore": "Genel CV Skoru",
+      "atsScore": "ATS Skoru",
+      "jobMatches": "İş Eşleştirme",
+      "aiUsage": "AI Kullanımı",
+      "noAnalysisYet": "Henüz analiz yok",
+      "noAnalysisYetHint": "İlk CV'nizi analiz edin",
+      "noMatchesYet": "Henüz yok",
+      "noMatchesYetHint": "Bir ilanla eşleştirin",
+      "noAiUsageYet": "İlk AI işlemini yap"
+    },
+    "quickActions": {
+      "heading": "Hızlı İşlemler",
+      "analyze": "CV Analiz Et",
+      "coverLetter": "Ön Yazı Oluştur",
+      "atsOptimize": "ATS Optimize Et",
+      "linkedin": "LinkedIn Özeti"
+    },
+    "suggestions": {
+      "heading": "AI Önerileri",
+      "priority": {
+        "critical": "Kritik",
+        "tip": "Öneri",
+        "good": "Başarılı"
+      },
+      "lowAts": {
+        "title": "ATS skorunuz düşük",
+        "description": "En son analiz edilen CV'niz için ATS Optimize Et aracını deneyin."
+      },
+      "noMatch": {
+        "title": "Henüz bir ilanla eşleşmediniz",
+        "description": "CV'nizi bir iş ilanıyla eşleştirip uyumluluğunuzu görün."
+      },
+      "doingGreat": {
+        "title": "Harika gidiyorsunuz",
+        "description": "Son analiziniz 80 ve üzeri bir genel skora sahip."
+      },
+      "explore": {
+        "title": "AI araçlarını keşfedin",
+        "description": "CV'nizi güçlendirmek için ön yazı, ATS optimizasyonu ve daha fazlasını deneyin."
+      }
+    },
+    "empty": {
+      "title": "Henüz bir CV yüklemediniz",
+      "description": "İlk CV'nizi yükleyin — yapay zeka birkaç saniye içinde güçlü/zayıf yönlerinizi ve ATS uyumluluğunuzu analiz etsin.",
+      "step1": "CV'nizi yükleyin (PDF, DOC, DOCX)",
+      "step2": "Yapay zeka analiz etsin",
+      "step3": "Sonuçları ve önerileri görün",
+      "cta": "CV Yükle"
+    }
+  },
+  "analysis": {
+    "overallScore": "Genel Skor",
+    "atsScore": "ATS Skoru",
+    "scoreStatus": {
+      "good": "İyi",
+      "warning": "Orta",
+      "critical": "Zayıf"
+    },
+    "summary": "Genel Değerlendirme",
+    "strengths": "Güçlü Yönler",
+    "weaknesses": "Zayıf Yönler",
+    "improvementSuggestions": "İyileştirme Önerileri",
+    "missingKeywords": "Eksik Anahtar Kelimeler",
+    "suggestedJobTitles": "Önerilen Pozisyonlar",
+    "correctedProfileSummary": "İyileştirilmiş Profil Özeti",
+    "qualityBreakdown": "Bölüm Bazlı Kalite Analizi",
+    "languageQuality": "Dil Kalitesi",
+    "sectionQuality": "Bölüm Düzeni",
+    "experienceQuality": "Deneyim Kalitesi",
+    "educationQuality": "Eğitim Kalitesi",
+    "skillsQuality": "Yetenek Kalitesi",
+    "reanalyze": "Tekrar Analiz Et",
+    "reanalyzeConfirmTitle": "CV'yi tekrar analiz et",
+    "reanalyzeConfirmDescription": "Yeni bir analiz sürümü oluşturulacak; önceki sonuç geçmişte saklanacak.",
+    "reanalyzeConfirm": "Tekrar Analiz Et",
+    "cvNotFound": "CV bulunamadı.",
+    "emptyTitle": "Bu CV henüz analiz edilmedi",
+    "emptyDescription": "Yapay zeka destekli analizi başlatmak için aşağıdaki butona tıklayın.",
+    "analyzeNow": "Analiz Et",
+    "errorTitle": "Analiz sonucu yüklenemedi.",
+    "failedTitle": "Analiz tamamlanamadı",
+    "retry": "Tekrar Dene"
+  },
+  "landing": {
+    "eyebrow": "Yapay Zeka Destekli Kariyer Platformu",
+    "headline": "CV'nizi Yükleyin, Yapay Zeka İşe Hazırlasın.",
+    "subheadline": "ATS uyumluluğunuzu ölçün, iş ilanlarıyla eşleştirin, CV'nizi yapay zekayla güçlendirin ve daha fazla mülakat davetine bir adım daha yaklaşın.",
+    "ctaPrimary": "CV'ni Ücretsiz Analiz Et",
+    "ctaSecondary": "Demo Gör",
+    "ctaHint": "Kredi kartı gerekmez · 1 dakikada başlayın",
+    "sampleReportLabel": "Örnek analiz raporu",
+    "analysisCompleteBadge": "Analiz tamamlandı",
+    "sampleReport": {
+      "strengths": ["5+ yıl proje yönetimi deneyimi", "Ölçülebilir, rakamlarla desteklenmiş başarılar"],
+      "missingKeywords": ["Agile", "Stakeholder Yönetimi"]
+    },
+    "trust": {
+      "items": [
+        { "label": "Yapay Zeka Destekli Analiz", "description": "GPT tabanlı model, CV'nizi saniyeler içinde okur." },
+        { "label": "ATS Uyumluluk Kontrolü", "description": "Aday takip sistemlerinin gözünden değerlendirir." },
+        { "label": "Verileriniz Gizli Tutulur", "description": "CV'niz yalnızca hesabınıza bağlı kalır." },
+        { "label": "Saniyeler İçinde Sonuç", "description": "Beklemeden, anında geri bildirim alın." }
+      ]
+    },
+    "howItWorks": {
+      "eyebrow": "Nasıl Çalışır",
+      "heading": "3 adımda işe daha hazır hale gelin.",
+      "steps": [
+        {
+          "title": "CV'nizi Yükleyin",
+          "description": "PDF, DOC veya DOCX formatındaki CV'nizi saniyeler içinde yükleyin."
+        },
+        {
+          "title": "Yapay Zeka Analiz Etsin",
+          "description": "Güçlü/zayıf yönleriniz, eksik anahtar kelimeler ve ATS uyumluluğunuz otomatik olarak değerlendirilir."
+        },
+        {
+          "title": "İşe Daha Hazır Hale Gelin",
+          "description": "Kişiselleştirilmiş önerilerle CV'nizi güçlendirin, ilanlarla eşleştirin ve mülakata hazırlanın."
+        }
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "Neler Yapabilirsiniz",
+      "heading": "Tek platformda uçtan uca kariyer desteği.",
+      "items": [
+        {
+          "title": "AI CV Analizi",
+          "description": "Güçlü ve zayıf yönlerinizi, eksik anahtar kelimeleri saniyeler içinde görün."
+        },
+        {
+          "title": "ATS Optimizasyonu",
+          "description": "Aday takip sistemlerinin CV'nizi nasıl okuduğunu görün, uyumluluğunuzu artırın."
+        },
+        {
+          "title": "Ön Yazı Oluşturma",
+          "description": "Hedeflediğiniz pozisyona özel, yapay zeka destekli ön yazılar oluşturun."
+        },
+        {
+          "title": "İlan Eşleştirme",
+          "description": "CV'nizi iş ilanlarıyla karşılaştırın, uyumluluk skorunuzu görün."
+        },
+        {
+          "title": "Mülakat Hazırlığı",
+          "description": "Pozisyona özel olası mülakat sorularını önceden görün."
+        },
+        {
+          "title": "Maaş Tahmini",
+          "description": "Deneyiminize ve pozisyonunuza göre gerçekçi bir maaş aralığı alın."
+        }
+      ]
+    },
+    "finalCta": {
+      "heading": "Daha fazla mülakat daveti almaya bugün başlayın.",
+      "subheading": "Kayıt olmak bir dakikadan az sürer, kredi kartı gerekmez."
+    },
+    "faq": {
+      "eyebrow": "Merak Edilenler",
+      "heading": "Sıkça Sorulan Sorular",
+      "items": [
+        {
+          "question": "CV Doktoru nasıl çalışır?",
+          "answer": "CV'nizi yükleyin; yapay zeka birkaç saniye içinde güçlü/zayıf yönlerinizi, eksik anahtar kelimeleri ve ATS uyumluluğunuzu analiz eder."
+        },
+        {
+          "question": "CV'lerim ve verilerim güvende mi?",
+          "answer": "Yüklediğiniz CV'ler yalnızca sizin hesabınıza bağlıdır ve başka kullanıcılarla paylaşılmaz. Detaylar için Gizlilik Politikamıza göz atabilirsiniz."
+        },
+        {
+          "question": "Hangi dosya formatlarını yükleyebilirim?",
+          "answer": "PDF, DOC ve DOCX formatlarını, Türkçe karakter desteğiyle yükleyebilirsiniz."
+        },
+        {
+          "question": "E-postamı neden doğrulamam gerekiyor?",
+          "answer": "Yapay zeka destekli analiz, yeniden yazma ve ilan eşleştirme gibi maliyetli özellikleri kullanabilmek için e-posta doğrulaması gerekir. Kayıt olma, giriş yapma ve CV yükleme bundan etkilenmez."
+        },
+        {
+          "question": "Ücretsiz mi?",
+          "answer": "Şu an için tüm özellikler ücretsiz olarak sunulmaktadır."
+        }
+      ]
+    }
+  },
+  "aiTools": {
+    "heading": "AI ile İyileştir",
+    "history": "Geçmiş Çıktılar",
+    "historyEmpty": "Henüz bir AI çıktısı üretmediniz.",
+    "view": "Görüntüle",
+    "copy": "Kopyala",
+    "copied": "Panoya kopyalandı.",
+    "copyFailed": "Kopyalanamadı, lütfen manuel olarak seçip kopyalayın.",
+    "download": "İndir (.txt)",
+    "recommended": "Önerilen",
+    "types": {
+      "summary_rewrite": "Profil Özetini Yeniden Yaz",
+      "experience_rewrite": "Deneyim Maddelerini Güçlendir",
+      "skills_rewrite": "Yetenekleri Düzenle",
+      "ats_optimization": "ATS Uyumlu CV Önerisi",
+      "cover_letter": "Ön Yazı Oluştur",
+      "linkedin_summary": "LinkedIn Özeti Oluştur",
+      "ats_keyword_insertion": "Eksik Anahtar Kelimeleri Yerleştir",
+      "interview_prep": "Mülakat Sorularını Oluştur",
+      "salary_estimation": "Maaş Tahmini Al"
+    },
+    "descriptions": {
+      "summary_rewrite": "Profil özetinizi daha etkili bir dille yeniden yazar.",
+      "experience_rewrite": "Deneyim maddelerinizi ölçülebilir başarılarla güçlendirir.",
+      "skills_rewrite": "Yetenek listenizi öne çıkacak şekilde düzenler.",
+      "ats_optimization": "CV'nizi aday takip sistemlerine göre optimize eder.",
+      "cover_letter": "Pozisyona özel, kişiselleştirilmiş bir ön yazı oluşturur.",
+      "linkedin_summary": "LinkedIn profiliniz için hazır bir özet oluşturur.",
+      "ats_keyword_insertion": "Eksik anahtar kelimeleri CV'nize doğal bir şekilde yerleştirir."
+    },
+    "coverLetter": {
+      "title": "Ön Yazı Oluştur",
+      "description": "Hedeflediğiniz pozisyona özel bir ön yazı için birkaç detay girin.",
+      "jobTitle": "Pozisyon",
+      "companyName": "Şirket (opsiyonel)",
+      "jobDescription": "İlan detayı (opsiyonel)",
+      "submit": "Oluştur"
+    }
+  },
+  "aiOutput": {
+    "eyebrow": "AI Çıktısı",
+    "toolsHeading": "AI Araçları",
+    "regenerate": "Tekrar Oluştur",
+    "regenerateSuccess": "Yeni versiyon oluşturuldu.",
+    "share": "Paylaş",
+    "shareFallback": "Paylaşım desteklenmiyor, panoya kopyalandı.",
+    "explanationHeading": "Bu Çıktı Ne İşe Yarar?",
+    "whatForLabel": "Ne işe yarar",
+    "howToUseLabel": "Nasıl kullanılmalı",
+    "versionHistoryHeading": "Versiyon Geçmişi",
+    "current": "şu an",
+    "notFoundTitle": "Bu çıktı bulunamadı.",
+    "explanations": {
+      "summary_rewrite": {
+        "whatFor": "Özgeçmişinizin en üstünde yer alan profil özetini, işe alım uzmanlarının dikkatini ilk saniyede çekecek şekilde yeniden yazar.",
+        "howToUse": "Bu metni özgeçmişinizdeki mevcut profil özeti bölümünün yerine yapıştırın; gerekirse kendi bilgilerinizle güncelleyin."
+      },
+      "experience_rewrite": {
+        "whatFor": "Deneyim bölümündeki madde işaretlerini, ölçülebilir başarılara ve aksiyon fiillerine dayanan daha güçlü ifadelerle yeniden yazar.",
+        "howToUse": "Maddeleri özgeçmişinizdeki ilgili deneyim bölümüyle karşılaştırın, sizi en iyi yansıtanları seçip kopyalayın."
+      },
+      "skills_rewrite": {
+        "whatFor": "Yetenek listenizi, öne çıkması gereken becerileri vurgulayacak şekilde yeniden düzenler.",
+        "howToUse": "Listeyi özgeçmişinizin yetenekler bölümüne aktarın; gerçekten sahip olduğunuz becerileri koruyun."
+      },
+      "ats_optimization": {
+        "whatFor": "Özgeçmişinizin aday takip sistemleri (ATS) tarafından daha iyi taranması için içerik ve anahtar kelime önerileri sunar.",
+        "howToUse": "Önerilen değişiklikleri özgeçmişinizin ilgili bölümlerine uygulayın, eksik anahtar kelimeleri doğal bir şekilde ekleyin."
+      },
+      "cover_letter": {
+        "whatFor": "Hedeflediğiniz pozisyona özel, kişiselleştirilmiş bir ön yazı taslağı oluşturur.",
+        "howToUse": "Metni kendi üslubunuzla gözden geçirin, şirkete özel detaylar ekleyip başvurunuzla birlikte gönderin."
+      },
+      "linkedin_summary": {
+        "whatFor": "LinkedIn profilinizin \"Hakkında\" bölümü için hazır, profesyonel bir özet metni oluşturur.",
+        "howToUse": "Metni LinkedIn profilinizdeki \"Hakkında\" bölümüne yapıştırın, isterseniz kişisel bir dokunuş ekleyin."
+      },
+      "ats_keyword_insertion": {
+        "whatFor": "Bu ilana göre eksik olan anahtar kelimelerin özgeçmişinize doğal bir şekilde yerleştirilmiş halini sunar.",
+        "howToUse": "Önerilen metni mevcut özgeçmişinizle karşılaştırıp eksik kelimelerin eklendiği bölümleri güncelleyin."
+      },
+      "interview_prep": {
+        "whatFor": "Bu ilana özel, karşınıza çıkabilecek teknik ve İK mülakat sorularını önceden görmenizi sağlar.",
+        "howToUse": "Sorulara kısa cevaplar hazırlayarak mülakata daha güvenle girin."
+      },
+      "salary_estimation": {
+        "whatFor": "Deneyiminize, pozisyona ve girdiğiniz konuma göre gerçekçi bir maaş aralığı tahmini sunar.",
+        "howToUse": "Bu aralığı maaş görüşmelerinde bir referans noktası olarak kullanın; kesin bir teklif değil, bir tahmindir."
+      }
+    }
+  },
+  "jobMatch": {
+    "title": "İş İlanları",
+    "subtitle": "İş ilanlarını ekleyin, CV'nizle eşleştirin ve uyumluluğunuzu görün.",
+    "addJob": "Yeni İlan Ekle",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "actionsMenu": "İşlemler",
+    "deleteConfirmTitle": "İlanı sil",
+    "deleteConfirmDescription": "\"{{title}}\" kalıcı olarak silinecek; bu ilana ait eşleşme geçmişi de silinir.",
+    "matchAction": "Eşleştir",
+    "failed": "Başarısız",
+    "addCard": {
+      "collapsedTitle": "Yeni İlan Ekle",
+      "collapsedPrompt": "İlan metnini buraya yapıştırın veya tıklayıp elle girin.",
+      "cancel": "İptal",
+      "submit": "İlanı Kaydet",
+      "createSuccess": "İlan eklendi."
+    },
+    "editDialog": {
+      "title": "İlanı Düzenle",
+      "description": "İlan bilgilerini güncelleyin.",
+      "submit": "Kaydet",
+      "updateSuccess": "İlan güncellendi."
+    },
+    "fields": {
+      "jobTitle": "Pozisyon",
+      "company": "Şirket",
+      "location": "Konum",
+      "description": "İlan Açıklaması",
+      "descriptionPlaceholder": "İlan metnini buraya yapıştırın…",
+      "descriptionError": "İlan açıklaması en az 30 karakter olmalı."
+    },
+    "status": {
+      "none": "Henüz eşleşmedi",
+      "pending": "Eşleşiyor…",
+      "tier": {
+        "good": "Yüksek uyum",
+        "warning": "Orta uyum",
+        "critical": "Düşük uyum"
+      }
+    },
+    "list": {
+      "heading": "Son Eklenen İlanlar",
+      "errorTitle": "İlanlar yüklenemedi.",
+      "emptyTitle": "Henüz ilan eklemediniz",
+      "emptyDescription": "Eşleştirme yapmak için yukarıdan ilk ilanınızı ekleyin."
+    },
+    "cvPicker": {
+      "title": "CV Seç",
+      "description": "\"{{title}}\" ilanıyla eşleştirmek için bir CV seçin.",
+      "empty": "Önce panelden bir CV yüklemelisiniz.",
+      "goToDashboard": "Panele Git",
+      "confirm": "Eşleştir"
+    },
+    "history": {
+      "heading": "Son Eşleşmeler",
+      "empty": "Henüz bir eşleştirme yapılmadı."
+    },
+    "priority": {
+      "low": "Düşük",
+      "medium": "Orta",
+      "high": "Yüksek"
+    },
+    "result": {
+      "compatibilityScore": "Uyumluluk",
+      "atsMatchScore": "ATS Uyumu",
+      "hiringProbability": "İşe Alınma Olasılığı",
+      "seniorityFit": "Seviye Uygunluğu",
+      "aiNote": "AI Notu",
+      "optimizeCv": "CV'yi Optimize Et",
+      "matchedSkills": "Eşleşen Beceriler",
+      "missingSkills": "Eksik Beceriler",
+      "strengths": "Güçlü Eşleşmeler",
+      "weaknesses": "Eksik Noktalar",
+      "recommendations": "AI Önerileri",
+      "missingKeywords": "Eksik Anahtar Kelimeler",
+      "skillMatch": "Skill Match",
+      "learningRoadmap": "Öğrenme Yol Haritası",
+      "skillGapSkill": "Eksik Teknoloji",
+      "skillGapPriority": "Öncelik",
+      "skillGapDuration": "Tahmini Süre",
+      "skillGapEmpty": "Eksik teknoloji bulunamadı.",
+      "priorityBadge": "{{priority}} öncelik",
+      "atsHeading": "ATS Uyumluluğu",
+      "atsOptimizeCta": "ATS Optimize Et",
+      "aiGenerated": "AI Yanıtı",
+      "interviewPrepHeading": "Mülakat Hazırlığı",
+      "interviewPrepEmptyDescription": "Bu ilana özel olası mülakat sorularını oluşturmak için tıklayın.",
+      "generateInterviewPrep": "Soruları Oluştur",
+      "technicalQuestions": "Teknik Sorular",
+      "hrQuestions": "İK Soruları",
+      "notFound": "İlan veya CV bulunamadı.",
+      "rematch": "Tekrar Eşleştir",
+      "rematchConfirmTitle": "Tekrar eşleştir",
+      "rematchConfirmDescription": "Yeni bir eşleştirme sonucu oluşturulacak; önceki sonuç geçmişte saklanacak.",
+      "emptyTitle": "Bu CV henüz bu ilanla eşleştirilmedi",
+      "emptyDescription": "Uyumluluk analizini başlatmak için aşağıdaki butona tıklayın.",
+      "matchNow": "Eşleştir",
+      "errorTitle": "Eşleştirme sonucu yüklenemedi.",
+      "failedTitle": "Eşleştirme tamamlanamadı",
+      "retry": "Tekrar Dene"
+    },
+    "aiTools": {
+      "heading": "İlana Özel AI Araçları"
+    },
+    "salary": {
+      "title": "Maaş Tahmini",
+      "description": "Daha isabetli bir tahmin için ülke ve şehir bilgisi ekleyebilirsiniz.",
+      "country": "Ülke (opsiyonel)",
+      "city": "Şehir (opsiyonel)",
+      "submit": "Tahmin Et"
+    }
+  },
+  "admin": {
+    "title": "Yönetim Paneli",
+    "subtitle": "Kullanıcı, içerik ve yapay zeka kullanım özetleri.",
+    "errorTitle": "Metrikler yüklenemedi.",
+    "stats": {
+      "totalUsers": "Toplam Kullanıcı",
+      "verifiedUsers": "Doğrulanmış Kullanıcı",
+      "totalCvs": "Toplam CV",
+      "totalAnalyses": "Toplam Analiz",
+      "totalJobs": "Toplam İlan",
+      "totalMatches": "Toplam Eşleştirme"
+    },
+    "usage": {
+      "title": "Yapay Zeka Kullanımı",
+      "last24h": "Son 24 saat",
+      "last7d": "Son 7 gün",
+      "last30d": "Son 30 gün",
+      "byFeature": "Özelliğe Göre (Son 30 gün)",
+      "calls": "Çağrı sayısı",
+      "tokens": "Toplam token",
+      "cost": "Tahmini maliyet (USD)"
+    }
+  },
+  "legal": {
+    "lastUpdated": "Son güncelleme: 2026",
+    "privacy": {
+      "title": "Gizlilik Politikası",
+      "sections": [
+        {
+          "title": "Topladığımız Veriler",
+          "body": "Hesabınızı oluştururken ad, soyad ve e-posta adresinizi; hizmeti kullanırken yüklediğiniz CV dosyalarını, oluşturulan analiz ve eşleştirme sonuçlarını saklarız."
+        },
+        {
+          "title": "Verilerinizi Nasıl Kullanırız",
+          "body": "Verileriniz yalnızca CV analizi, yapay zeka destekli öneriler ve iş ilanı eşleştirme hizmetini size sunmak için kullanılır."
+        },
+        {
+          "title": "Veri Paylaşımı",
+          "body": "Verileriniz üçüncü taraflarla satılmaz veya paylaşılmaz. Analiz sırasında CV içeriğiniz, yalnızca sonucu üretmek amacıyla yapay zeka sağlayıcımıza (OpenAI) iletilir."
+        },
+        {
+          "title": "Veri Saklama ve Silme",
+          "body": "Verileriniz hesabınız aktif olduğu sürece saklanır. Hesabınızı veya belirli bir CV'yi istediğiniz zaman silebilir, ya da destek ekibimizle iletişime geçebilirsiniz."
+        },
+        {
+          "title": "Haklarınız",
+          "body": "Verilerinize erişme, düzeltme ve silme hakkına sahipsiniz. Sorularınız için bizimle iletişime geçebilirsiniz."
+        }
+      ]
+    },
+    "terms": {
+      "title": "Kullanım Şartları",
+      "sections": [
+        {
+          "title": "Hizmetin Tanımı",
+          "body": "CV Doktoru, yapay zeka destekli CV analizi, yeniden yazma önerileri ve iş ilanı eşleştirme hizmeti sunar."
+        },
+        {
+          "title": "Kullanıcı Sorumlulukları",
+          "body": "Hesabınızın güvenliğinden ve paylaştığınız bilgilerin doğruluğundan siz sorumlusunuz. Hizmeti yasa dışı amaçlarla kullanamazsınız."
+        },
+        {
+          "title": "Yapay Zeka Çıktıları Hakkında",
+          "body": "Analiz, öneri ve eşleştirme sonuçları yapay zeka tarafından üretilir; öneri niteliğindedir ve kesinlik garantisi taşımaz. Nihai kararlar kullanıcıya aittir."
+        },
+        {
+          "title": "Fikri Mülkiyet",
+          "body": "Yüklediğiniz CV içeriği size aittir. Platformun tasarımı ve yazılımı CV Doktoru'na aittir."
+        },
+        {
+          "title": "Hizmette Değişiklikler",
+          "body": "Hizmeti ve bu şartları zaman zaman güncelleyebiliriz. Önemli değişikliklerde sizi bilgilendirmeye çalışırız."
+        },
+        {
+          "title": "İletişim",
+          "body": "Sorularınız için destek@cvdoktoru.app adresinden bize ulaşabilirsiniz."
+        }
+      ]
+    }
+  },
+  "plan": {
+    "freeBadge": "Free Plan",
+    "upgradeCta": "Pro'ya Geç"
+  },
+  "pricing": {
+    "eyebrow": "Fiyatlandırma",
+    "title": "Şu an ücretsiz, yakında daha da güçlü.",
+    "subtitle": "Free plan ile CV Doktoru'nun tüm temel özelliklerini kullanabilirsiniz. Pro, daha yoğun kullanım için hazırlanıyor.",
+    "billingNote": "Ödeme altyapımızı şu anda hazırlıyoruz. Pro plan için ücretlendirme ve satın alma yakın zamanda aktif olacak — bu sayfa şu an bilgilendirme amaçlıdır.",
+    "free": {
+      "name": "Free",
+      "price": "₺0",
+      "period": "/ay",
+      "description": "Bugün herkesin kullandığı plan.",
+      "cta": "Mevcut Planınız",
+      "features": [
+        "Sınırsız CV analizi",
+        "Sınırsız ilan eşleştirme",
+        "Saatte 20 AI üretimi (ön yazı, ATS optimize, yeniden yazma vb.)",
+        "Versiyon geçmişi ve AI çıktı arşivi"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "Önerilen",
+      "price": "₺0",
+      "priceNote": "fiyat henüz belirlenmedi",
+      "description": "Yoğun kullanım ve ekipler için.",
+      "cta": "Pro'ya Geç",
+      "features": [
+        "Free plandaki her şey",
+        "Saatlik AI üretim sınırı yok",
+        "Öncelikli destek"
+      ]
+    },
+    "faq": {
+      "eyebrow": "SSS",
+      "heading": "Sıkça Sorulan Sorular",
+      "items": [
+        {
+          "question": "Pro plana şu an geçebilir miyim?",
+          "answer": "Henüz hayır — ödeme altyapımızı hazırlıyoruz. \"Pro'ya Geç\" butonuna tıklayanları önceliklendirip aktif olduğunda bilgilendireceğiz."
+        },
+        {
+          "question": "Saatlik 20 AI üretim sınırı tam olarak neyi kapsıyor?",
+          "answer": "Ön yazı, ATS optimizasyonu, profil özeti/deneyim/yetenek yeniden yazma, LinkedIn özeti, mülakat hazırlığı ve maaş tahmini gibi AI ile üretilen çıktıları kapsar. CV analizi ve ilan eşleştirme bu sınıra dahil değildir, sınırsızdır."
+        },
+        {
+          "question": "Free planı kullanmaya devam edebilir miyim?",
+          "answer": "Evet. Pro aktif olduktan sonra da Free plan kullanılabilir olmaya devam edecek."
+        }
+      ]
+    }
+  },
+  "upgradeModal": {
+    "eyebrow": "Saatlik Limit Doldu",
+    "title": "Bu saatlik AI üretim hakkınızı kullandınız",
+    "description": "Free planda saatte 20 AI üretimi yapabilirsiniz. Limit her saat başı otomatik olarak yenilenir.",
+    "benefitsHeading": "Pro ile neler değişecek",
+    "benefits": [
+      "Saatlik AI üretim sınırı yok",
+      "Öncelikli destek"
+    ],
+    "cta": "Pro'yu İncele",
+    "dismiss": "Tamam, anladım"
+  },
+  "account": {
+    "title": "Hesabım",
+    "subtitle": "Hesap bilgilerinizi görüntüleyin ve yönetin.",
+    "profile": {
+      "heading": "Profil",
+      "name": "Ad Soyad",
+      "email": "E-posta"
+    },
+    "danger": {
+      "heading": "Tehlikeli Bölge",
+      "description": "Hesabınızı sildiğinizde CV'leriniz, analizleriniz, iş ilanı eşleştirmeleriniz ve AI çıktılarınız dahil tüm verileriniz kalıcı olarak silinir. Bu işlem geri alınamaz.",
+      "deleteCta": "Hesabımı Sil",
+      "confirmTitle": "Hesabınızı silmek istediğinizden emin misiniz?",
+      "confirmDescription": "Bu işlem geri alınamaz. Devam etmek için şifrenizi girin.",
+      "passwordLabel": "Şifre",
+      "confirmButton": "Hesabımı Kalıcı Olarak Sil",
+      "deleteSuccess": "Hesabınız silindi."
+    }
   }
 }

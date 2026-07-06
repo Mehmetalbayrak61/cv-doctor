@@ -1,0 +1,25 @@
+# Caddy, belirtilen domain için otomatik olarak Let's Encrypt sertifikası alıp
+# yeniler — ekstra bir certbot/nginx kurulumu gerekmez. Kullanmak için bu dosyayı
+# "Caddyfile" olarak kopyalayıp <your-domain.com> kısmını gerçek domain'inizle
+# değiştirin, ardından Caddy'yi bu dosyayla birlikte çalıştırın (bkz. DEPLOYMENT.md).
+
+your-domain.com {
+    # Backend API: /api altındaki her şey backend container'ına gider.
+    handle /api/* {
+        reverse_proxy backend:8000
+    }
+
+    # Geri kalan her şey (SPA) frontend (nginx) container'ına gider.
+    handle {
+        reverse_proxy frontend:80
+    }
+
+    encode gzip
+
+    header {
+        # nginx/uvicorn zaten kendi güvenlik header'larını ekliyor (bkz.
+        # app/core/security_headers.py); burada yalnızca proxy seviyesinde
+        # eklemek isteyebileceğiniz ek bir header varsa tanımlayın.
+        -Server
+    }
+}

@@ -1,0 +1,16 @@
+*.iml
+.gradle/
+/local.properties
+.idea/
+.DS_Store
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Release signing — gerçek keystore ve şifreler asla repoya girmemeli.
+*.jks
+*.keystore
+keystore.properties

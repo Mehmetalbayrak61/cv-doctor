@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CV Doktoru</string>
+
+    <string name="no_internet_title">İnternet bağlantısı yok</string>
+    <string name="no_internet_description">CV Doktoru\'nu kullanmak için internete bağlı olmanız gerekir. Bağlantınızı kontrol edip tekrar deneyin.</string>
+    <string name="retry">Tekrar Dene</string>
+
+    <string name="load_error_title">Bir şeyler ters gitti</string>
+    <string name="load_error_description">Sayfa yüklenirken bir sorun oluştu. Lütfen tekrar deneyin.</string>
+
+    <string name="download_started">İndiriliyor…</string>
+    <string name="download_success">%1$s indirildi</string>
+    <string name="download_failed">Dosya indirilemedi</string>
+</resources>

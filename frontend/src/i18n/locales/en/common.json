@@ -6,11 +6,689 @@
   "nav": {
     "dashboard": "Dashboard",
     "cvBuilder": "Build CV",
-    "jobMatch": "Job Match",
+    "jobMatch": "Job Listings",
     "applicationAssistant": "Application Assistant",
     "interviewPrep": "Interview Prep",
+    "pricing": "Pricing",
     "login": "Log In",
     "register": "Sign Up",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "admin": "Admin Panel",
+    "openMenu": "Open menu"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "retry": "Retry",
+    "back": "Back",
+    "close": "Close"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "copyright": "© {{year}} CV Doktoru. All rights reserved."
+  },
+  "auth": {
+    "layout": {
+      "headline": "A second pair of eyes for your CV — in seconds.",
+      "highlights": [
+        "AI-powered ATS compatibility scan",
+        "PDF and DOCX analysis with full Turkish character support",
+        "Every analysis is kept as a saved version"
+      ],
+      "footnote": "Your data stays tied to your account only."
+    },
+    "login": {
+      "title": "Log In",
+      "subtitle": "Sign in to your account to continue.",
+      "submit": "Log In",
+      "submitting": "Logging in…",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Sign up",
+      "invalidCredentials": "Incorrect email or password.",
+      "forgotPassword": "Forgot password?"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Enter your email and we'll send you a reset link.",
+      "submit": "Send Reset Link",
+      "submitting": "Sending…",
+      "success": "If that email is registered, we've sent a password reset link.",
+      "backToLogin": "Back to login"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "subtitle": "Choose a new password for your account.",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "passwordMismatch": "Passwords do not match.",
+      "submit": "Reset Password",
+      "submitting": "Resetting…",
+      "success": "Your password has been updated. You can now log in with your new password.",
+      "missingToken": "This reset link is invalid. Please check the link in your email."
+    },
+    "verifyEmail": {
+      "title": "Email Verification",
+      "subtitle": "Verifying your email address.",
+      "missingToken": "This verification link is invalid. Please check the link in your email.",
+      "success": "Your email address has been verified.",
+      "goToDashboard": "Go to Dashboard",
+      "goToLogin": "Go to Login"
+    },
+    "register": {
+      "title": "Sign Up",
+      "subtitle": "Create your free account.",
+      "submit": "Sign Up",
+      "submitting": "Signing up…",
+      "haveAccount": "Already have an account?",
+      "loginLink": "Log in",
+      "emailTaken": "This email address is already registered."
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "firstName": "First name",
+      "lastName": "Last name"
+    },
+    "validation": {
+      "emailInvalid": "Enter a valid email address.",
+      "passwordMin": "Password must be at least 8 characters.",
+      "required": "This field is required."
+    }
+  },
+  "dashboard": {
+    "title": "My CVs",
+    "subtitle": "Upload your CVs, run an analysis, and track the results.",
+    "upload": {
+      "title": "Click or drag a CV here to upload",
+      "hint": "PDF, DOC or DOCX · up to {{size}} MB",
+      "browse": "Choose File",
+      "uploading": "Uploading…",
+      "success": "\"{{name}}\" uploaded successfully.",
+      "errorType": "Only PDF, DOC or DOCX files can be uploaded.",
+      "errorSize": "File size exceeds the {{size}} MB limit."
+    },
+    "verifyBanner": {
+      "title": "Verify your email",
+      "description": "You need to verify your email address to use AI-powered analysis, rewriting, and job matching features.",
+      "resend": "Resend",
+      "resendSuccess": "Verification email sent again."
+    },
+    "list": {
+      "heading": "Uploaded CVs",
+      "view": "View",
+      "delete": "Delete",
+      "deleteConfirmTitle": "Delete CV",
+      "deleteConfirmDescription": "\"{{name}}\" will be permanently deleted. This cannot be undone.",
+      "deleteConfirm": "Delete",
+      "deleteSuccess": "CV deleted.",
+      "errorTitle": "Couldn't load your CVs.",
+      "emptyTitle": "You haven't uploaded a CV yet",
+      "emptyDescription": "Upload your first CV above to start an analysis."
+    }
+  },
+  "overview": {
+    "welcome": "Welcome, {{name}} 👋",
+    "subtitle": "Here's a summary of your career journey.",
+    "weeklySummary_one": "You completed {{count}} AI action this week.",
+    "weeklySummary_other": "You completed {{count}} AI actions this week.",
+    "errorTitle": "Couldn't load your overview.",
+    "recentAnalyses": "Recent Analyses",
+    "recentActivity": "Recent AI Activity",
+    "kpi": {
+      "overallScore": "Overall CV Score",
+      "atsScore": "ATS Score",
+      "jobMatches": "Job Matches",
+      "aiUsage": "AI Usage",
+      "noAnalysisYet": "No analysis yet",
+      "noAnalysisYetHint": "Analyze your first CV",
+      "noMatchesYet": "None yet",
+      "noMatchesYetHint": "Match with a job listing",
+      "noAiUsageYet": "Try your first AI action"
+    },
+    "quickActions": {
+      "heading": "Quick Actions",
+      "analyze": "Analyze CV",
+      "coverLetter": "Generate Cover Letter",
+      "atsOptimize": "Optimize for ATS",
+      "linkedin": "LinkedIn Summary"
+    },
+    "suggestions": {
+      "heading": "AI Suggestions",
+      "priority": {
+        "critical": "Critical",
+        "tip": "Tip",
+        "good": "Good"
+      },
+      "lowAts": {
+        "title": "Your ATS score is low",
+        "description": "Try the ATS Optimize tool on your most recently analyzed CV."
+      },
+      "noMatch": {
+        "title": "You haven't matched with a job yet",
+        "description": "Match your CV against a job listing to see your compatibility."
+      },
+      "doingGreat": {
+        "title": "You're doing great",
+        "description": "Your latest analysis scored 80 or above overall."
+      },
+      "explore": {
+        "title": "Explore the AI tools",
+        "description": "Try a cover letter, ATS optimization, and more to strengthen your CV."
+      }
+    },
+    "empty": {
+      "title": "You haven't uploaded a CV yet",
+      "description": "Upload your first CV — AI will analyze your strengths, weaknesses, and ATS compatibility in seconds.",
+      "step1": "Upload your CV (PDF, DOC, DOCX)",
+      "step2": "Let AI analyze it",
+      "step3": "See your results and suggestions",
+      "cta": "Upload CV"
+    }
+  },
+  "analysis": {
+    "overallScore": "Overall Score",
+    "atsScore": "ATS Score",
+    "scoreStatus": {
+      "good": "Good",
+      "warning": "Fair",
+      "critical": "Weak"
+    },
+    "summary": "Overall Assessment",
+    "strengths": "Strengths",
+    "weaknesses": "Weaknesses",
+    "improvementSuggestions": "Improvement Suggestions",
+    "missingKeywords": "Missing Keywords",
+    "suggestedJobTitles": "Suggested Job Titles",
+    "correctedProfileSummary": "Improved Profile Summary",
+    "qualityBreakdown": "Section-by-Section Quality",
+    "languageQuality": "Language Quality",
+    "sectionQuality": "Section Structure",
+    "experienceQuality": "Experience Quality",
+    "educationQuality": "Education Quality",
+    "skillsQuality": "Skills Quality",
+    "reanalyze": "Re-analyze",
+    "reanalyzeConfirmTitle": "Re-analyze this CV",
+    "reanalyzeConfirmDescription": "A new analysis version will be created; the previous result stays in history.",
+    "reanalyzeConfirm": "Re-analyze",
+    "cvNotFound": "CV not found.",
+    "emptyTitle": "This CV hasn't been analyzed yet",
+    "emptyDescription": "Click the button below to start the AI-powered analysis.",
+    "analyzeNow": "Analyze",
+    "errorTitle": "Couldn't load the analysis result.",
+    "failedTitle": "Analysis failed",
+    "retry": "Retry"
+  },
+  "landing": {
+    "eyebrow": "AI-Powered Career Platform",
+    "headline": "Upload Your CV, Let AI Get You Job-Ready.",
+    "subheadline": "Measure your ATS compatibility, match against job listings, strengthen your CV with AI, and get one step closer to more interview invitations.",
+    "ctaPrimary": "Analyze Your CV for Free",
+    "ctaSecondary": "See Demo",
+    "ctaHint": "No credit card required · Get started in a minute",
+    "sampleReportLabel": "Sample analysis report",
+    "analysisCompleteBadge": "Analysis complete",
+    "sampleReport": {
+      "strengths": ["5+ years of project management experience", "Measurable, numbers-backed achievements"],
+      "missingKeywords": ["Agile", "Stakeholder Management"]
+    },
+    "trust": {
+      "items": [
+        { "label": "AI-Powered Analysis", "description": "A GPT-based model reads your CV in seconds." },
+        { "label": "ATS Compatibility Check", "description": "Evaluated through the eyes of applicant tracking systems." },
+        { "label": "Your Data Stays Private", "description": "Your CV stays tied to your account only." },
+        { "label": "Results in Seconds", "description": "Get instant feedback, no waiting." }
+      ]
+    },
+    "howItWorks": {
+      "eyebrow": "How It Works",
+      "heading": "Get job-ready in 3 steps.",
+      "steps": [
+        {
+          "title": "Upload Your CV",
+          "description": "Upload your CV in PDF, DOC, or DOCX format in seconds."
+        },
+        {
+          "title": "Let AI Analyze It",
+          "description": "Your strengths, weaknesses, missing keywords, and ATS compatibility are assessed automatically."
+        },
+        {
+          "title": "Get Job-Ready",
+          "description": "Strengthen your CV with personalized suggestions, match it to listings, and prepare for interviews."
+        }
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "What You Can Do",
+      "heading": "End-to-end career support in one platform.",
+      "items": [
+        {
+          "title": "AI CV Analysis",
+          "description": "See your strengths, weaknesses, and missing keywords in seconds."
+        },
+        {
+          "title": "ATS Optimization",
+          "description": "See how applicant tracking systems read your CV and improve your compatibility."
+        },
+        {
+          "title": "Cover Letter Generation",
+          "description": "Generate AI-powered cover letters tailored to the role you're targeting."
+        },
+        {
+          "title": "Job Matching",
+          "description": "Compare your CV against job listings and see your compatibility score."
+        },
+        {
+          "title": "Interview Preparation",
+          "description": "See likely interview questions tailored to the role in advance."
+        },
+        {
+          "title": "Salary Estimation",
+          "description": "Get a realistic salary range based on your experience and role."
+        }
+      ]
+    },
+    "finalCta": {
+      "heading": "Start getting more interview invitations today.",
+      "subheading": "Signing up takes less than a minute, no credit card required."
+    },
+    "faq": {
+      "eyebrow": "Frequently Asked",
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "How does CV Doktoru work?",
+          "answer": "Upload your CV and our AI analyzes your strengths, weaknesses, missing keywords, and ATS compatibility within seconds."
+        },
+        {
+          "question": "Is my CV and data safe?",
+          "answer": "Your uploaded CVs are tied to your account only and are never shared with other users. See our Privacy Policy for details."
+        },
+        {
+          "question": "What file formats can I upload?",
+          "answer": "You can upload PDF, DOC, and DOCX files, with full support for special characters."
+        },
+        {
+          "question": "Why do I need to verify my email?",
+          "answer": "Email verification is required to use AI-powered analysis, rewriting, and job matching features. It doesn't affect signing up, logging in, or uploading CVs."
+        },
+        {
+          "question": "Is it free?",
+          "answer": "All features are currently available for free."
+        }
+      ]
+    }
+  },
+  "aiTools": {
+    "heading": "Improve with AI",
+    "history": "Past Outputs",
+    "historyEmpty": "You haven't generated any AI output yet.",
+    "view": "View",
+    "copy": "Copy",
+    "copied": "Copied to clipboard.",
+    "copyFailed": "Couldn't copy automatically — please select and copy manually.",
+    "download": "Download (.txt)",
+    "recommended": "Recommended",
+    "types": {
+      "summary_rewrite": "Rewrite Profile Summary",
+      "experience_rewrite": "Strengthen Experience Bullets",
+      "skills_rewrite": "Organize Skills",
+      "ats_optimization": "ATS-Friendly CV Suggestion",
+      "cover_letter": "Generate Cover Letter",
+      "linkedin_summary": "Generate LinkedIn Summary",
+      "ats_keyword_insertion": "Insert Missing Keywords",
+      "interview_prep": "Generate Interview Questions",
+      "salary_estimation": "Get Salary Estimate"
+    },
+    "descriptions": {
+      "summary_rewrite": "Rewrites your profile summary with sharper, more effective language.",
+      "experience_rewrite": "Strengthens your experience bullets with measurable achievements.",
+      "skills_rewrite": "Organizes your skills list so it stands out.",
+      "ats_optimization": "Optimizes your CV for applicant tracking systems.",
+      "cover_letter": "Generates a personalized cover letter for the role.",
+      "linkedin_summary": "Generates a ready-to-use summary for your LinkedIn profile.",
+      "ats_keyword_insertion": "Naturally weaves the missing keywords into your CV."
+    },
+    "coverLetter": {
+      "title": "Generate Cover Letter",
+      "description": "Add a few details to tailor the letter to the job you're targeting.",
+      "jobTitle": "Job title",
+      "companyName": "Company (optional)",
+      "jobDescription": "Job description (optional)",
+      "submit": "Generate"
+    }
+  },
+  "aiOutput": {
+    "eyebrow": "AI Output",
+    "toolsHeading": "AI Tools",
+    "regenerate": "Regenerate",
+    "regenerateSuccess": "A new version was created.",
+    "share": "Share",
+    "shareFallback": "Sharing isn't supported here, copied to clipboard instead.",
+    "explanationHeading": "What Is This Output For?",
+    "whatForLabel": "What it's for",
+    "howToUseLabel": "How to use it",
+    "versionHistoryHeading": "Version History",
+    "current": "current",
+    "notFoundTitle": "This output couldn't be found.",
+    "explanations": {
+      "summary_rewrite": {
+        "whatFor": "Rewrites the profile summary at the top of your CV to grab a recruiter's attention in the first few seconds.",
+        "howToUse": "Paste this text over your current profile summary section, updating any details as needed."
+      },
+      "experience_rewrite": {
+        "whatFor": "Rewrites your experience bullet points with stronger, measurable-achievement-driven language.",
+        "howToUse": "Compare the bullets to your current experience section and copy over the ones that represent you best."
+      },
+      "skills_rewrite": {
+        "whatFor": "Reorganizes your skills list to highlight the abilities that should stand out most.",
+        "howToUse": "Transfer the list into your CV's skills section, keeping only the skills you genuinely have."
+      },
+      "ats_optimization": {
+        "whatFor": "Suggests content and keyword changes so your CV is parsed better by applicant tracking systems (ATS).",
+        "howToUse": "Apply the suggested changes to the relevant sections of your CV, weaving in missing keywords naturally."
+      },
+      "cover_letter": {
+        "whatFor": "Generates a personalized cover letter draft tailored to the role you're targeting.",
+        "howToUse": "Review the letter in your own voice, add company-specific details, and send it with your application."
+      },
+      "linkedin_summary": {
+        "whatFor": "Generates a ready-to-use, professional summary for your LinkedIn \"About\" section.",
+        "howToUse": "Paste the text into your LinkedIn \"About\" section, adding a personal touch if you'd like."
+      },
+      "ats_keyword_insertion": {
+        "whatFor": "Shows your CV with the keywords missing for this specific job naturally woven in.",
+        "howToUse": "Compare the result to your current CV and update the sections where the missing keywords were added."
+      },
+      "interview_prep": {
+        "whatFor": "Lets you preview likely technical and HR interview questions for this specific job.",
+        "howToUse": "Prepare short answers to the questions so you can walk into the interview with more confidence."
+      },
+      "salary_estimation": {
+        "whatFor": "Gives a realistic salary range estimate based on your experience, the role, and the location you entered.",
+        "howToUse": "Use this range as a reference point in salary negotiations — it's an estimate, not a guaranteed offer."
+      }
+    }
+  },
+  "jobMatch": {
+    "title": "Job Listings",
+    "subtitle": "Add job postings, match them against your CV, and see your compatibility.",
+    "addJob": "Add Job",
+    "delete": "Delete",
+    "edit": "Edit",
+    "actionsMenu": "Actions",
+    "deleteConfirmTitle": "Delete job",
+    "deleteConfirmDescription": "\"{{title}}\" will be permanently deleted, along with its match history.",
+    "matchAction": "Match",
+    "failed": "Failed",
+    "addCard": {
+      "collapsedTitle": "Add a New Job",
+      "collapsedPrompt": "Paste the job description here, or click to enter it manually.",
+      "cancel": "Cancel",
+      "submit": "Save Job",
+      "createSuccess": "Job added."
+    },
+    "editDialog": {
+      "title": "Edit Job",
+      "description": "Update the job posting details.",
+      "submit": "Save",
+      "updateSuccess": "Job updated."
+    },
+    "fields": {
+      "jobTitle": "Job title",
+      "company": "Company",
+      "location": "Location",
+      "description": "Job Description",
+      "descriptionPlaceholder": "Paste the job posting text here…",
+      "descriptionError": "The job description must be at least 30 characters."
+    },
+    "status": {
+      "none": "Not matched yet",
+      "pending": "Matching…",
+      "tier": {
+        "good": "High match",
+        "warning": "Medium match",
+        "critical": "Low match"
+      }
+    },
+    "list": {
+      "heading": "Recently Added Jobs",
+      "errorTitle": "Couldn't load your job postings.",
+      "emptyTitle": "You haven't added a job yet",
+      "emptyDescription": "Add your first job posting above to start matching."
+    },
+    "cvPicker": {
+      "title": "Select a CV",
+      "description": "Choose a CV to match against \"{{title}}\".",
+      "empty": "Upload a CV from the dashboard first.",
+      "goToDashboard": "Go to Dashboard",
+      "confirm": "Match"
+    },
+    "history": {
+      "heading": "Recent Matches",
+      "empty": "You haven't run a match yet."
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "result": {
+      "compatibilityScore": "Compatibility",
+      "atsMatchScore": "ATS Match",
+      "hiringProbability": "Hiring Probability",
+      "seniorityFit": "Seniority Fit",
+      "aiNote": "AI Note",
+      "optimizeCv": "Optimize My CV",
+      "matchedSkills": "Matched Skills",
+      "missingSkills": "Missing Skills",
+      "strengths": "Strong Matches",
+      "weaknesses": "Gaps to Address",
+      "recommendations": "AI Recommendations",
+      "missingKeywords": "Missing Keywords",
+      "skillMatch": "Skill Match",
+      "learningRoadmap": "Learning Roadmap",
+      "skillGapSkill": "Missing Skill",
+      "skillGapPriority": "Priority",
+      "skillGapDuration": "Estimated Time",
+      "skillGapEmpty": "No skill gaps found.",
+      "priorityBadge": "{{priority}} priority",
+      "atsHeading": "ATS Compatibility",
+      "atsOptimizeCta": "Run ATS Optimize",
+      "aiGenerated": "AI Response",
+      "interviewPrepHeading": "Interview Prep",
+      "interviewPrepEmptyDescription": "Click to generate likely interview questions for this job.",
+      "generateInterviewPrep": "Generate Questions",
+      "technicalQuestions": "Technical Questions",
+      "hrQuestions": "HR Questions",
+      "notFound": "Job or CV not found.",
+      "rematch": "Re-match",
+      "rematchConfirmTitle": "Re-run this match",
+      "rematchConfirmDescription": "A new match result will be created; the previous one stays in history.",
+      "emptyTitle": "This CV hasn't been matched to this job yet",
+      "emptyDescription": "Click the button below to start the compatibility analysis.",
+      "matchNow": "Match",
+      "errorTitle": "Couldn't load the match result.",
+      "failedTitle": "Match failed",
+      "retry": "Retry"
+    },
+    "aiTools": {
+      "heading": "Job-Specific AI Tools"
+    },
+    "salary": {
+      "title": "Salary Estimate",
+      "description": "Add a country and city for a more accurate estimate.",
+      "country": "Country (optional)",
+      "city": "City (optional)",
+      "submit": "Estimate"
+    }
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "subtitle": "User, content, and AI usage summaries.",
+    "errorTitle": "Failed to load metrics.",
+    "stats": {
+      "totalUsers": "Total Users",
+      "verifiedUsers": "Verified Users",
+      "totalCvs": "Total CVs",
+      "totalAnalyses": "Total Analyses",
+      "totalJobs": "Total Jobs",
+      "totalMatches": "Total Matches"
+    },
+    "usage": {
+      "title": "AI Usage",
+      "last24h": "Last 24 hours",
+      "last7d": "Last 7 days",
+      "last30d": "Last 30 days",
+      "byFeature": "By Feature (Last 30 days)",
+      "calls": "Call count",
+      "tokens": "Total tokens",
+      "cost": "Estimated cost (USD)"
+    }
+  },
+  "legal": {
+    "lastUpdated": "Last updated: 2026",
+    "privacy": {
+      "title": "Privacy Policy",
+      "sections": [
+        {
+          "title": "Data We Collect",
+          "body": "When you create an account, we store your name and email address. When you use the service, we store the CV files you upload and the analysis and matching results generated from them."
+        },
+        {
+          "title": "How We Use Your Data",
+          "body": "Your data is used solely to provide the CV analysis, AI-powered recommendations, and job matching service to you."
+        },
+        {
+          "title": "Data Sharing",
+          "body": "We do not sell or share your data with third parties. During analysis, your CV content is sent to our AI provider (OpenAI) only for the purpose of generating the result."
+        },
+        {
+          "title": "Data Retention and Deletion",
+          "body": "Your data is retained as long as your account is active. You can delete your account or a specific CV at any time, or contact our support team."
+        },
+        {
+          "title": "Your Rights",
+          "body": "You have the right to access, correct, and delete your data. Contact us if you have any questions."
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "sections": [
+        {
+          "title": "Description of Service",
+          "body": "CV Doktoru provides AI-powered CV analysis, rewriting suggestions, and job matching."
+        },
+        {
+          "title": "User Responsibilities",
+          "body": "You are responsible for the security of your account and the accuracy of the information you provide. You may not use the service for unlawful purposes."
+        },
+        {
+          "title": "About AI-Generated Output",
+          "body": "Analysis, suggestion, and matching results are generated by AI; they are advisory in nature and carry no guarantee of accuracy. Final decisions remain yours."
+        },
+        {
+          "title": "Intellectual Property",
+          "body": "The CV content you upload belongs to you. The platform's design and software belong to CV Doktoru."
+        },
+        {
+          "title": "Changes to the Service",
+          "body": "We may update the service and these terms from time to time. We will try to notify you of material changes."
+        },
+        {
+          "title": "Contact",
+          "body": "You can reach us at destek@cvdoktoru.app with any questions."
+        }
+      ]
+    }
+  },
+  "plan": {
+    "freeBadge": "Free Plan",
+    "upgradeCta": "Upgrade to Pro"
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Free today, even more powerful soon.",
+    "subtitle": "The Free plan gives you every core feature of CV Doktoru. Pro is being prepared for heavier usage.",
+    "billingNote": "We're currently setting up our billing infrastructure. Pricing and purchasing for the Pro plan will go live soon — this page is informational for now.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/mo",
+      "description": "The plan everyone uses today.",
+      "cta": "Your Current Plan",
+      "features": [
+        "Unlimited CV analysis",
+        "Unlimited job matching",
+        "20 AI generations per hour (cover letters, ATS optimize, rewrites, etc.)",
+        "Version history and AI output archive"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "Recommended",
+      "price": "$0",
+      "priceNote": "price not yet set",
+      "description": "For heavy usage and teams.",
+      "cta": "Upgrade to Pro",
+      "features": [
+        "Everything in Free",
+        "No hourly AI generation limit",
+        "Priority support"
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "Can I upgrade to Pro right now?",
+          "answer": "Not yet — we're setting up our billing infrastructure. We'll prioritize and notify everyone who clicks \"Upgrade to Pro\" once it's live."
+        },
+        {
+          "question": "What exactly counts toward the hourly limit of 20 AI generations?",
+          "answer": "Cover letters, ATS optimization, profile/experience/skills rewrites, LinkedIn summaries, interview prep, and salary estimates. CV analysis and job matching are not counted — those are unlimited."
+        },
+        {
+          "question": "Can I keep using the Free plan?",
+          "answer": "Yes. The Free plan will remain available once Pro goes live."
+        }
+      ]
+    }
+  },
+  "upgradeModal": {
+    "eyebrow": "Hourly Limit Reached",
+    "title": "You've used this hour's AI generations",
+    "description": "The Free plan allows 20 AI generations per hour. The limit resets automatically every hour.",
+    "benefitsHeading": "What changes with Pro",
+    "benefits": [
+      "No hourly AI generation limit",
+      "Priority support"
+    ],
+    "cta": "See Pro",
+    "dismiss": "Got it"
+  },
+  "account": {
+    "title": "My Account",
+    "subtitle": "View and manage your account information.",
+    "profile": {
+      "heading": "Profile",
+      "name": "Full Name",
+      "email": "Email"
+    },
+    "danger": {
+      "heading": "Danger Zone",
+      "description": "Deleting your account permanently removes all your data, including your CVs, analyses, job matches, and AI outputs. This action cannot be undone.",
+      "deleteCta": "Delete My Account",
+      "confirmTitle": "Are you sure you want to delete your account?",
+      "confirmDescription": "This action cannot be undone. Enter your password to continue.",
+      "passwordLabel": "Password",
+      "confirmButton": "Permanently Delete My Account",
+      "deleteSuccess": "Your account has been deleted."
+    }
   }
 }

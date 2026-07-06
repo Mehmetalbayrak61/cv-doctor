@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Web uygulamasının primary renk token'ı ile eşleşir (frontend/src/index.css,
+         oklch(0.47 0.1 199) -> #006B70). -->
+    <color name="brand_primary">#006B70</color>
+    <color name="brand_primary_dark">#003F42</color>
+    <color name="white">#FFFFFF</color>
+    <color name="ic_launcher_background">#006B70</color>
+</resources>

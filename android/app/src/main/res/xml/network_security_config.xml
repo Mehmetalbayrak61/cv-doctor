@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Uygulama genelinde (yalnızca WebViewClient mantığı değil, OS seviyesinde de) düz
+  metin (http://) trafiğini tamamen engeller. WebViewClient'taki HTTPS-only allow-list
+  ile birlikte iki katmanlı bir HTTPS zorunluluğu sağlar.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+</network-security-config>
