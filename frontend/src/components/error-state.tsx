@@ -20,7 +20,7 @@ export function ErrorState({ title, description, retryLabel, onRetry }: ErrorSta
         {description && <p className="text-muted-foreground max-w-sm text-sm">{description}</p>}
       </div>
       {onRetry && (
-        <Button variant="outline" size="sm" onClick={onRetry}>
+        <Button variant="outline" onClick={onRetry}>
           {retryLabel}
         </Button>
       )}

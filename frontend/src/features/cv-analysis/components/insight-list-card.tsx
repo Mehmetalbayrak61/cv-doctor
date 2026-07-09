@@ -56,7 +56,7 @@ export function InsightListCard({
                 >
                   {numbered ? index + 1 : <Icon className="size-3" />}
                 </span>
-                <span className="text-muted-foreground leading-relaxed">{item}</span>
+                <span className="leading-relaxed">{item}</span>
               </li>
             ))}
           </ul>
