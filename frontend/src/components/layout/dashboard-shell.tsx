@@ -8,7 +8,7 @@ import {
   Target,
   type LucideIcon,
 } from "lucide-react"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Link, NavLink, Outlet } from "react-router-dom"
 
@@ -17,6 +17,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import { RouteFallback } from "@/components/layout/route-fallback"
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
 import { UpgradeModalProvider } from "@/features/pricing/upgrade-modal-provider"
 import { cn } from "@/lib/utils"
@@ -164,7 +165,9 @@ export function DashboardShell() {
         </Sheet>
 
         <main className="flex-1">
-          <Outlet />
+          <Suspense fallback={<RouteFallback />}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
       <UpgradeModalProvider />

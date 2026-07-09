@@ -11,4 +11,11 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    // Geçici tünel testleri (ör. Cloudflare quick tunnel) rastgele bir
+    // *.trycloudflare.com host header'ıyla gelir — Vite'ın host allow-list'i
+    // bunu varsayılan olarak reddeder. Yalnızca `vite dev`'i etkiler, build'e
+    // yansımaz.
+    allowedHosts: true,
+  },
 })

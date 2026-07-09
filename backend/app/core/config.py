@@ -72,6 +72,9 @@ class Settings(BaseSettings):
     # Faz 7: auth endpointleri için IP başına 15 dakikalık deneme limiti
     AUTH_RATE_LIMIT_PER_15_MIN: int = 10
 
+    # Boşsa Sentry hiç başlatılmaz (bkz. main.py) — hata izleme opsiyonel.
+    SENTRY_DSN: str = ""
+
     @field_validator("DATABASE_URL", mode="before")
     @classmethod
     def _normalize_database_url(cls, value: str) -> str:

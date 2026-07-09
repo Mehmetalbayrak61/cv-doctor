@@ -1,6 +1,9 @@
 import { ActivitySquare, Briefcase, LayoutDashboard, LogOut, ShieldCheck } from "lucide-react"
+import { Suspense } from "react"
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+
+import { RouteFallback } from "@/components/layout/route-fallback"
 
 import { useAuth } from "@/features/auth/hooks/use-auth"
 import { Button } from "@/components/ui/button"
@@ -103,7 +106,9 @@ export function AppLayout() {
         </div>
       </header>
       <main className="flex-1">
-        <Outlet />
+        <Suspense fallback={<RouteFallback />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
       <UpgradeModalProvider />

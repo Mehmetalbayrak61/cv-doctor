@@ -11,7 +11,7 @@ from app.models.job_match import JobMatch
 from app.models.user import User
 from app.repositories.ai_usage_repository import AIUsageRepository
 from app.repositories.job_match_repository import JobMatchRepository
-from app.services.ai_usage_recorder import record_ai_usage
+from app.services.ai_usage_recorder import enforce_ai_rate_limit, record_ai_usage
 from app.services.cv_service import CVService
 from app.services.cv_text_service import CvTextService
 from app.services.job_description_service import JobDescriptionService
@@ -30,6 +30,7 @@ class JobMatchService:
     async def match(self, *, user: User, job_id: uuid.UUID, cv_id: uuid.UUID) -> JobMatch:
         job = await self._job_service.get_owned(user=user, job_id=job_id)
         document = await self._cv_service.get_owned(user=user, document_id=cv_id)
+        await enforce_ai_rate_limit(self._usage_repo, user_id=user.id)
         cv_text = await self._text_service.extract(document)
 
         try:

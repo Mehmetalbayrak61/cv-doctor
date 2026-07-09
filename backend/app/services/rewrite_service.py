@@ -1,6 +1,5 @@
 import uuid
 from collections.abc import Callable
-from datetime import UTC, datetime, timedelta
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -19,15 +18,14 @@ from app.ai.rewrite_prompts import (
     build_skills_rewrite_prompt,
     build_summary_rewrite_prompt,
 )
-from app.core.config import settings
-from app.core.exceptions import AIAnalysisError, NotFoundError, RateLimitError
+from app.core.exceptions import AIAnalysisError, NotFoundError
 from app.models.ai_output import AIOutput, AIOutputType
 from app.models.ai_usage_log import AIUsageFeature
 from app.models.cv_analysis import AnalysisStatus
 from app.models.user import User
 from app.repositories.ai_output_repository import AIOutputRepository
 from app.repositories.ai_usage_repository import AIUsageRepository
-from app.services.ai_usage_recorder import record_ai_usage
+from app.services.ai_usage_recorder import enforce_ai_rate_limit, record_ai_usage
 from app.services.cv_service import CVService
 from app.services.cv_text_service import CvTextService
 from app.services.job_description_service import JobDescriptionService
@@ -45,15 +43,6 @@ class RewriteService:
         self._usage_repo = AIUsageRepository(db)
         self._provider = get_ai_provider()
 
-    async def _enforce_rate_limit(self, user_id: uuid.UUID) -> None:
-        window_start = datetime.now(UTC) - timedelta(hours=1)
-        recent_count = await self._repo.count_recent_by_user(user_id, since=window_start)
-        if recent_count >= settings.AI_RATE_LIMIT_PER_HOUR:
-            raise RateLimitError(
-                f"Saatlik AI kullanım limitine ({settings.AI_RATE_LIMIT_PER_HOUR}) ulaştınız. "
-                "Lütfen daha sonra tekrar deneyin."
-            )
-
     async def _generate_and_store(
         self,
         *,
@@ -66,7 +55,7 @@ class RewriteService:
     ) -> AIOutput:
         """Ortak akış: sahiplik + rate limit kontrolü -> metin çıkar -> üret -> kaydet."""
         document = await self._cv_service.get_owned(user=user, document_id=document_id)
-        await self._enforce_rate_limit(user.id)
+        await enforce_ai_rate_limit(self._usage_repo, user_id=user.id)
         text = await self._text_service.extract(document)
         system_prompt, user_prompt = build_prompt(text)
 

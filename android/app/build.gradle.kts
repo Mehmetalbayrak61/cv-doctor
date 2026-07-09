@@ -47,8 +47,14 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
-            // TODO(Faz 0): Prod'a deploy tamamlanınca gerçek staging/dev domain'i yazın.
-            buildConfigField("String", "BASE_URL", "\"https://staging.cvdoktoru.app\"")
+            // Vercel'de deploy edilmiş gerçek frontend — Cloudflare tünel/localhost/
+            // 10.0.2.2 artık kullanılmıyor. TODO(Faz 0): özel domain netleşince
+            // (custom domain kararı ertelendi) bu değeri güncelleyin.
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://frontend-rho-five-9w6q9iwywu.vercel.app\""
+            )
         }
         release {
             isMinifyEnabled = true
@@ -57,8 +63,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // TODO(Faz 0): Prod'a deploy tamamlanınca gerçek production domain'i yazın.
-            buildConfigField("String", "BASE_URL", "\"https://cvdoktoru.app\"")
+            // TODO(Faz 0): Özel domain kararı verilince gerçek production domain'i yazın.
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://frontend-rho-five-9w6q9iwywu.vercel.app\""
+            )
             if (keystorePropertiesFile.exists()) {
                 signingConfig = signingConfigs.getByName("release")
             }

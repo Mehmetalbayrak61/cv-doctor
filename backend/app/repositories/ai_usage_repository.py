@@ -11,6 +11,14 @@ class AIUsageRepository:
     def __init__(self, db: AsyncSession) -> None:
         self._db = db
 
+    async def count_recent_by_user(self, user_id: uuid.UUID, *, since: datetime) -> int:
+        result = await self._db.execute(
+            select(func.count())
+            .select_from(AIUsageLog)
+            .where(AIUsageLog.user_id == user_id, AIUsageLog.created_at >= since)
+        )
+        return result.scalar_one()
+
     async def create(
         self,
         *,

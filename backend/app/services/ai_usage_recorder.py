@@ -1,9 +1,22 @@
 import uuid
+from datetime import UTC, datetime, timedelta
 
 from app.ai.base import AIUsage
 from app.ai.pricing import estimate_cost_usd
+from app.core.config import settings
+from app.core.exceptions import RateLimitError
 from app.models.ai_usage_log import AIUsageFeature
 from app.repositories.ai_usage_repository import AIUsageRepository
+
+
+async def enforce_ai_rate_limit(repo: AIUsageRepository, *, user_id: uuid.UUID) -> None:
+    """Kullanıcı başına saatlik AI kullanım limiti — CV analizi, iş eşleştirme ve rewrite
+    dahil tüm gerçek OpenAI çağrılarını (bkz. AIUsageLog) ortak sayar. OpenAI çağrısından
+    ÖNCE çağrılmalı ki limit aşılınca gereksiz maliyetli istek hiç yapılmasın."""
+    window_start = datetime.now(UTC) - timedelta(hours=1)
+    recent_count = await repo.count_recent_by_user(user_id, since=window_start)
+    if recent_count >= settings.AI_RATE_LIMIT_PER_HOUR:
+        raise RateLimitError("Saatlik analiz limitine ulaştınız. Lütfen daha sonra tekrar deneyin.")
 
 
 async def record_ai_usage(

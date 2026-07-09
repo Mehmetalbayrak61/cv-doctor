@@ -1,25 +1,63 @@
+import { lazy } from "react"
 import { createBrowserRouter } from "react-router-dom"
 
 import { ProtectedRoute } from "./protected-route"
 import { AppLayout } from "@/components/layout/app-layout"
 import { DashboardShell } from "@/components/layout/dashboard-shell"
-import { AccountPage } from "@/features/account/account-page"
-import { AdminPage } from "@/features/admin/admin-page"
-import { AiOutputPage } from "@/features/ai-output/ai-output-page"
-import { CvDetailPage } from "@/features/cv-analysis/cv-detail-page"
-import { CvListPage } from "@/features/dashboard/cv-list-page"
-import { OverviewPage } from "@/features/dashboard/overview-page"
-import { ForgotPasswordPage } from "@/features/auth/forgot-password-page"
-import { LandingPage } from "@/features/auth/landing-page"
-import { LoginPage } from "@/features/auth/login-page"
-import { RegisterPage } from "@/features/auth/register-page"
-import { ResetPasswordPage } from "@/features/auth/reset-password-page"
-import { VerifyEmailPage } from "@/features/auth/verify-email-page"
-import { JobMatchPage } from "@/features/job-match/job-match-page"
-import { MatchResultPage } from "@/features/job-match/match-result-page"
-import { PrivacyPage } from "@/features/legal/privacy-page"
-import { TermsPage } from "@/features/legal/terms-page"
-import { PricingPage } from "@/features/pricing/pricing-page"
+
+const AccountPage = lazy(() =>
+  import("@/features/account/account-page").then((m) => ({ default: m.AccountPage }))
+)
+const AdminPage = lazy(() =>
+  import("@/features/admin/admin-page").then((m) => ({ default: m.AdminPage }))
+)
+const AiOutputPage = lazy(() =>
+  import("@/features/ai-output/ai-output-page").then((m) => ({ default: m.AiOutputPage }))
+)
+const CvDetailPage = lazy(() =>
+  import("@/features/cv-analysis/cv-detail-page").then((m) => ({ default: m.CvDetailPage }))
+)
+const CvListPage = lazy(() =>
+  import("@/features/dashboard/cv-list-page").then((m) => ({ default: m.CvListPage }))
+)
+const OverviewPage = lazy(() =>
+  import("@/features/dashboard/overview-page").then((m) => ({ default: m.OverviewPage }))
+)
+const ForgotPasswordPage = lazy(() =>
+  import("@/features/auth/forgot-password-page").then((m) => ({
+    default: m.ForgotPasswordPage,
+  }))
+)
+const LandingPage = lazy(() =>
+  import("@/features/auth/landing-page").then((m) => ({ default: m.LandingPage }))
+)
+const LoginPage = lazy(() =>
+  import("@/features/auth/login-page").then((m) => ({ default: m.LoginPage }))
+)
+const RegisterPage = lazy(() =>
+  import("@/features/auth/register-page").then((m) => ({ default: m.RegisterPage }))
+)
+const ResetPasswordPage = lazy(() =>
+  import("@/features/auth/reset-password-page").then((m) => ({ default: m.ResetPasswordPage }))
+)
+const VerifyEmailPage = lazy(() =>
+  import("@/features/auth/verify-email-page").then((m) => ({ default: m.VerifyEmailPage }))
+)
+const JobMatchPage = lazy(() =>
+  import("@/features/job-match/job-match-page").then((m) => ({ default: m.JobMatchPage }))
+)
+const MatchResultPage = lazy(() =>
+  import("@/features/job-match/match-result-page").then((m) => ({ default: m.MatchResultPage }))
+)
+const PrivacyPage = lazy(() =>
+  import("@/features/legal/privacy-page").then((m) => ({ default: m.PrivacyPage }))
+)
+const TermsPage = lazy(() =>
+  import("@/features/legal/terms-page").then((m) => ({ default: m.TermsPage }))
+)
+const PricingPage = lazy(() =>
+  import("@/features/pricing/pricing-page").then((m) => ({ default: m.PricingPage }))
+)
 
 export const router = createBrowserRouter([
   {

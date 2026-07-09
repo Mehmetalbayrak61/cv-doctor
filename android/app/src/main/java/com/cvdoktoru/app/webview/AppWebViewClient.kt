@@ -3,12 +3,15 @@ package com.cvdoktoru.app.webview
 import android.graphics.Bitmap
 import android.net.Uri
 import android.net.http.SslError
+import android.util.Log
 import android.webkit.SslErrorHandler
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+
+private const val TAG = "CvDoktoruWebView"
 
 /**
  * WebView'in yalnızca [allowedHost] + HTTPS'i kendi içinde yüklemesini sağlar; farklı bir
@@ -34,6 +37,7 @@ class AppWebViewClient(
     }
 
     override fun onReceivedSslError(view: WebView, handler: SslErrorHandler, error: SslError) {
+        Log.e(TAG, "SSL sertifika hatası: url=${error.url} primaryError=${error.primaryError}")
         // Fail-closed: sertifika hatasında asla "devam et" verilmez.
         handler.cancel()
     }
@@ -45,6 +49,17 @@ class AppWebViewClient(
 
     override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
         super.onReceivedError(view, request, error)
+        if (request.isForMainFrame) {
+            // Kullanıcıya her zaman aynı sade "İnternet yok" ekranı gösterilir, ama
+            // gerçek sebep (net::ERR_NAME_NOT_RESOLVED, ERR_CLEARTEXT_NOT_PERMITTED,
+            // ERR_CONNECTION_REFUSED, ERR_INTERNET_DISCONNECTED vb.) debug log'una
+            // yazılır — "İnternet yok" ekranının asıl nedenini teşhis etmek için.
+            Log.e(
+                TAG,
+                "Ana çerçeve yükleme hatası: url=${request.url} errorCode=${error.errorCode} " +
+                    "description=${error.description}",
+            )
+        }
         // Bazı WebView sürümlerinde ana çerçeve (main frame) hatasından sonra
         // onPageFinished hiç tetiklenmiyor (WebView kendi native hata sayfasını
         // gösterip orada kalıyor) — bu yüzden [onLoadResult] burada da doğrudan
@@ -61,6 +76,13 @@ class AppWebViewClient(
         errorResponse: WebResourceResponse,
     ) {
         super.onReceivedHttpError(view, request, errorResponse)
+        if (request.isForMainFrame) {
+            Log.e(
+                TAG,
+                "Ana çerçeve HTTP hatası: url=${request.url} statusCode=${errorResponse.statusCode} " +
+                    "reason=${errorResponse.reasonPhrase}",
+            )
+        }
         if (request.isForMainFrame && !mainFrameError) {
             mainFrameError = true
             onLoadResult(false)

@@ -63,8 +63,14 @@ key ile imzalanmış `.aab`'ı Google, kendi sakladığı asıl anahtarla yenide
 dağıtır. Bu sayede upload key sızsa bile Google Play üzerinden yeni bir upload key
 talebiyle kurtarma mümkündür.
 
-## 5. `BASE_URL`'in Gerçek Domain'e Güncellenmesi
+## 5. `BASE_URL` — Şu Anki Durum ve Gelecekteki Domain Değişikliği
 
-`app/build.gradle.kts` içindeki `release` build type'ında iki yerde `TODO(Faz 0)`
-notuyla işaretli placeholder domain var — Faz 0 (prod deploy) tamamlanıp gerçek domain
-netleşince bu değerler güncellenmeli, ardından yeni bir release build alınmalı.
+`app/build.gradle.kts` içinde hem `debug` hem `release` build type'ında `BASE_URL` şu an
+**gerçek, çalışan** Vercel adresine (`https://frontend-rho-five-9w6q9iwywu.vercel.app`)
+işaret ediyor — placeholder/localhost/tünel değil. Release build bugün alınsa bile
+gerçek prod backend'e bağlanır, ek bir aksiyon gerekmez.
+
+`TODO(Faz 0)` yorumları, domain/mail işi ertelendiği için henüz alınmamış özel bir
+domain kararına (ör. `cvdoktoru.app`) referans veriyor — o karar verilip DNS/Vercel custom
+domain kurulunca `BASE_URL` o yeni domain'e güncellenip yeni bir release build alınmalı.
+Bu, mevcut Play Store gönderimini engelleyen bir eksiklik değil.
