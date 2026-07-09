@@ -16,6 +16,12 @@
     "admin": "Yönetim Paneli",
     "openMenu": "Menüyü aç"
   },
+  "theme": {
+    "toggleLabel": "Tema seçimi",
+    "light": "Açık",
+    "dark": "Koyu",
+    "system": "Sistem"
+  },
   "common": {
     "cancel": "Vazgeç",
     "retry": "Tekrar Dene",

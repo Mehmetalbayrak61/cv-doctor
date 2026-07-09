@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Footer } from "@/components/layout/footer"
 import { UpgradeModalProvider } from "@/features/pricing/upgrade-modal-provider"
 
@@ -49,6 +50,7 @@ export function AppLayout() {
                 </Link>
               </Button>
             )}
+            <ThemeToggle />
             <LanguageSwitcher />
             {token ? (
               <DropdownMenu>

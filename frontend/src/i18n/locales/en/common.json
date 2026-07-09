@@ -16,6 +16,12 @@
     "admin": "Admin Panel",
     "openMenu": "Open menu"
   },
+  "theme": {
+    "toggleLabel": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
   "common": {
     "cancel": "Cancel",
     "retry": "Retry",

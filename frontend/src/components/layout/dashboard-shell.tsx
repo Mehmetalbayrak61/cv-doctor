@@ -17,6 +17,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { RouteFallback } from "@/components/layout/route-fallback"
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
 import { UpgradeModalProvider } from "@/features/pricing/upgrade-modal-provider"
@@ -96,7 +97,8 @@ function SidebarFooter({ alwaysShowLabels }: { alwaysShowLabels: boolean }) {
           <LogOut className="size-3" />
           {t("nav.logout")}
         </button>
-        <div className={alwaysShowLabels ? "" : "hidden lg:block"}>
+        <div className={cn("flex items-center gap-1", alwaysShowLabels ? "" : "hidden lg:flex")}>
+          <ThemeToggle />
           <LanguageSwitcher />
         </div>
       </div>
