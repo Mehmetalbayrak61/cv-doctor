@@ -8,6 +8,7 @@ import { BadgeListCard } from "./badge-list-card"
 import { InsightListCard } from "./insight-list-card"
 import { ProfileSummaryEditor } from "./profile-summary-editor"
 import { QualityCard } from "./quality-card"
+import { QualityRadar } from "./quality-radar"
 import type { CVAnalysisResult } from "@/features/dashboard/types"
 
 interface AnalysisResultProps {
@@ -68,6 +69,15 @@ export function AnalysisResult({ cvId, result }: AnalysisResultProps) {
           <h2 className="text-muted-foreground mb-3 text-sm font-medium">
             {t("analysis.qualityBreakdown")}
           </h2>
+          <QualityRadar
+            data={[
+              { label: t("analysis.languageQuality"), score: result.language_quality.score },
+              { label: t("analysis.sectionQuality"), score: result.section_quality.score },
+              { label: t("analysis.experienceQuality"), score: result.experience_quality.score },
+              { label: t("analysis.educationQuality"), score: result.education_quality.score },
+              { label: t("analysis.skillsQuality"), score: result.skills_quality.score },
+            ]}
+          />
           <div className="grid gap-4 sm:grid-cols-2">
             <QualityCard label={t("analysis.languageQuality")} quality={result.language_quality} />
             <QualityCard label={t("analysis.sectionQuality")} quality={result.section_quality} />

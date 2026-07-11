@@ -1,4 +1,5 @@
 import { Briefcase, Gauge, Sparkles, Target, type LucideIcon } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 
 import { getScoreTier, scoreTierMeta } from "@/features/cv-analysis/lib/score-status"
@@ -27,7 +28,7 @@ function KpiCard({ icon: Icon, label, value, suffix, tier, tierLabel, emptyState
   const isEmpty = (value === null || value === 0) && !!emptyState
 
   return (
-    <Card>
+    <Card className="h-full">
       <CardContent className="space-y-3.5">
         <div className="flex items-center justify-between">
           <div className="bg-accent text-primary flex size-9 items-center justify-center rounded-lg">
@@ -81,13 +82,16 @@ interface KpiGridProps {
 
 export function KpiGrid({ overallScore, atsScore, jobMatchCount, aiUsageCount }: KpiGridProps) {
   const { t } = useTranslation()
+  const shouldReduceMotion = useReducedMotion()
 
   const overallTier = overallScore !== null ? getScoreTier(overallScore) : undefined
   const atsTier = atsScore !== null ? getScoreTier(atsScore) : undefined
 
   return (
     <div className="grid grid-cols-2 gap-3.5 lg:grid-cols-4">
-      <KpiCard
+      {[
+        <KpiCard
+          key="overall-score"
         icon={Gauge}
         label={t("overview.kpi.overallScore")}
         value={overallScore}
@@ -98,8 +102,9 @@ export function KpiGrid({ overallScore, atsScore, jobMatchCount, aiUsageCount }:
           message: t("overview.kpi.noAnalysisYet"),
           hint: t("overview.kpi.noAnalysisYetHint"),
         }}
-      />
-      <KpiCard
+        />,
+        <KpiCard
+          key="ats-score"
         icon={Target}
         label={t("overview.kpi.atsScore")}
         value={atsScore}
@@ -107,8 +112,9 @@ export function KpiGrid({ overallScore, atsScore, jobMatchCount, aiUsageCount }:
         tier={atsTier}
         tierLabel={atsTier ? t(`analysis.scoreStatus.${atsTier}`) : undefined}
         emptyState={{ message: t("overview.kpi.noAnalysisYet") }}
-      />
-      <KpiCard
+        />,
+        <KpiCard
+          key="job-matches"
         icon={Briefcase}
         label={t("overview.kpi.jobMatches")}
         value={jobMatchCount}
@@ -116,13 +122,24 @@ export function KpiGrid({ overallScore, atsScore, jobMatchCount, aiUsageCount }:
           message: t("overview.kpi.noMatchesYet"),
           hint: t("overview.kpi.noMatchesYetHint"),
         }}
-      />
-      <KpiCard
+        />,
+        <KpiCard
+          key="ai-usage"
         icon={Sparkles}
         label={t("overview.kpi.aiUsage")}
         value={aiUsageCount}
         emptyState={{ message: t("overview.kpi.noAiUsageYet") }}
-      />
+        />,
+      ].map((card, index) => (
+        <motion.div
+          key={card.key}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {card}
+        </motion.div>
+      ))}
     </div>
   )
 }

@@ -35,7 +35,7 @@ function ToolCard({ type, onClick, isPending, featured }: ToolDef) {
       onClick={onClick}
       disabled={isPending}
       className={cn(
-        "group border-border relative flex h-full flex-col items-start gap-3 rounded-xl border p-4 text-left transition-[transform,box-shadow] duration-300 ease-out disabled:pointer-events-none disabled:opacity-60",
+        "group border-border focus-visible:border-ring focus-visible:ring-ring/50 relative flex h-full flex-col items-start gap-3 rounded-xl border p-4 text-left transition-[transform,box-shadow] duration-300 ease-out outline-none focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-60",
         "motion-safe:hover:-translate-y-1 hover:shadow-lg hover:shadow-foreground/[0.06]",
         featured ? "border-primary/30 bg-accent" : "bg-card"
       )}

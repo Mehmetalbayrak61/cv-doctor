@@ -15,10 +15,10 @@ interface Suggestion {
   to?: string
 }
 
-const PRIORITY_META: Record<Priority, { icon: LucideIcon; badgeClass: string; tone: string }> = {
-  critical: { icon: AlertTriangle, badgeClass: "bg-destructive/10 text-destructive", tone: "bg-destructive/5" },
-  tip: { icon: Lightbulb, badgeClass: "bg-warning/15 text-warning", tone: "bg-warning/5" },
-  good: { icon: CheckCircle2, badgeClass: "bg-success/15 text-success", tone: "bg-success/5" },
+const PRIORITY_META: Record<Priority, { icon: LucideIcon; badgeClass: string; iconClass: string; tone: string }> = {
+  critical: { icon: AlertTriangle, badgeClass: "bg-destructive/10 text-destructive", iconClass: "text-destructive", tone: "bg-destructive/5" },
+  tip: { icon: Lightbulb, badgeClass: "bg-warning/15 text-warning", iconClass: "text-warning", tone: "bg-warning/5" },
+  good: { icon: CheckCircle2, badgeClass: "bg-success/15 text-success", iconClass: "text-success", tone: "bg-success/5" },
 }
 
 /** Yeni bir AI çağrısı YAPMAZ — tamamen mevcut, zaten çekilmiş veriden (skorlar,
@@ -85,7 +85,7 @@ export function AiSuggestions({ data }: { data: DashboardOverviewData }) {
           const Icon = meta.icon
           const content = (
             <div className={cn("flex gap-3 rounded-lg p-3", meta.tone)}>
-              <Icon className={cn("mt-0.5 size-4 shrink-0", meta.badgeClass.split(" ")[1])} />
+              <Icon className={cn("mt-0.5 size-4 shrink-0", meta.iconClass)} />
               <div className="space-y-1">
                 <span
                   className={cn(

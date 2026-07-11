@@ -1,4 +1,5 @@
 import { FileText } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 
@@ -9,12 +10,19 @@ import { formatRelativeDate } from "@/lib/format"
 
 export function RecentAnalyses({ items }: { items: RecentAnalysis[] }) {
   const { t, i18n } = useTranslation()
+  const shouldReduceMotion = useReducedMotion()
 
   return (
     <div className="grid gap-3 sm:grid-cols-2">
-      {items.map(({ cv, analysis }) => (
-        <Link key={cv.id} to={`/cvs/${cv.id}`}>
-          <Card className="group h-full transition-[transform,box-shadow] duration-300 ease-out motion-safe:hover:-translate-y-1 hover:shadow-lg hover:shadow-foreground/[0.06]">
+      {items.map(({ cv, analysis }, index) => (
+        <motion.div
+          key={cv.id}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Link className="block h-full" to={`/cvs/${cv.id}`}>
+          <Card elevation="interactive" className="group h-full">
             <CardContent className="space-y-4">
               <div className="flex items-center gap-2.5">
                 <div className="bg-accent text-primary flex size-8 shrink-0 items-center justify-center rounded-lg">
@@ -43,7 +51,8 @@ export function RecentAnalyses({ items }: { items: RecentAnalysis[] }) {
               </div>
             </CardContent>
           </Card>
-        </Link>
+          </Link>
+        </motion.div>
       ))}
     </div>
   )

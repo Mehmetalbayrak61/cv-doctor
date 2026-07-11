@@ -27,7 +27,7 @@ export function CvListPage() {
   })
 
   return (
-    <section className="mx-auto max-w-3xl space-y-8 px-6 py-12">
+    <section className="mx-auto max-w-6xl space-y-8 px-6 py-10 lg:px-10">
       <div>
         <h1 className="font-heading text-2xl font-medium tracking-tight">
           {t("dashboard.title")}
@@ -71,7 +71,7 @@ export function CvListPage() {
         )}
 
         {data && data.items.length > 0 && (
-          <div className="space-y-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {data.items.map((cv) => (
               <CvListItem key={cv.id} cv={cv} />
             ))}

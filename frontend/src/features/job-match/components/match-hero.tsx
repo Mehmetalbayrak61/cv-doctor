@@ -55,7 +55,7 @@ export function MatchHero({
   const TierIcon = meta.icon
 
   return (
-    <Card className="shadow-sm">
+    <Card elevation="raised">
       <CardContent className="space-y-7 py-7">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">

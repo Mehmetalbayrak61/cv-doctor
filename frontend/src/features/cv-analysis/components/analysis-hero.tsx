@@ -2,6 +2,7 @@ import { FileText, Loader2, RefreshCcw } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
 import { ScoreRing } from "./score-ring"
+import { getScoreTier, scoreTierMeta } from "../lib/score-status"
 import type { CVAnalysis, CVDocument } from "@/features/dashboard/types"
 import {
   AlertDialog,
@@ -18,6 +19,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { formatDate, formatFileSize } from "@/lib/format"
+import { cn } from "@/lib/utils"
 
 interface AnalysisHeroProps {
   cv: CVDocument
@@ -34,7 +36,7 @@ export function AnalysisHero({ cv, analysis, onReanalyze, isReanalyzing }: Analy
   const result = analysis?.result
 
   return (
-    <Card className="shadow-sm">
+    <Card elevation="raised">
       <CardContent className="flex flex-wrap items-center justify-between gap-8 py-7">
         <div className="flex min-w-0 items-center gap-4">
           <div className="bg-accent text-primary flex size-12 shrink-0 items-center justify-center rounded-xl">
@@ -53,8 +55,36 @@ export function AnalysisHero({ cv, analysis, onReanalyze, isReanalyzing }: Analy
 
         {result && (
           <div className="flex gap-8">
-            <ScoreRing label={t("analysis.overallScore")} score={result.overall_score} size={112} />
-            <ScoreRing label={t("analysis.atsScore")} score={result.ats_score} size={112} />
+            {[
+              { label: t("analysis.overallScore"), score: result.overall_score },
+              { label: t("analysis.atsScore"), score: result.ats_score },
+            ].map(({ label, score }) => {
+              const tier = getScoreTier(score)
+              const meta = scoreTierMeta[tier]
+              const TierIcon = meta.icon
+
+              return (
+                <div key={label} className="relative flex flex-col items-center gap-2">
+                  <div
+                    className="absolute top-0 -z-10 size-28 scale-[1.35] rounded-full opacity-70 blur-xl"
+                    style={{
+                      background: `radial-gradient(circle, color-mix(in oklch, ${meta.colorVar} 22%, transparent) 0%, transparent 72%)`,
+                    }}
+                  />
+                  <ScoreRing label={label} score={score} size={112} hideStatus />
+                  <span
+                    className={cn(
+                      "inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold",
+                      meta.trackClass,
+                      meta.textClass
+                    )}
+                  >
+                    <TierIcon className="size-3.5" />
+                    {t(`analysis.scoreStatus.${tier}`)}
+                  </span>
+                </div>
+              )
+            })}
           </div>
         )}
 

@@ -40,7 +40,7 @@ export function JobCard({ job, latestMatch, onMatch, onEdit }: JobCardProps) {
   const deleteMutation = useDeleteJob()
 
   return (
-    <Card className="group h-full transition-[transform,box-shadow] duration-300 ease-out motion-safe:hover:-translate-y-1 hover:shadow-lg hover:shadow-foreground/[0.06]">
+    <Card elevation="interactive" className="group h-full">
       <CardContent className="flex h-full flex-col gap-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 items-start gap-2.5">

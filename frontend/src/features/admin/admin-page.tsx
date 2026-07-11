@@ -3,17 +3,18 @@ import { useTranslation } from "react-i18next"
 import { Navigate } from "react-router-dom"
 
 import { StatCard } from "./components/stat-card"
-import { UsageSummaryRow } from "./components/usage-summary-row"
+import { UsageSummaryHeader, UsageSummaryRow } from "./components/usage-summary-row"
 import { useAdminMetrics } from "./hooks/use-admin-metrics"
 import { useAuth } from "@/features/auth/hooks/use-auth"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ErrorState } from "@/components/error-state"
+import { Skeleton } from "@/components/ui/skeleton"
 
 function StatGridSkeleton() {
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
       {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="bg-muted/40 h-[72px] animate-pulse rounded-lg" />
+        <Skeleton key={i} className="h-[72px] rounded-lg" />
       ))}
     </div>
   )
@@ -80,10 +81,13 @@ export function AdminPage() {
             <CardHeader>
               <CardTitle className="text-base">{t("admin.usage.title")}</CardTitle>
             </CardHeader>
-            <CardContent className="divide-border divide-y">
-              <UsageSummaryRow label={t("admin.usage.last24h")} usage={data.ai_usage_last_24h} />
-              <UsageSummaryRow label={t("admin.usage.last7d")} usage={data.ai_usage_last_7d} />
-              <UsageSummaryRow label={t("admin.usage.last30d")} usage={data.ai_usage_last_30d} />
+            <CardContent>
+              <UsageSummaryHeader />
+              <div className="divide-border divide-y">
+                <UsageSummaryRow label={t("admin.usage.last24h")} usage={data.ai_usage_last_24h} />
+                <UsageSummaryRow label={t("admin.usage.last7d")} usage={data.ai_usage_last_7d} />
+                <UsageSummaryRow label={t("admin.usage.last30d")} usage={data.ai_usage_last_30d} />
+              </div>
             </CardContent>
           </Card>
 
@@ -92,10 +96,13 @@ export function AdminPage() {
               <CardHeader>
                 <CardTitle className="text-base">{t("admin.usage.byFeature")}</CardTitle>
               </CardHeader>
-              <CardContent className="divide-border divide-y">
-                {Object.entries(data.ai_usage_by_feature_last_30d).map(([feature, usage]) => (
-                  <UsageSummaryRow key={feature} label={feature} usage={usage} />
-                ))}
+              <CardContent>
+                <UsageSummaryHeader />
+                <div className="divide-border divide-y">
+                  {Object.entries(data.ai_usage_by_feature_last_30d).map(([feature, usage]) => (
+                    <UsageSummaryRow key={feature} label={feature} usage={usage} />
+                  ))}
+                </div>
               </CardContent>
             </Card>
           )}

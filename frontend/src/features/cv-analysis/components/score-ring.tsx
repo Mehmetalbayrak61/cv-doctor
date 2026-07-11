@@ -1,3 +1,5 @@
+import { animate, motion, useMotionValue, useReducedMotion, useTransform } from "framer-motion"
+import { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 
 import { getScoreTier, scoreTierMeta, type ScoreTier } from "../lib/score-status"
@@ -33,19 +35,52 @@ export function ScoreRing({
   hideStatus = false,
 }: ScoreRingProps) {
   const { t } = useTranslation()
-  const tier = tierProp ?? getScoreTier(score)
+  const shouldReduceMotion = useReducedMotion()
+  const clampedScore = Math.min(100, Math.max(0, score))
+  const animatedScore = useMotionValue(shouldReduceMotion ? clampedScore : 0)
+  const displayedScore = useTransform(animatedScore, (value) => Math.round(value))
+  const sweep = useTransform(animatedScore, (value) => `${value * 3.6}deg`)
+  const animationControls = useRef<ReturnType<typeof animate> | null>(null)
+  const tier = tierProp ?? getScoreTier(clampedScore)
   const meta = scoreTierMeta[tier]
   const Icon = meta.icon
   const trackColor = `color-mix(in oklch, ${meta.colorVar} 14%, transparent)`
+  const ringBackground = useTransform(
+    sweep,
+    (angle) => `conic-gradient(${meta.colorVar} ${angle}, ${trackColor} 0deg)`
+  )
+
+  useEffect(() => {
+    animationControls.current?.stop()
+
+    if (shouldReduceMotion) {
+      animatedScore.set(clampedScore)
+      return
+    }
+
+    const currentScore = animatedScore.get()
+    const controls = animate(animatedScore, [currentScore, clampedScore], {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    })
+    animationControls.current = controls
+
+    return () => controls.stop()
+  }, [animatedScore, clampedScore, shouldReduceMotion])
 
   return (
     <div className={cn("flex flex-col items-center text-center", compact ? "gap-1.5" : "gap-3")}>
-      <div
+      <motion.div
+        role="progressbar"
+        aria-valuenow={clampedScore}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={`${label}: ${clampedScore}`}
         className="relative grid shrink-0 place-items-center rounded-full"
         style={{
           width: size,
           height: size,
-          background: `conic-gradient(${meta.colorVar} ${score * 3.6}deg, ${trackColor} 0deg)`,
+          background: ringBackground,
         }}
       >
         <div
@@ -53,17 +88,17 @@ export function ScoreRing({
           style={{ inset: compact ? 4 : 9 }}
         />
         <div className="relative flex flex-col items-center">
-          <span
+          <motion.span
             className={cn(
               "font-mono font-semibold tracking-tight tabular-nums",
               compact ? "text-base" : "text-4xl"
             )}
           >
-            {score}
-          </span>
+            {displayedScore}
+          </motion.span>
           {!compact && <span className="text-muted-foreground text-[11px]">/ 100</span>}
         </div>
-      </div>
+      </motion.div>
       <div className={compact ? "space-y-0" : "space-y-1"}>
         {!hideLabel && (
           <p className={cn("font-medium", compact ? "text-[10px] tracking-wide uppercase" : "text-sm")}>

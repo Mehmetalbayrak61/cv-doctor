@@ -2,17 +2,31 @@ import { useTranslation } from "react-i18next"
 
 import type { UsageSummary } from "../types"
 
-export function UsageSummaryRow({ label, usage }: { label: string; usage: UsageSummary }) {
+const usageGridClass =
+  "grid grid-cols-[minmax(0,1fr)_max-content_max-content_max-content] items-center gap-x-3 sm:gap-x-5"
+
+export function UsageSummaryHeader() {
   const { t } = useTranslation()
 
   return (
-    <div className="flex items-center justify-between gap-4 py-2.5 text-sm">
-      <p className="text-muted-foreground">{label}</p>
-      <div className="flex gap-5 font-mono tabular-nums">
-        <span title={t("admin.usage.calls")}>{usage.call_count}</span>
-        <span title={t("admin.usage.tokens")}>{usage.total_tokens.toLocaleString()}</span>
-        <span title={t("admin.usage.cost")}>${usage.estimated_cost_usd.toFixed(4)}</span>
-      </div>
+    <div
+      className={`${usageGridClass} text-muted-foreground border-border border-b pb-2 text-xs font-medium`}
+    >
+      <span aria-hidden="true" />
+      <span>{t("admin.usage.calls")}</span>
+      <span>{t("admin.usage.tokens")}</span>
+      <span>{t("admin.usage.cost")}</span>
+    </div>
+  )
+}
+
+export function UsageSummaryRow({ label, usage }: { label: string; usage: UsageSummary }) {
+  return (
+    <div className={`${usageGridClass} py-2.5 text-sm`}>
+      <p className="text-muted-foreground min-w-0 break-words pr-1">{label}</p>
+      <span className="font-mono tabular-nums">{usage.call_count}</span>
+      <span className="font-mono tabular-nums">{usage.total_tokens.toLocaleString()}</span>
+      <span className="font-mono tabular-nums">${usage.estimated_cost_usd.toFixed(4)}</span>
     </div>
   )
 }

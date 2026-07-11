@@ -4,12 +4,11 @@ import { useTranslation } from "react-i18next"
 import type { SkillGapItem, SkillPriority } from "../types"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
 
-const PRIORITY_BAR: Record<SkillPriority, { width: string; className: string }> = {
-  high: { width: "85%", className: "bg-destructive" },
-  medium: { width: "55%", className: "bg-warning" },
-  low: { width: "30%", className: "bg-success" },
+const PRIORITY_SEGMENTS: Record<SkillPriority, { count: number; className: string }> = {
+  high: { count: 3, className: "bg-destructive" },
+  medium: { count: 2, className: "bg-warning" },
+  low: { count: 1, className: "bg-success" },
 }
 const PRIORITY_BADGE: Record<SkillPriority, string> = {
   high: "bg-destructive/10 text-destructive",
@@ -105,11 +104,17 @@ export function SkillMatchCard({ matchedSkills, missingSkills, skillGap }: Skill
                       })}
                     </Badge>
                   </div>
-                  <div className="bg-muted h-1.5 w-full overflow-hidden rounded-full">
-                    <div
-                      className={cn("h-full rounded-full", PRIORITY_BAR[item.priority].className)}
-                      style={{ width: PRIORITY_BAR[item.priority].width }}
-                    />
+                  <div className="grid grid-cols-3 gap-1" aria-hidden="true">
+                    {Array.from({ length: 3 }).map((_, index) => (
+                      <div
+                        key={index}
+                        className={`h-1.5 rounded-full ${
+                          index < PRIORITY_SEGMENTS[item.priority].count
+                            ? PRIORITY_SEGMENTS[item.priority].className
+                            : "bg-muted"
+                        }`}
+                      />
+                    ))}
                   </div>
                   <p className="text-muted-foreground text-xs">{item.estimated_learning_time}</p>
                 </div>
