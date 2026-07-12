@@ -47,13 +47,12 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
-            // Vercel'de deploy edilmiş gerçek frontend — Cloudflare tünel/localhost/
-            // 10.0.2.2 artık kullanılmıyor. TODO(Faz 0): özel domain netleşince
-            // (custom domain kararı ertelendi) bu değeri güncelleyin.
+            // Özel domain (cvdoktoru.com.tr) canlıya alındı — Vercel *.vercel.app
+            // URL'i, tünel/localhost/10.0.2.2 artık kullanılmıyor.
             buildConfigField(
                 "String",
                 "BASE_URL",
-                "\"https://frontend-rho-five-9w6q9iwywu.vercel.app\""
+                "\"https://app.cvdoktoru.com.tr\""
             )
         }
         release {
@@ -63,11 +62,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // TODO(Faz 0): Özel domain kararı verilince gerçek production domain'i yazın.
             buildConfigField(
                 "String",
                 "BASE_URL",
-                "\"https://frontend-rho-five-9w6q9iwywu.vercel.app\""
+                "\"https://app.cvdoktoru.com.tr\""
             )
             if (keystorePropertiesFile.exists()) {
                 signingConfig = signingConfigs.getByName("release")
