@@ -48,7 +48,12 @@ class Settings(BaseSettings):
     S3_ACCESS_KEY_ID: str = ""
     S3_SECRET_ACCESS_KEY: str = ""
 
-    # E-posta: SMTP_HOST boşsa ConsoleEmailSender (dev) kullanılır, doluysa gerçek SMTP.
+    # E-posta: EMAIL_PROVIDER="brevo_api" ise Brevo'nun HTTPS REST API'si kullanılır
+    # (Railway giden SMTP portlarını — 25/465/587/2525 — engellediği için tercih
+    # edilir). Boşsa ve SMTP_HOST doluysa gerçek SMTP kullanılır; ikisi de boşsa
+    # ConsoleEmailSender (dev) devreye girer.
+    EMAIL_PROVIDER: str = ""
+    BREVO_API_KEY: str = ""
     SMTP_HOST: str = ""
     SMTP_PORT: int = 587
     SMTP_USERNAME: str = ""
@@ -102,8 +107,15 @@ class Settings(BaseSettings):
             problems.append("SECRET_KEY hâlâ varsayılan değerde")
         if not self.OPENAI_API_KEY:
             problems.append("OPENAI_API_KEY tanımlı değil")
-        if not self.SMTP_HOST:
+
+        if self.EMAIL_PROVIDER == "brevo_api":
+            if not self.BREVO_API_KEY:
+                problems.append("EMAIL_PROVIDER=brevo_api ama BREVO_API_KEY tanımlı değil")
+            if not self.EMAIL_FROM_ADDRESS:
+                problems.append("EMAIL_PROVIDER=brevo_api ama EMAIL_FROM_ADDRESS tanımlı değil")
+        elif not self.SMTP_HOST:
             problems.append("SMTP_HOST tanımlı değil (e-posta gönderilemez)")
+
         if self.STORAGE_BACKEND == "s3" and not self.S3_BUCKET:
             problems.append("STORAGE_BACKEND=s3 ama S3_BUCKET tanımlı değil")
 

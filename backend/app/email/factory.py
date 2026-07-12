@@ -6,6 +6,11 @@ from app.email.base import EmailSender
 
 @lru_cache
 def get_email_sender() -> EmailSender:
+    if settings.EMAIL_PROVIDER == "brevo_api":
+        from app.email.brevo_api_sender import BrevoApiEmailSender
+
+        return BrevoApiEmailSender()
+
     if settings.SMTP_HOST:
         from app.email.smtp_sender import SmtpEmailSender
 

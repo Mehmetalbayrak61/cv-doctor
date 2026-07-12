@@ -61,7 +61,8 @@ class AuthService:
 
     async def authenticate(self, *, email: str, password: str) -> User:
         user = await self._repo.get_by_email(email)
-        # Var olmayan e-posta ile yanlış şifre aynı mesajı döner (kullanıcı numarasını sızdırmamak için)
+        # Var olmayan e-posta ile yanlış şifre aynı mesajı döner
+        # (kullanıcı numarasını sızdırmamak için)
         if user is None or not verify_password(password, user.hashed_password):
             raise UnauthorizedError("E-posta veya şifre hatalı.")
         if not user.is_active:
@@ -130,7 +131,7 @@ class AuthService:
             raise UnauthorizedError("Şifre hatalı.")
 
         # Onay e-postası için silinmeden önce yakalanır.
-        email, first_name = user.email, user.first_name
+        email, first_name, user_id = user.email, user.first_name, user.id
 
         # DB'deki her şey (cv_documents, cv_analyses, job_descriptions, job_matches,
         # ai_outputs, ai_usage_logs, subscriptions, user_tokens) users.id üzerinde
@@ -156,7 +157,7 @@ class AuthService:
                 to=email, subject=subject, html_body=html_body, text_body=text_body
             )
         except EmailSendError:
-            logger.warning("Hesap silme onay e-postası gönderilemedi: to=%s", email)
+            logger.warning("Hesap silme onay e-postası gönderilemedi: user_id=%s", user_id)
 
     async def _issue_and_send_token(self, user: User, token_type: UserTokenType) -> None:
         raw_token, token_hash = _generate_token()
@@ -187,4 +188,4 @@ class AuthService:
         except EmailSendError:
             # E-posta gönderimi başarısız olsa bile kayıt/talep işlemini geri almıyoruz —
             # kullanıcı "tekrar gönder" ile yeniden deneyebilir.
-            logger.warning("E-posta gönderilemedi: to=%s type=%s", user.email, token_type.value)
+            logger.warning("E-posta gönderilemedi: user_id=%s type=%s", user.id, token_type.value)
