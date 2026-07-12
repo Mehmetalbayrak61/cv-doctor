@@ -1,11 +1,11 @@
-import { ArrowRight, Check } from "lucide-react"
+import { Check } from "lucide-react"
 import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
-import { toast } from "sonner"
 
 import { SectionHeading } from "@/features/auth/components/landing/section-heading"
 import { useAuth } from "@/features/auth/hooks/use-auth"
+import { useSeo } from "@/lib/use-seo"
 import {
   Accordion,
   AccordionContent,
@@ -21,16 +21,19 @@ export function PricingPage() {
   const { token } = useAuth()
   const shouldReduceMotion = useReducedMotion()
 
+  useSeo({
+    title: t("seo.pricing.title"),
+    description: t("seo.pricing.description"),
+    path: "/pricing",
+  })
+
   const freeFeatures = t("pricing.free.features", { returnObjects: true }) as string[]
   const proFeatures = t("pricing.pro.features", { returnObjects: true }) as string[]
+  const proAnnualFeatures = t("pricing.proAnnual.features", { returnObjects: true }) as string[]
   const faqItems = t("pricing.faq.items", { returnObjects: true }) as {
     question: string
     answer: string
   }[]
-
-  const handleProCta = () => {
-    toast.info(t("pricing.billingNote"))
-  }
 
   return (
     <div>
@@ -42,13 +45,13 @@ export function PricingPage() {
         />
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 py-12">
+      <section className="mx-auto max-w-5xl px-6 py-12">
         <motion.div
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="grid gap-6 sm:grid-cols-2"
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           <Card className="h-full">
             <CardContent className="flex h-full flex-col gap-6">
@@ -84,8 +87,7 @@ export function PricingPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-primary relative h-full overflow-visible shadow-lg shadow-foreground/[0.06]">
-            <Badge className="absolute -top-3 left-6">{t("pricing.pro.badge")}</Badge>
+          <Card className="h-full">
             <CardContent className="flex h-full flex-col gap-6">
               <div>
                 <p className="font-medium">{t("pricing.pro.name")}</p>
@@ -97,9 +99,7 @@ export function PricingPage() {
                 <span className="font-heading text-4xl font-semibold tracking-tight">
                   {t("pricing.pro.price")}
                 </span>
-                <span className="text-muted-foreground text-sm">
-                  {t("pricing.pro.priceNote")}
-                </span>
+                <span className="text-muted-foreground text-sm">{t("pricing.pro.period")}</span>
               </div>
               <ul className="flex-1 space-y-3">
                 {proFeatures.map((feature) => (
@@ -109,9 +109,39 @@ export function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <Button onClick={handleProCta} className="group w-full">
+              <Button disabled className="w-full">
                 {t("pricing.pro.cta")}
-                <ArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="border-primary relative h-full overflow-visible shadow-lg shadow-foreground/[0.06]">
+            <Badge className="absolute -top-3 left-6">{t("pricing.proAnnual.badge")}</Badge>
+            <CardContent className="flex h-full flex-col gap-6">
+              <div>
+                <p className="font-medium">{t("pricing.proAnnual.name")}</p>
+                <p className="text-muted-foreground mt-1 text-sm">
+                  {t("pricing.proAnnual.description")}
+                </p>
+              </div>
+              <div className="flex items-baseline gap-1">
+                <span className="font-heading text-4xl font-semibold tracking-tight">
+                  {t("pricing.proAnnual.price")}
+                </span>
+                <span className="text-muted-foreground text-sm">
+                  {t("pricing.proAnnual.period")}
+                </span>
+              </div>
+              <ul className="flex-1 space-y-3">
+                {proAnnualFeatures.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-sm">
+                    <Check className="text-primary mt-0.5 size-4 shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button disabled className="w-full">
+                {t("pricing.proAnnual.cta")}
               </Button>
             </CardContent>
           </Card>

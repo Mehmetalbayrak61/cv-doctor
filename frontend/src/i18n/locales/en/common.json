@@ -32,8 +32,11 @@
     "generic": "Something went wrong. Please try again."
   },
   "footer": {
+    "about": "About",
+    "pricing": "Pricing",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
+    "refund": "Refund Policy",
     "contact": "Contact",
     "copyright": "© {{year}} CV Doktoru. All rights reserved."
   },
@@ -561,24 +564,44 @@
       "title": "Privacy Policy",
       "sections": [
         {
+          "title": "Data Controller",
+          "body": "CV Doktoru acts as the data controller under Turkey's Personal Data Protection Law No. 6698 (KVKK) and, where applicable, the EU General Data Protection Regulation (GDPR). This policy explains what data we process while you use our service and for what purposes."
+        },
+        {
           "title": "Data We Collect",
-          "body": "When you create an account, we store your name and email address. When you use the service, we store the CV files you upload and the analysis and matching results generated from them."
+          "body": "When you create an account, we store your name and email address. When you use the service, we store the CV files you upload, the text extracted from them, the analysis and matching results generated, the job descriptions you enter, and basic usage records (e.g. AI usage counts) needed to operate the service."
         },
         {
           "title": "How We Use Your Data",
-          "body": "Your data is used solely to provide the CV analysis, AI-powered recommendations, and job matching service to you."
+          "body": "Your data is used solely to provide the CV analysis, AI-powered recommendations, and job matching service, to manage your account, and to operate the service securely."
         },
         {
-          "title": "Data Sharing",
-          "body": "We do not sell or share your data with third parties. During analysis, your CV content is sent to our AI provider (OpenAI) only for the purpose of generating the result."
+          "title": "Use of AI (OpenAI)",
+          "body": "When generating analysis, rewrite, or matching results, your CV content is sent to our AI provider (OpenAI) only to respond to that specific request. This data is not used for marketing or advertising and is not shared with any other third party."
         },
         {
-          "title": "Data Retention and Deletion",
-          "body": "Your data is retained as long as your account is active. You can delete your account or a specific CV at any time, or contact our support team."
+          "title": "Processing of CV Files",
+          "body": "The CV files you upload are stored on secure servers and are tied to your account only; other users cannot view them. Files are not processed for any purpose beyond providing the analysis and matching features."
         },
         {
-          "title": "Your Rights",
-          "body": "You have the right to access, correct, and delete your data. Contact us if you have any questions."
+          "title": "Cookies",
+          "body": "We use your browser's local storage to keep you signed in and to remember your theme (light/dark) preference. We do not use third-party advertising or tracking cookies."
+        },
+        {
+          "title": "Data Security",
+          "body": "Your data is transmitted over encrypted HTTPS connections, and your password is stored irreversibly hashed. Access is limited to the systems required for the service to function."
+        },
+        {
+          "title": "Data Retention and Account Deletion",
+          "body": "Your data is retained as long as your account is active. You can permanently delete your account from your account settings; this removes all your data — including your CVs, analyses, matches, and AI outputs — irreversibly."
+        },
+        {
+          "title": "Your Rights Under KVKK and GDPR",
+          "body": "You have the right to access your data, request its correction, request its deletion, and object to its processing. Contact us to exercise these rights."
+        },
+        {
+          "title": "Contact",
+          "body": "For privacy-related questions, reach us at destek@cvdoktoru.com.tr."
         }
       ]
     },
@@ -590,16 +613,32 @@
           "body": "CV Doktoru provides AI-powered CV analysis, rewriting suggestions, and job matching."
         },
         {
-          "title": "User Responsibilities",
-          "body": "You are responsible for the security of your account and the accuracy of the information you provide. You may not use the service for unlawful purposes."
+          "title": "Creating an Account",
+          "body": "To use the service you must create an account with accurate, up-to-date information. You are responsible for the security of your account and the confidentiality of your password."
+        },
+        {
+          "title": "Prohibited Use",
+          "body": "You may not use the service for unlawful purposes, in ways that infringe on others' rights, by uploading fraudulent or unauthorized content, or through automation or abuse that disrupts the service's normal operation."
         },
         {
           "title": "About AI-Generated Output",
           "body": "Analysis, suggestion, and matching results are generated by AI; they are advisory in nature and carry no guarantee of accuracy. Final decisions remain yours."
         },
         {
+          "title": "Service Interruptions",
+          "body": "The service may experience temporary interruptions due to maintenance, updates, or unforeseen technical issues. Uninterrupted or error-free access is not guaranteed."
+        },
+        {
+          "title": "Limitation of Liability",
+          "body": "The service is provided \"as is.\" To the maximum extent permitted by law, CV Doktoru is not liable for the accuracy of AI-generated output or for indirect damages arising from use of the service."
+        },
+        {
           "title": "Intellectual Property",
           "body": "The CV content you upload belongs to you. The platform's design and software belong to CV Doktoru."
+        },
+        {
+          "title": "Account Closure",
+          "body": "You may close your account at any time from your account settings. CV Doktoru reserves the right to suspend or close an account for violating these terms."
         },
         {
           "title": "Changes to the Service",
@@ -607,7 +646,41 @@
         },
         {
           "title": "Contact",
-          "body": "You can reach us at destek@cvdoktoru.app with any questions."
+          "body": "You can reach us at destek@cvdoktoru.com.tr with any questions."
+        }
+      ]
+    },
+    "refund": {
+      "title": "Refund and Cancellation Policy",
+      "intro": "Our billing infrastructure (PayTR) is currently being set up; Pro plans cannot yet be purchased. This policy describes the refund and cancellation terms that will apply once paid plans go live.",
+      "sections": [
+        {
+          "title": "Monthly Subscription",
+          "body": "Once the Pro monthly subscription is active, your payment renews automatically on the same date each month and you are charged for the upcoming period."
+        },
+        {
+          "title": "Annual Subscription",
+          "body": "The Pro Annual plan begins with a single upfront charge for the full year and renews automatically at the end of the year."
+        },
+        {
+          "title": "Cancellation Process",
+          "body": "You can cancel your subscription at any time from your account settings. Cancelling does not affect your access for the remainder of the current period; the next renewal simply won't occur."
+        },
+        {
+          "title": "Renewal",
+          "body": "Subscriptions renew automatically unless cancelled. You'll receive a notification to your registered email address before each renewal."
+        },
+        {
+          "title": "Refund Conditions",
+          "body": "Due to the digital nature of the service, no refund is given for a period that has already been paid for and used. If a technical error prevents the service from being delivered at all, your request will be reviewed and a full refund may be issued."
+        },
+        {
+          "title": "Note on Digital Services",
+          "body": "Under Turkey's Distance Contracts Regulation, the right of withdrawal ends once you give explicit consent for immediate performance of a digital service delivered electronically. This consent will be collected separately before purchase."
+        },
+        {
+          "title": "Payment Provider",
+          "body": "Your payments will be processed through PayTR's secure payment infrastructure. Your card details are not stored on CV Doktoru's servers; the transaction is handled directly by PayTR's PCI-DSS compliant systems."
         }
       ]
     }
@@ -636,15 +709,31 @@
     },
     "pro": {
       "name": "Pro",
-      "badge": "Recommended",
-      "price": "$0",
-      "priceNote": "price not yet set",
-      "description": "For heavy usage and teams.",
-      "cta": "Upgrade to Pro",
+      "price": "₺199",
+      "period": "/mo",
+      "description": "For heavy usage.",
+      "cta": "Coming Soon",
       "features": [
-        "Everything in Free",
-        "No hourly AI generation limit",
-        "Priority support"
+        "Unlimited AI generations",
+        "ATS Optimization",
+        "Job Match",
+        "Cover Letter Generation",
+        "Profile/Experience/Skills Rewrite",
+        "LinkedIn Summary Generation",
+        "Priority AI Processing"
+      ]
+    },
+    "proAnnual": {
+      "name": "Pro Annual",
+      "badge": "Most Popular",
+      "price": "₺1,799",
+      "period": "/yr",
+      "description": "Save up to 25% with annual billing.",
+      "cta": "Coming Soon",
+      "features": [
+        "Everything in Pro",
+        "25% savings vs. monthly",
+        "One annual payment"
       ]
     },
     "faq": {
@@ -653,7 +742,7 @@
       "items": [
         {
           "question": "Can I upgrade to Pro right now?",
-          "answer": "Not yet — we're setting up our billing infrastructure. We'll prioritize and notify everyone who clicks \"Upgrade to Pro\" once it's live."
+          "answer": "Not yet — we're setting up our billing infrastructure. We'll announce it here as soon as Pro plans go live."
         },
         {
           "question": "What exactly counts toward the hourly limit of 20 AI generations?",
@@ -695,6 +784,85 @@
       "passwordLabel": "Password",
       "confirmButton": "Permanently Delete My Account",
       "deleteSuccess": "Your account has been deleted."
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Get in Touch",
+    "subtitle": "We're here for your questions, feedback, or support requests.",
+    "supportEmailLabel": "Support Email",
+    "form": {
+      "heading": "Contact Form",
+      "description": "Form submission will be enabled soon — for now, you can reach us directly at the email address above.",
+      "name": "Full Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Coming Soon"
+    }
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "title": "What Is CV Doktoru?",
+    "intro": "CV Doktoru is an AI-powered CV improvement and career platform. It analyzes your CV, measures your ATS compatibility, matches you against job listings, and generates content to strengthen your applications.",
+    "mission": {
+      "title": "Our Mission",
+      "body": "To help every job seeker put their best CV forward with AI support and reach the right opportunities more easily."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "body": "To be the leading platform that makes AI accessible, reliable, and transparent for everyone's career development."
+    },
+    "features": {
+      "title": "Features",
+      "items": [
+        {
+          "title": "AI CV Analysis",
+          "description": "See your strengths, weaknesses, and missing keywords in seconds."
+        },
+        {
+          "title": "ATS Compatibility",
+          "description": "See how applicant tracking systems read your CV and improve your compatibility."
+        },
+        {
+          "title": "Job Matching",
+          "description": "Compare your CV against job listings and see your compatibility score."
+        },
+        {
+          "title": "AI Tools",
+          "description": "Generate cover letters, LinkedIn summaries, and more in seconds."
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "body": "Visit our Contact page with any questions, or email us at destek@cvdoktoru.com.tr."
+    }
+  },
+  "seo": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Learn how CV Doktoru collects, uses, and protects your personal data — our KVKK and GDPR compliant privacy policy."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "The terms of service, user responsibilities, and liability limitations that apply when using CV Doktoru."
+    },
+    "refund": {
+      "title": "Refund and Cancellation Policy",
+      "description": "Refund, cancellation, and renewal terms for Pro subscription plans."
+    },
+    "pricing": {
+      "title": "Pricing",
+      "description": "Compare CV Doktoru's Free and Pro plans — AI-powered CV analysis, ATS optimization, and more."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with the CV Doktoru support team with any questions."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Learn more about CV Doktoru's mission, vision, and AI-powered career platform."
     }
   }
 }

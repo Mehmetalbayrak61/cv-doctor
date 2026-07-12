@@ -58,6 +58,15 @@ const TermsPage = lazy(() =>
 const PricingPage = lazy(() =>
   import("@/features/pricing/pricing-page").then((m) => ({ default: m.PricingPage }))
 )
+const RefundPage = lazy(() =>
+  import("@/features/legal/refund-page").then((m) => ({ default: m.RefundPage }))
+)
+const ContactPage = lazy(() =>
+  import("@/features/contact/contact-page").then((m) => ({ default: m.ContactPage }))
+)
+const AboutPage = lazy(() =>
+  import("@/features/about/about-page").then((m) => ({ default: m.AboutPage }))
+)
 
 export const router = createBrowserRouter([
   {
@@ -71,7 +80,10 @@ export const router = createBrowserRouter([
       { path: "/reset-password", element: <ResetPasswordPage /> },
       { path: "/privacy", element: <PrivacyPage /> },
       { path: "/terms", element: <TermsPage /> },
+      { path: "/refund", element: <RefundPage /> },
       { path: "/pricing", element: <PricingPage /> },
+      { path: "/contact", element: <ContactPage /> },
+      { path: "/about", element: <AboutPage /> },
     ],
   },
   {

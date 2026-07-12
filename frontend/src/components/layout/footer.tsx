@@ -14,18 +14,24 @@ export function Footer() {
           {t("app.name")}
         </Link>
         <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <Link to="/about" className="text-muted-foreground hover:text-foreground">
+            {t("footer.about")}
+          </Link>
+          <Link to="/pricing" className="text-muted-foreground hover:text-foreground">
+            {t("footer.pricing")}
+          </Link>
           <Link to="/privacy" className="text-muted-foreground hover:text-foreground">
             {t("footer.privacy")}
           </Link>
           <Link to="/terms" className="text-muted-foreground hover:text-foreground">
             {t("footer.terms")}
           </Link>
-          <a
-            href="mailto:destek@cvdoktoru.app"
-            className="text-muted-foreground hover:text-foreground"
-          >
+          <Link to="/refund" className="text-muted-foreground hover:text-foreground">
+            {t("footer.refund")}
+          </Link>
+          <Link to="/contact" className="text-muted-foreground hover:text-foreground">
             {t("footer.contact")}
-          </a>
+          </Link>
         </nav>
         <p className="text-muted-foreground text-xs">
           {t("footer.copyright", { year })}

@@ -2,27 +2,29 @@ import { useTranslation } from "react-i18next"
 
 import { useSeo } from "@/lib/use-seo"
 
-export function PrivacyPage() {
+export function RefundPage() {
   const { t } = useTranslation()
-  const sections = t("legal.privacy.sections", { returnObjects: true }) as {
+  const sections = t("legal.refund.sections", { returnObjects: true }) as {
     title: string
     body: string
   }[]
 
   useSeo({
-    title: t("seo.privacy.title"),
-    description: t("seo.privacy.description"),
-    path: "/privacy",
+    title: t("seo.refund.title"),
+    description: t("seo.refund.description"),
+    path: "/refund",
   })
 
   return (
     <article className="mx-auto max-w-2xl space-y-8 px-6 py-16">
       <div className="space-y-2">
         <h1 className="font-heading text-2xl font-medium tracking-tight">
-          {t("legal.privacy.title")}
+          {t("legal.refund.title")}
         </h1>
         <p className="text-muted-foreground text-sm">{t("legal.lastUpdated")}</p>
       </div>
+
+      <p className="text-muted-foreground text-sm leading-relaxed">{t("legal.refund.intro")}</p>
 
       <div className="space-y-6">
         {sections.map((section) => (

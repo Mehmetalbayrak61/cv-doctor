@@ -1,11 +1,19 @@
 import { useTranslation } from "react-i18next"
 
+import { useSeo } from "@/lib/use-seo"
+
 export function TermsPage() {
   const { t } = useTranslation()
   const sections = t("legal.terms.sections", { returnObjects: true }) as {
     title: string
     body: string
   }[]
+
+  useSeo({
+    title: t("seo.terms.title"),
+    description: t("seo.terms.description"),
+    path: "/terms",
+  })
 
   return (
     <article className="mx-auto max-w-2xl space-y-8 px-6 py-16">

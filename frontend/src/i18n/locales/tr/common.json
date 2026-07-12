@@ -32,8 +32,11 @@
     "generic": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
   },
   "footer": {
+    "about": "Hakkımızda",
+    "pricing": "Fiyatlandırma",
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Şartları",
+    "refund": "İade Politikası",
     "contact": "İletişim",
     "copyright": "© {{year}} CV Doktoru. Tüm hakları saklıdır."
   },
@@ -561,24 +564,44 @@
       "title": "Gizlilik Politikası",
       "sections": [
         {
+          "title": "Veri Sorumlusu",
+          "body": "CV Doktoru olarak, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve ilgili olduğu ölçüde Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) kapsamında veri sorumlusu sıfatıyla hareket ederiz. Bu politika, hizmetimizi kullanırken hangi verilerinizi hangi amaçlarla işlediğimizi açıklar."
+        },
+        {
           "title": "Topladığımız Veriler",
-          "body": "Hesabınızı oluştururken ad, soyad ve e-posta adresinizi; hizmeti kullanırken yüklediğiniz CV dosyalarını, oluşturulan analiz ve eşleştirme sonuçlarını saklarız."
+          "body": "Hesabınızı oluştururken ad, soyad ve e-posta adresinizi; hizmeti kullanırken yüklediğiniz CV dosyalarını, bu dosyalardan çıkarılan metni, oluşturulan analiz ve eşleştirme sonuçlarını, girdiğiniz iş ilanı metinlerini ve hizmet kalitesini ölçmek için temel kullanım kayıtlarını (ör. AI kullanım sayısı) saklarız."
         },
         {
           "title": "Verilerinizi Nasıl Kullanırız",
-          "body": "Verileriniz yalnızca CV analizi, yapay zeka destekli öneriler ve iş ilanı eşleştirme hizmetini size sunmak için kullanılır."
+          "body": "Verileriniz yalnızca CV analizi, yapay zeka destekli öneriler ve iş ilanı eşleştirme hizmetini size sunmak, hesabınızı yönetmek ve hizmeti güvenli şekilde işletmek için kullanılır."
         },
         {
-          "title": "Veri Paylaşımı",
-          "body": "Verileriniz üçüncü taraflarla satılmaz veya paylaşılmaz. Analiz sırasında CV içeriğiniz, yalnızca sonucu üretmek amacıyla yapay zeka sağlayıcımıza (OpenAI) iletilir."
+          "title": "Yapay Zeka (OpenAI) Kullanımı",
+          "body": "Analiz, yeniden yazma ve eşleştirme sonuçları üretilirken CV içeriğiniz, yalnızca o anki isteği yanıtlamak amacıyla yapay zeka sağlayıcımıza (OpenAI) iletilir. Bu veri, pazarlama veya reklam amacıyla kullanılmaz ve başka bir üçüncü tarafla paylaşılmaz."
         },
         {
-          "title": "Veri Saklama ve Silme",
-          "body": "Verileriniz hesabınız aktif olduğu sürece saklanır. Hesabınızı veya belirli bir CV'yi istediğiniz zaman silebilir, ya da destek ekibimizle iletişime geçebilirsiniz."
+          "title": "CV Dosyalarının İşlenmesi",
+          "body": "Yüklediğiniz CV dosyaları güvenli sunucularda saklanır ve yalnızca sizin hesabınıza bağlıdır; başka kullanıcılar tarafından görüntülenemez. Dosyalar, analiz ve eşleştirme özelliklerini sunmak dışında bir amaçla işlenmez."
         },
         {
-          "title": "Haklarınız",
-          "body": "Verilerinize erişme, düzeltme ve silme hakkına sahipsiniz. Sorularınız için bizimle iletişime geçebilirsiniz."
+          "title": "Çerezler",
+          "body": "Oturumunuzu açık tutmak ve tema (açık/koyu mod) tercihinizi hatırlamak için tarayıcınızın yerel depolamasını (localStorage) kullanırız. Reklam veya izleme amaçlı üçüncü taraf çerezleri kullanılmaz."
+        },
+        {
+          "title": "Veri Güvenliği",
+          "body": "Verileriniz HTTPS ile şifreli olarak iletilir, şifreniz geri döndürülemez biçimde (hash'lenerek) saklanır. Erişim, yalnızca hizmetin çalışması için gerekli sistemlerle sınırlıdır."
+        },
+        {
+          "title": "Veri Saklama ve Hesap Silme",
+          "body": "Verileriniz hesabınız aktif olduğu sürece saklanır. Hesap ayarlarınızdan hesabınızı kalıcı olarak silebilirsiniz; bu işlem CV'leriniz, analizleriniz, eşleştirmeleriniz ve yapay zeka çıktılarınız dahil tüm verilerinizi geri döndürülemez şekilde kaldırır."
+        },
+        {
+          "title": "KVKK ve GDPR Kapsamındaki Haklarınız",
+          "body": "Verilerinize erişme, düzeltilmesini isteme, silinmesini talep etme ve işlenmesine itiraz etme hakkına sahipsiniz. Bu haklarınızı kullanmak için bizimle iletişime geçebilirsiniz."
+        },
+        {
+          "title": "İletişim",
+          "body": "Gizlilikle ilgili sorularınız için destek@cvdoktoru.com.tr adresinden bize ulaşabilirsiniz."
         }
       ]
     },
@@ -590,16 +613,32 @@
           "body": "CV Doktoru, yapay zeka destekli CV analizi, yeniden yazma önerileri ve iş ilanı eşleştirme hizmeti sunar."
         },
         {
-          "title": "Kullanıcı Sorumlulukları",
-          "body": "Hesabınızın güvenliğinden ve paylaştığınız bilgilerin doğruluğundan siz sorumlusunuz. Hizmeti yasa dışı amaçlarla kullanamazsınız."
+          "title": "Hesap Oluşturma",
+          "body": "Hizmeti kullanmak için doğru ve güncel bilgilerle bir hesap oluşturmanız gerekir. Hesabınızın güvenliğinden ve şifrenizin gizliliğinden siz sorumlusunuz."
+        },
+        {
+          "title": "Yasaklı Kullanım",
+          "body": "Hizmeti yasa dışı amaçlarla, başkalarının haklarını ihlal edecek şekilde, sahte veya izinsiz içerik yükleyerek ya da hizmetin normal işleyişini bozacak otomasyon/kötüye kullanım yöntemleriyle kullanamazsınız."
         },
         {
           "title": "Yapay Zeka Çıktıları Hakkında",
           "body": "Analiz, öneri ve eşleştirme sonuçları yapay zeka tarafından üretilir; öneri niteliğindedir ve kesinlik garantisi taşımaz. Nihai kararlar kullanıcıya aittir."
         },
         {
+          "title": "Hizmet Kesintileri",
+          "body": "Bakım, güncelleme veya öngörülemeyen teknik nedenlerle hizmette geçici kesintiler yaşanabilir. Kesintisiz veya hatasız erişim garanti edilmez."
+        },
+        {
+          "title": "Sorumluluk Sınırları",
+          "body": "Hizmet \"olduğu gibi\" sunulur. CV Doktoru, yapay zeka çıktılarının doğruluğundan veya hizmetin kullanımından doğabilecek dolaylı zararlardan, yasaların izin verdiği azami ölçüde sorumlu tutulamaz."
+        },
+        {
           "title": "Fikri Mülkiyet",
           "body": "Yüklediğiniz CV içeriği size aittir. Platformun tasarımı ve yazılımı CV Doktoru'na aittir."
+        },
+        {
+          "title": "Hesap Kapatma",
+          "body": "Hesabınızı istediğiniz zaman hesap ayarlarından kapatabilirsiniz. Bu şartların ihlali halinde CV Doktoru, hesabınızı askıya alma veya kapatma hakkını saklı tutar."
         },
         {
           "title": "Hizmette Değişiklikler",
@@ -607,7 +646,41 @@
         },
         {
           "title": "İletişim",
-          "body": "Sorularınız için destek@cvdoktoru.app adresinden bize ulaşabilirsiniz."
+          "body": "Sorularınız için destek@cvdoktoru.com.tr adresinden bize ulaşabilirsiniz."
+        }
+      ]
+    },
+    "refund": {
+      "title": "İade ve İptal Politikası",
+      "intro": "Ödeme altyapımız (PayTR) şu anda kurulum aşamasındadır; Pro planlar henüz satın alınamaz. Bu politika, ücretli planlar aktif olduğunda geçerli olacak iade ve iptal koşullarını açıklar.",
+      "sections": [
+        {
+          "title": "Aylık Abonelik",
+          "body": "Pro aylık abonelik aktif hale geldiğinde, ödemeniz her ay aynı tarihte otomatik olarak yenilenir ve bir sonraki dönem için tahsilat yapılır."
+        },
+        {
+          "title": "Yıllık Abonelik",
+          "body": "Pro Yıllık plan, yıllık bedelin tek seferde tahsil edilmesiyle başlar ve bir yıl sonunda otomatik olarak yenilenir."
+        },
+        {
+          "title": "İptal Süreci",
+          "body": "Aboneliğinizi hesap ayarlarınızdan istediğiniz zaman iptal edebilirsiniz. İptal, mevcut dönem sonuna kadar hizmete erişiminizi etkilemez; bir sonraki yenileme gerçekleşmez."
+        },
+        {
+          "title": "Yenileme",
+          "body": "Abonelikler, iptal edilmediği sürece otomatik olarak yenilenir. Yenileme öncesinde kayıtlı e-posta adresinize bilgilendirme gönderilir."
+        },
+        {
+          "title": "İade Koşulları",
+          "body": "Dijital hizmet niteliği gereği, ödemesi tamamlanmış ve fiilen kullanılmaya başlanmış bir dönem için iade yapılmaz. Teknik bir hata nedeniyle hizmetin hiç sağlanamadığı durumlarda, talebiniz değerlendirilerek tam iade yapılabilir."
+        },
+        {
+          "title": "Dijital Hizmetler Hakkında Bilgilendirme",
+          "body": "Mesafeli Sözleşmeler Yönetmeliği kapsamında, elektronik ortamda anında ifa edilen dijital hizmetler için, açık onayınızla hizmetin ifasına başlanması halinde cayma hakkı sona erer. Satın alma öncesinde bu onay ayrıca alınacaktır."
+        },
+        {
+          "title": "Ödeme Sağlayıcısı",
+          "body": "Ödemeleriniz, PayTR'nin güvenli ödeme altyapısı üzerinden işlenecektir. Kart bilgileriniz CV Doktoru sunucularında saklanmaz; işlem doğrudan PayTR'nin PCI-DSS uyumlu sistemleri üzerinden gerçekleştirilir."
         }
       ]
     }
@@ -636,15 +709,31 @@
     },
     "pro": {
       "name": "Pro",
-      "badge": "Önerilen",
-      "price": "₺0",
-      "priceNote": "fiyat henüz belirlenmedi",
-      "description": "Yoğun kullanım ve ekipler için.",
-      "cta": "Pro'ya Geç",
+      "price": "₺199",
+      "period": "/ay",
+      "description": "Yoğun kullanım için.",
+      "cta": "Yakında",
       "features": [
-        "Free plandaki her şey",
-        "Saatlik AI üretim sınırı yok",
-        "Öncelikli destek"
+        "Sınırsız AI üretimi",
+        "ATS Optimizasyonu",
+        "İş İlanı Eşleştirme (Job Match)",
+        "Ön Yazı Oluşturma",
+        "Profil/Deneyim/Yetenek Yeniden Yazma",
+        "LinkedIn Özeti Oluşturma",
+        "Öncelikli AI İşleme"
+      ]
+    },
+    "proAnnual": {
+      "name": "Pro Yıllık",
+      "badge": "En Popüler",
+      "price": "₺1.799",
+      "period": "/yıl",
+      "description": "Yıllık ödemede %25'e varan tasarruf.",
+      "cta": "Yakında",
+      "features": [
+        "Pro plandaki her şey",
+        "Aylık plana göre %25 tasarruf",
+        "Yıllık tek seferlik ödeme"
       ]
     },
     "faq": {
@@ -653,7 +742,7 @@
       "items": [
         {
           "question": "Pro plana şu an geçebilir miyim?",
-          "answer": "Henüz hayır — ödeme altyapımızı hazırlıyoruz. \"Pro'ya Geç\" butonuna tıklayanları önceliklendirip aktif olduğunda bilgilendireceğiz."
+          "answer": "Henüz hayır — ödeme altyapımızı hazırlıyoruz. Aktif olduğunda bu sayfadan duyuracağız."
         },
         {
           "question": "Saatlik 20 AI üretim sınırı tam olarak neyi kapsıyor?",
@@ -695,6 +784,85 @@
       "passwordLabel": "Şifre",
       "confirmButton": "Hesabımı Kalıcı Olarak Sil",
       "deleteSuccess": "Hesabınız silindi."
+    }
+  },
+  "contact": {
+    "eyebrow": "İletişim",
+    "title": "Bize Ulaşın",
+    "subtitle": "Sorularınız, geri bildirimleriniz veya destek talepleriniz için buradayız.",
+    "supportEmailLabel": "Destek E-postası",
+    "form": {
+      "heading": "İletişim Formu",
+      "description": "Form gönderimi yakında aktif olacak — şimdilik yukarıdaki e-posta adresinden doğrudan bize ulaşabilirsiniz.",
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "subject": "Konu",
+      "message": "Mesaj",
+      "submit": "Yakında"
+    }
+  },
+  "about": {
+    "eyebrow": "Hakkımızda",
+    "title": "CV Doktoru Nedir?",
+    "intro": "CV Doktoru, yapay zeka destekli bir CV geliştirme ve kariyer platformudur. CV'nizi analiz eder, ATS uyumluluğunuzu ölçer, iş ilanlarıyla eşleştirir ve başvurularınızı güçlendirecek içerikler üretir.",
+    "mission": {
+      "title": "Misyonumuz",
+      "body": "İş arayan herkesin, yapay zeka desteğiyle CV'sini en güçlü haline getirmesini ve doğru fırsatlara daha kolay ulaşmasını sağlamak."
+    },
+    "vision": {
+      "title": "Vizyonumuz",
+      "body": "Kariyer gelişiminde yapay zekayı herkes için erişilebilir, güvenilir ve şeffaf bir şekilde sunan öncü platform olmak."
+    },
+    "features": {
+      "title": "Özellikler",
+      "items": [
+        {
+          "title": "AI CV Analizi",
+          "description": "Güçlü/zayıf yönlerinizi ve eksik anahtar kelimeleri saniyeler içinde görün."
+        },
+        {
+          "title": "ATS Uyumluluğu",
+          "description": "Aday takip sistemlerinin CV'nizi nasıl okuduğunu görüp uyumluluğunuzu artırın."
+        },
+        {
+          "title": "İş İlanı Eşleştirme",
+          "description": "CV'nizi iş ilanlarıyla karşılaştırıp uyumluluk skorunuzu görün."
+        },
+        {
+          "title": "Yapay Zeka Araçları",
+          "description": "Ön yazı, LinkedIn özeti ve daha fazlasını saniyeler içinde oluşturun."
+        }
+      ]
+    },
+    "contact": {
+      "title": "İletişim",
+      "body": "Sorularınız için İletişim sayfamızı ziyaret edebilir veya destek@cvdoktoru.com.tr adresine yazabilirsiniz."
+    }
+  },
+  "seo": {
+    "privacy": {
+      "title": "Gizlilik Politikası",
+      "description": "CV Doktoru'nun kişisel verilerinizi nasıl topladığını, kullandığını ve koruduğunu öğrenin — KVKK ve GDPR uyumlu gizlilik politikamız."
+    },
+    "terms": {
+      "title": "Kullanım Şartları",
+      "description": "CV Doktoru hizmetini kullanırken geçerli olan kullanım şartları, kullanıcı sorumlulukları ve sorumluluk sınırları."
+    },
+    "refund": {
+      "title": "İade ve İptal Politikası",
+      "description": "Pro abonelik planları için iade, iptal ve yenileme koşulları."
+    },
+    "pricing": {
+      "title": "Fiyatlandırma",
+      "description": "CV Doktoru Free ve Pro planlarını karşılaştırın — yapay zeka destekli CV analizi, ATS optimizasyonu ve daha fazlası."
+    },
+    "contact": {
+      "title": "İletişim",
+      "description": "Sorularınız için CV Doktoru destek ekibiyle iletişime geçin."
+    },
+    "about": {
+      "title": "Hakkımızda",
+      "description": "CV Doktoru'nun misyonu, vizyonu ve yapay zeka destekli kariyer platformu hakkında daha fazla bilgi edinin."
     }
   }
 }
