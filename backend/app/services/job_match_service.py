@@ -30,7 +30,7 @@ class JobMatchService:
     async def match(self, *, user: User, job_id: uuid.UUID, cv_id: uuid.UUID) -> JobMatch:
         job = await self._job_service.get_owned(user=user, job_id=job_id)
         document = await self._cv_service.get_owned(user=user, document_id=cv_id)
-        await enforce_ai_rate_limit(self._usage_repo, user_id=user.id)
+        await enforce_ai_rate_limit(self._usage_repo, user_id=user.id, is_admin=user.is_admin)
         cv_text = await self._text_service.extract(document)
 
         try:

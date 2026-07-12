@@ -9,10 +9,17 @@ from app.models.ai_usage_log import AIUsageFeature
 from app.repositories.ai_usage_repository import AIUsageRepository
 
 
-async def enforce_ai_rate_limit(repo: AIUsageRepository, *, user_id: uuid.UUID) -> None:
+async def enforce_ai_rate_limit(
+    repo: AIUsageRepository, *, user_id: uuid.UUID, is_admin: bool = False
+) -> None:
     """Kullanıcı başına saatlik AI kullanım limiti — CV analizi, iş eşleştirme ve rewrite
     dahil tüm gerçek OpenAI çağrılarını (bkz. AIUsageLog) ortak sayar. OpenAI çağrısından
-    ÖNCE çağrılmalı ki limit aşılınca gereksiz maliyetli istek hiç yapılmasın."""
+    ÖNCE çağrılmalı ki limit aşılınca gereksiz maliyetli istek hiç yapılmasın.
+
+    Admin hesapları (iç test amaçlı) bu limitten muaftır."""
+    if is_admin:
+        return
+
     window_start = datetime.now(UTC) - timedelta(hours=1)
     recent_count = await repo.count_recent_by_user(user_id, since=window_start)
     if recent_count >= settings.AI_RATE_LIMIT_PER_HOUR:

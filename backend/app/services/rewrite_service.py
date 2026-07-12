@@ -55,7 +55,7 @@ class RewriteService:
     ) -> AIOutput:
         """Ortak akış: sahiplik + rate limit kontrolü -> metin çıkar -> üret -> kaydet."""
         document = await self._cv_service.get_owned(user=user, document_id=document_id)
-        await enforce_ai_rate_limit(self._usage_repo, user_id=user.id)
+        await enforce_ai_rate_limit(self._usage_repo, user_id=user.id, is_admin=user.is_admin)
         text = await self._text_service.extract(document)
         system_prompt, user_prompt = build_prompt(text)
 

@@ -26,7 +26,7 @@ class CVAnalysisService:
 
     async def analyze(self, *, user: User, document_id: uuid.UUID) -> CVAnalysis:
         document = await self._cv_service.get_owned(user=user, document_id=document_id)
-        await enforce_ai_rate_limit(self._usage_repo, user_id=user.id)
+        await enforce_ai_rate_limit(self._usage_repo, user_id=user.id, is_admin=user.is_admin)
         text = await self._text_service.extract(document)
 
         next_version = await self._repo.get_next_version(document.id)
