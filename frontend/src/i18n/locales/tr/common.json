@@ -38,6 +38,7 @@
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Şartları",
     "refund": "İade Politikası",
+    "accountDeletion": "Hesap Silme",
     "contact": "İletişim",
     "copyright": "© {{year}} CV Doktoru. Tüm hakları saklıdır."
   },
@@ -597,7 +598,8 @@
         },
         {
           "title": "Hesap Silme",
-          "body": "Hesabınızı hesap ayarlarınızdan kalıcı olarak silebilirsiniz. Hesabınızı sildiğinizde yüklediğiniz CV dosyaları sunucularımızdan fiziksel olarak kaldırılır ve hesabınıza bağlı tüm veriler (analizler, iş ilanı eşleştirmeleri, yapay zeka çıktıları dahil) veritabanından kalıcı olarak silinir. Bu işlem geri alınamaz."
+          "body": "Hesabınızı hesap ayarlarınızdan kalıcı olarak silebilirsiniz. Hesabınızı sildiğinizde yüklediğiniz CV dosyaları sunucularımızdan fiziksel olarak kaldırılır ve hesabınıza bağlı tüm veriler (analizler, iş ilanı eşleştirmeleri, yapay zeka çıktıları dahil) veritabanından kalıcı olarak silinir. Bu işlem geri alınamaz.",
+          "link": { "to": "/account-deletion", "label": "Hesap Silme sayfasını görüntüleyin" }
         },
         {
           "title": "Veri Saklama Süresi",
@@ -622,6 +624,55 @@
         {
           "title": "İletişim",
           "body": "Gizlilikle ilgili sorularınız veya haklarınızı kullanma talepleriniz için destek@cvdoktoru.com.tr adresinden bize ulaşabilirsiniz."
+        }
+      ]
+    },
+    "accountDeletion": {
+      "title": "Hesap Silme",
+      "intro": "Bu sayfa, CV Doktoru hesabınızı ve hesabınıza bağlı verilerinizi nasıl kalıcı olarak silebileceğinizi açıklar.",
+      "sections": [
+        {
+          "title": "Uygulama İçinden Hesabınızı Silme",
+          "ordered": true,
+          "items": [
+            "CV Doktoru uygulamasına giriş yapın.",
+            "Sağ üstteki profil simgenize dokunarak \"Hesabım\" sayfasına gidin.",
+            "\"Tehlikeli Bölge\" bölümünde \"Hesabımı Sil\" butonuna dokunun.",
+            "Açılan onay penceresinde şifrenizi girin ve \"Hesabımı Kalıcı Olarak Sil\" butonuna basarak işlemi onaylayın."
+          ]
+        },
+        {
+          "title": "Uygulamaya Erişiminiz Yoksa",
+          "body": "Uygulamaya giriş yapamıyorsanız veya erişiminiz yoksa, hesabınızın silinmesini destek@cvdoktoru.com.tr adresinden talep edebilirsiniz."
+        },
+        {
+          "title": "Silinen Veriler",
+          "items": [
+            "Hesap ve profil bilgileriniz (ad, soyad)",
+            "E-posta adresiniz",
+            "Yüklediğiniz CV dosyaları",
+            "CV'lerinizden çıkarılan metinler",
+            "CV analiz sonuçları ve ATS skorları",
+            "Kaydettiğiniz iş ilanı kayıtları ve CV-iş ilanı eşleştirmeleri",
+            "AI tarafından üretilen yeniden yazma önerileri, ön yazılar, LinkedIn özetleri ve diğer yapay zeka çıktıları",
+            "Hesabınıza bağlı diğer tüm kayıtlar"
+          ]
+        },
+        {
+          "title": "Saklanan Veriler",
+          "body": "Kalıcı hesap silme işleminden sonra, yürürlükteki mevzuatın zorunlu kıldığı durumlar dışında kişisel veri saklanmaz."
+        },
+        {
+          "title": "İşlemin Niteliği",
+          "body": "Hesap silme işlemi kalıcıdır ve geri alınamaz; silinen veriler hiçbir şekilde kurtarılamaz. Hesabınızı sildikten sonra, dilerseniz aynı e-posta adresiyle yeniden kayıt olabilirsiniz."
+        },
+        {
+          "title": "Tek Tek CV Silme",
+          "body": "Hesabınızı tamamen silmeden, yalnızca belirli bir CV'yi silmek isterseniz \"CV'lerim\" sayfasından ilgili CV'yi ayrıca silebilirsiniz."
+        },
+        {
+          "title": "Destek",
+          "body": "Hesap silme talebiniz veya sorularınız için destek@cvdoktoru.com.tr adresinden bize ulaşabilirsiniz."
         }
       ]
     },
@@ -822,6 +873,10 @@
     "privacy": {
       "title": "Gizlilik Politikası",
       "description": "CV Doktoru'nun kişisel verilerinizi nasıl topladığını, kullandığını ve koruduğunu öğrenin — KVKK ve GDPR uyumlu gizlilik politikamız."
+    },
+    "accountDeletion": {
+      "title": "Hesap Silme",
+      "description": "CV Doktoru hesabınızı ve hesabınıza bağlı tüm verilerinizi nasıl kalıcı olarak silebileceğinizi öğrenin."
     },
     "terms": {
       "title": "Kullanım Şartları",

@@ -29,6 +29,9 @@ export function Footer() {
           <Link to="/refund" className="text-muted-foreground hover:text-foreground">
             {t("footer.refund")}
           </Link>
+          <Link to="/account-deletion" className="text-muted-foreground hover:text-foreground">
+            {t("footer.accountDeletion")}
+          </Link>
           <Link to="/contact" className="text-muted-foreground hover:text-foreground">
             {t("footer.contact")}
           </Link>

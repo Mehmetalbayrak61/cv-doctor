@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next"
+import { Link } from "react-router-dom"
 
 import { useSeo } from "@/lib/use-seo"
 
@@ -7,6 +8,7 @@ export function PrivacyPage() {
   const sections = t("legal.privacy.sections", { returnObjects: true }) as {
     title: string
     body: string
+    link?: { to: string; label: string }
   }[]
 
   useSeo({
@@ -29,6 +31,14 @@ export function PrivacyPage() {
           <section key={section.title} className="space-y-2">
             <h2 className="font-medium">{section.title}</h2>
             <p className="text-muted-foreground text-sm leading-relaxed">{section.body}</p>
+            {section.link && (
+              <Link
+                to={section.link.to}
+                className="text-primary block text-sm underline underline-offset-2"
+              >
+                {section.link.label}
+              </Link>
+            )}
           </section>
         ))}
       </div>

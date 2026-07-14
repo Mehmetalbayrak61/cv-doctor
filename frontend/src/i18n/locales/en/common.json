@@ -38,6 +38,7 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "refund": "Refund Policy",
+    "accountDeletion": "Account Deletion",
     "contact": "Contact",
     "copyright": "© {{year}} CV Doktoru. All rights reserved."
   },
@@ -597,7 +598,8 @@
         },
         {
           "title": "Account Deletion",
-          "body": "You can permanently delete your account from your account settings. When you do, the CV files you uploaded are physically removed from our servers, and all data tied to your account — including analyses, job matches, and AI outputs — is permanently deleted from our database. This action cannot be undone."
+          "body": "You can permanently delete your account from your account settings. When you do, the CV files you uploaded are physically removed from our servers, and all data tied to your account — including analyses, job matches, and AI outputs — is permanently deleted from our database. This action cannot be undone.",
+          "link": { "to": "/account-deletion", "label": "View the Account Deletion page" }
         },
         {
           "title": "Data Retention Period",
@@ -622,6 +624,55 @@
         {
           "title": "Contact",
           "body": "For privacy-related questions or to exercise your rights, reach us at destek@cvdoktoru.com.tr."
+        }
+      ]
+    },
+    "accountDeletion": {
+      "title": "Account Deletion",
+      "intro": "This page explains how you can permanently delete your CV Doktoru account and the data associated with it.",
+      "sections": [
+        {
+          "title": "Deleting Your Account From the App",
+          "ordered": true,
+          "items": [
+            "Log in to the CV Doktoru app.",
+            "Tap your profile icon in the top right to go to the \"My Account\" page.",
+            "In the \"Danger Zone\" section, tap \"Delete My Account\".",
+            "In the confirmation dialog, enter your password and tap \"Permanently Delete My Account\" to confirm."
+          ]
+        },
+        {
+          "title": "If You Can't Access the App",
+          "body": "If you cannot log in or no longer have access to the app, you can request account deletion by emailing destek@cvdoktoru.com.tr."
+        },
+        {
+          "title": "Data That Is Deleted",
+          "items": [
+            "Your account and profile information (first and last name)",
+            "Your email address",
+            "The CV files you uploaded",
+            "The text extracted from your CVs",
+            "Your CV analysis results and ATS scores",
+            "Your saved job postings and CV-to-job matches",
+            "AI-generated rewrite suggestions, cover letters, LinkedIn summaries, and other AI outputs",
+            "All other records tied to your account"
+          ]
+        },
+        {
+          "title": "Data That Is Retained",
+          "body": "After permanent account deletion, no personal data is retained except where required by applicable law."
+        },
+        {
+          "title": "Nature of the Deletion",
+          "body": "Account deletion is permanent and cannot be undone; deleted data cannot be recovered in any way. After deleting your account, you may register again with the same email address if you wish."
+        },
+        {
+          "title": "Deleting a Single CV",
+          "body": "If you only want to delete a specific CV without deleting your entire account, you can do so separately from the \"My CVs\" page."
+        },
+        {
+          "title": "Support",
+          "body": "For account deletion requests or questions, reach us at destek@cvdoktoru.com.tr."
         }
       ]
     },
@@ -822,6 +873,10 @@
     "privacy": {
       "title": "Privacy Policy",
       "description": "Learn how CV Doktoru collects, uses, and protects your personal data — our KVKK and GDPR compliant privacy policy."
+    },
+    "accountDeletion": {
+      "title": "Account Deletion",
+      "description": "Learn how to permanently delete your CV Doktoru account and all data associated with it."
     },
     "terms": {
       "title": "Terms of Service",

@@ -50,6 +50,11 @@ const JobMatchPage = lazy(() =>
 const MatchResultPage = lazy(() =>
   import("@/features/job-match/match-result-page").then((m) => ({ default: m.MatchResultPage }))
 )
+const AccountDeletionPage = lazy(() =>
+  import("@/features/legal/account-deletion-page").then((m) => ({
+    default: m.AccountDeletionPage,
+  }))
+)
 const PrivacyPage = lazy(() =>
   import("@/features/legal/privacy-page").then((m) => ({ default: m.PrivacyPage }))
 )
@@ -79,6 +84,7 @@ export const router = createBrowserRouter([
       { path: "/verify-email", element: <VerifyEmailPage /> },
       { path: "/forgot-password", element: <ForgotPasswordPage /> },
       { path: "/reset-password", element: <ResetPasswordPage /> },
+      { path: "/account-deletion", element: <AccountDeletionPage /> },
       { path: "/privacy", element: <PrivacyPage /> },
       { path: "/terms", element: <TermsPage /> },
       { path: "/refund", element: <RefundPage /> },
