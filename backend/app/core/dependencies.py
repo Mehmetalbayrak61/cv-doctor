@@ -22,13 +22,19 @@ async def get_current_user(
     db: DbSession,
     token: Annotated[str, Depends(oauth2_scheme)],
 ) -> User:
-    user_id = decode_access_token(token)
-    if user_id is None:
+    decoded = decode_access_token(token)
+    if decoded is None:
         raise UnauthorizedError("Geçersiz veya süresi dolmuş token.")
+    user_id, issued_at = decoded
 
     user = await UserRepository(db).get_by_id(user_id)
     if user is None or not user.is_active:
         raise UnauthorizedError("Kullanıcı bulunamadı veya pasif.")
+
+    # Şifre bu token üretildikten SONRA değiştirilmişse, token sızmış olsa bile
+    # artık geçersiz — sunucu tarafında oturum/token listesi tutmadan çalışır.
+    if user.password_changed_at is not None and issued_at < user.password_changed_at:
+        raise UnauthorizedError("Oturumunuzun süresi doldu, lütfen tekrar giriş yapın.")
 
     return user
 

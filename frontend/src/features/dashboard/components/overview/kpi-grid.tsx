@@ -1,4 +1,4 @@
-import { Briefcase, Gauge, Sparkles, Target, type LucideIcon } from "lucide-react"
+import { Briefcase, Gauge, Target, type LucideIcon } from "lucide-react"
 import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 
@@ -77,10 +77,9 @@ interface KpiGridProps {
   overallScore: number | null
   atsScore: number | null
   jobMatchCount: number
-  aiUsageCount: number
 }
 
-export function KpiGrid({ overallScore, atsScore, jobMatchCount, aiUsageCount }: KpiGridProps) {
+export function KpiGrid({ overallScore, atsScore, jobMatchCount }: KpiGridProps) {
   const { t } = useTranslation()
   const shouldReduceMotion = useReducedMotion()
 
@@ -88,7 +87,7 @@ export function KpiGrid({ overallScore, atsScore, jobMatchCount, aiUsageCount }:
   const atsTier = atsScore !== null ? getScoreTier(atsScore) : undefined
 
   return (
-    <div className="grid grid-cols-2 gap-3.5 lg:grid-cols-4">
+    <div className="grid gap-3.5 sm:grid-cols-3">
       {[
         <KpiCard
           key="overall-score"
@@ -122,13 +121,6 @@ export function KpiGrid({ overallScore, atsScore, jobMatchCount, aiUsageCount }:
           message: t("overview.kpi.noMatchesYet"),
           hint: t("overview.kpi.noMatchesYetHint"),
         }}
-        />,
-        <KpiCard
-          key="ai-usage"
-        icon={Sparkles}
-        label={t("overview.kpi.aiUsage")}
-        value={aiUsageCount}
-        emptyState={{ message: t("overview.kpi.noAiUsageYet") }}
         />,
       ].map((card, index) => (
         <motion.div

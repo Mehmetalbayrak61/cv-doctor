@@ -64,18 +64,29 @@ class Settings(BaseSettings):
 
     # CV dosya yükleme kısıtları
     MAX_CV_UPLOAD_SIZE_MB: int = 10
+    # Modern modellerin bağlam sınırının altında, fakat normal bir CV'nin çok üzerinde.
+    # Sınır aşılırsa sessiz kırpma yerine kullanıcıya açık hata döndürülür.
+    MAX_CV_TEXT_CHARS: int = 100_000
     ALLOWED_CV_CONTENT_TYPES: list[str] = [
         "application/pdf",
-        "application/msword",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     ]
-    ALLOWED_CV_EXTENSIONS: list[str] = [".pdf", ".doc", ".docx"]
+    ALLOWED_CV_EXTENSIONS: list[str] = [".pdf", ".docx"]
 
     # AI rewrite endpointleri için kullanıcı başına saatlik üretim limiti (Faz 5)
     AI_RATE_LIMIT_PER_HOUR: int = 20
 
     # Faz 7: auth endpointleri için IP başına 15 dakikalık deneme limiti
     AUTH_RATE_LIMIT_PER_15_MIN: int = 10
+    # X-Forwarded-For'da güvenilir (uygulamanın önündeki gerçek proxy'nin eklediği)
+    # hop sayısı. 0 (varsayılan) = X-Forwarded-For'a HİÇ güvenilmez, her zaman ham
+    # soket bağlantısının IP'si kullanılır — bu, header spoofing'e karşı güvenli
+    # varsayılandır. Railway/Render/Fly.io gibi PaaS'lerde veya tek katmanlı bir
+    # Nginx/Caddy reverse proxy arkasında deploy edilirken 1'e ayarlanmalı: bu
+    # durumda güvenilir proxy, gerçek istemci IP'sini her zaman header'ın EN SONUNA
+    # ekler, bu yüzden yalnızca sondan bu kadar hop'a güvenilir — öncesindeki
+    # değerler istemci tarafından uydurulmuş olabilir ve asla kullanılmaz.
+    TRUSTED_PROXY_COUNT: int = 0
 
     # Boşsa Sentry hiç başlatılmaz (bkz. main.py) — hata izleme opsiyonel.
     SENTRY_DSN: str = ""

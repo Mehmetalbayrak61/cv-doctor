@@ -15,9 +15,11 @@ interface QuickActionsProps {
    * kullanıcıya da gösterilirse) araçlar CV listesine düşer, asla kırık bir
    * bağlantıya değil. */
   latestCvId: string | null
+  atsScore: number | null
+  jobMatchCount: number
 }
 
-export function QuickActions({ latestCvId }: QuickActionsProps) {
+export function QuickActions({ latestCvId, atsScore, jobMatchCount }: QuickActionsProps) {
   const { t } = useTranslation()
   const cvDetailOrList = latestCvId ? `/cvs/${latestCvId}` : "/cvs"
 
@@ -29,6 +31,12 @@ export function QuickActions({ latestCvId }: QuickActionsProps) {
     { label: t("overview.quickActions.atsOptimize"), icon: Target, to: cvDetailOrList },
     { label: t("overview.quickActions.linkedin"), icon: Contact, to: cvDetailOrList },
   ]
+
+  if (atsScore !== null && atsScore < 70) {
+    actions.sort((a, b) => Number(b.icon === Target) - Number(a.icon === Target))
+  } else if (jobMatchCount === 0 && actions[0]?.icon !== Gauge) {
+    actions.sort((a, b) => Number(b.icon === Gauge) - Number(a.icon === Gauge))
+  }
 
   return (
     <Card>

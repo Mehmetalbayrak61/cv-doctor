@@ -3,6 +3,7 @@ from datetime import datetime
 
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import joinedload
 
 from app.models.ai_output import AIOutput, AIOutputType
 
@@ -62,3 +63,13 @@ class AIOutputRepository:
             .where(AIOutput.user_id == user_id, AIOutput.created_at >= since)
         )
         return result.scalar_one()
+
+    async def list_recent_by_user(self, user_id: uuid.UUID, *, limit: int = 6) -> list[AIOutput]:
+        result = await self._db.execute(
+            select(AIOutput)
+            .where(AIOutput.user_id == user_id)
+            .options(joinedload(AIOutput.cv_document))
+            .order_by(AIOutput.created_at.desc())
+            .limit(limit)
+        )
+        return list(result.scalars().all())

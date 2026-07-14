@@ -18,6 +18,14 @@ export interface QualityAssessment {
   comment: string
 }
 
+export interface ScoreCriterion {
+  key: string
+  label: string
+  score: number
+  weight: number
+  findings: string[]
+}
+
 export interface CVAnalysisResult {
   overall_score: number
   ats_score: number
@@ -33,6 +41,9 @@ export interface CVAnalysisResult {
   experience_quality: QualityAssessment
   education_quality: QualityAssessment
   skills_quality: QualityAssessment
+  scoring_method: string
+  ats_breakdown: ScoreCriterion[]
+  overall_breakdown: ScoreCriterion[]
 }
 
 export interface CVAnalysis {

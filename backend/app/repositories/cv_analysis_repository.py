@@ -48,3 +48,14 @@ class CVAnalysisRepository:
             .limit(1)
         )
         return result.scalar_one_or_none()
+
+    async def list_completed_by_user(self, user_id: uuid.UUID) -> list[CVAnalysis]:
+        result = await self._db.execute(
+            select(CVAnalysis)
+            .where(
+                CVAnalysis.user_id == user_id,
+                CVAnalysis.status == AnalysisStatus.COMPLETED,
+            )
+            .order_by(CVAnalysis.created_at.desc())
+        )
+        return list(result.scalars().all())

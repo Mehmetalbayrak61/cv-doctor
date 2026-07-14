@@ -2,9 +2,10 @@
 
 Analiz prompt'unun aksine (app/ai/prompts.py) bu çıktılar serbest metindir —
 JSON şeması gerektirmez, kullanıcıya doğrudan kopyalanabilir/indirilebilir metin olarak sunulur.
-"""
 
-from app.ai.prompts import MAX_CV_TEXT_CHARS
+CV metni burada kesilmez: CvTextService.extract() bu metni AI servislerine ulaşmadan önce
+settings.MAX_CV_TEXT_CHARS ile zaten doğrulamış/reddetmiştir (bkz. cv_text_service.py).
+"""
 
 BASE_REWRITE_SYSTEM_PROMPT = (
     "Sen kıdemli bir kariyer danışmanı ve profesyonel metin yazarısın. "
@@ -13,16 +14,12 @@ BASE_REWRITE_SYSTEM_PROMPT = (
 )
 
 
-def _truncate(cv_text: str) -> str:
-    return cv_text[:MAX_CV_TEXT_CHARS]
-
-
 def build_summary_rewrite_prompt(cv_text: str) -> tuple[str, str]:
     system = BASE_REWRITE_SYSTEM_PROMPT
     user = (
         "Aşağıdaki özgeçmişin profil özeti / kariyer hedefi bölümünü daha güçlü, "
         "somut ve etkileyici şekilde yeniden yaz. 3-5 cümle, ölçülebilir başarılara "
-        "ve öne çıkan yetkinliklere yer ver.\n\nÖzgeçmiş:\n" + _truncate(cv_text)
+        "ve öne çıkan yetkinliklere yer ver.\n\nÖzgeçmiş:\n" + cv_text
     )
     return system, user
 
@@ -32,7 +29,7 @@ def build_experience_rewrite_prompt(cv_text: str) -> tuple[str, str]:
     user = (
         "Aşağıdaki özgeçmişteki iş deneyimi maddelerini güçlü eylem fiilleriyle başlayan, "
         "mümkün olduğunca sayısal/ölçülebilir sonuçlar içeren maddeler halinde yeniden yaz. "
-        "Her madde bir satırda '- ' ile başlasın.\n\nÖzgeçmiş:\n" + _truncate(cv_text)
+        "Her madde bir satırda '- ' ile başlasın.\n\nÖzgeçmiş:\n" + cv_text
     )
     return system, user
 
@@ -42,8 +39,7 @@ def build_skills_rewrite_prompt(cv_text: str) -> tuple[str, str]:
     user = (
         "Aşağıdaki özgeçmişteki yetenekleri/becerileri incele; eksik ama sektörde aranan "
         "anahtar kelimeleri ekleyerek, teknik ve kişisel beceriler olarak iki grupta, "
-        "her biri '- ' ile başlayan bir liste halinde düzenle.\n\nÖzgeçmiş:\n"
-        + _truncate(cv_text)
+        "her biri '- ' ile başlayan bir liste halinde düzenle.\n\nÖzgeçmiş:\n" + cv_text
     )
     return system, user
 
@@ -56,7 +52,7 @@ def build_ats_optimize_prompt(cv_text: str, target_job_title: str | None) -> tup
         "optimize edilmiş şekilde yeniden düzenle: net bölüm başlıkları, standart tarih "
         "formatları, anahtar kelime yoğunluğu ve sade biçimlendirme kullan. Sonucu "
         "doğrudan bir CV taslağı olarak, bölüm başlıklarıyla (ör. ÖZET, DENEYİM, EĞİTİM, "
-        "YETENEKLER) yaz.\n\nÖzgeçmiş:\n" + _truncate(cv_text)
+        "YETENEKLER) yaz.\n\nÖzgeçmiş:\n" + cv_text
     )
     return system, user
 
@@ -75,7 +71,7 @@ def build_cover_letter_prompt(
         f"Hedef pozisyon: {job_title}\n{company_line}{job_desc_line}"
         "Aşağıdaki özgeçmişe dayanarak bu pozisyon için profesyonel, samimi ve "
         "kişiselleştirilmiş bir ön yazı (cover letter) yaz. 3-4 paragraf olsun.\n\n"
-        "Özgeçmiş:\n" + _truncate(cv_text)
+        "Özgeçmiş:\n" + cv_text
     )
     return system, user
 
@@ -85,6 +81,6 @@ def build_linkedin_summary_prompt(cv_text: str) -> tuple[str, str]:
     user = (
         "Aşağıdaki özgeçmişe dayanarak LinkedIn 'Hakkında' bölümü için ilgi çekici, "
         "birinci ağızdan yazılmış, anahtar kelime açısından zengin bir özet yaz "
-        "(yaklaşık 150-250 kelime).\n\nÖzgeçmiş:\n" + _truncate(cv_text)
+        "(yaklaşık 150-250 kelime).\n\nÖzgeçmiş:\n" + cv_text
     )
     return system, user

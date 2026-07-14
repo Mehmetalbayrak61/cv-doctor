@@ -61,10 +61,14 @@ class CVService:
         content = await file.read()
 
         if len(content) > settings.max_cv_upload_size_bytes:
-            raise PayloadTooLargeError(f"Dosya boyutu {settings.MAX_CV_UPLOAD_SIZE_MB}MB sınırını aşıyor.")
+            raise PayloadTooLargeError(
+                f"Dosya boyutu {settings.MAX_CV_UPLOAD_SIZE_MB}MB sınırını aşıyor."
+            )
 
-        if not file.filename or not has_allowed_extension(file.filename, settings.ALLOWED_CV_EXTENSIONS):
-            raise UnprocessableEntityError("Sadece PDF, DOC veya DOCX dosyaları yüklenebilir.")
+        if not file.filename or not has_allowed_extension(
+            file.filename, settings.ALLOWED_CV_EXTENSIONS
+        ):
+            raise UnprocessableEntityError("Sadece PDF veya DOCX dosyaları yüklenebilir.")
 
         content_type = resolve_content_type(file.filename, file.content_type)
         if not has_allowed_content_type(content_type, settings.ALLOWED_CV_CONTENT_TYPES):

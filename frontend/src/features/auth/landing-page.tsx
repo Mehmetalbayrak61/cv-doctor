@@ -7,9 +7,18 @@ import { HeroSection } from "./components/landing/hero-section"
 import { HowItWorks } from "./components/landing/how-it-works"
 import { TrustBar } from "./components/landing/trust-bar"
 import { useAuth } from "./hooks/use-auth"
+import { useTranslation } from "react-i18next"
+import { useSeo } from "@/lib/use-seo"
 
 export function LandingPage() {
   const { token } = useAuth()
+  const { t } = useTranslation()
+
+  useSeo({
+    title: t("seo.landing.title"),
+    description: t("seo.landing.description"),
+    path: "/",
+  })
 
   if (token) {
     return <Navigate to="/dashboard" replace />

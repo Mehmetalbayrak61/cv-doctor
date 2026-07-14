@@ -2,6 +2,10 @@ import { useEffect } from "react"
 
 const SITE_URL = "https://app.cvdoktoru.com.tr"
 const SITE_NAME = "CV Doktoru"
+// PNG kullanılıyor: Facebook/Meta, Twitter/X (summary_large_image) ve LinkedIn'in
+// og:image/twitter:image için resmi olarak desteklediği formatlar JPG/PNG/WEBP/GIF'tir —
+// SVG desteklenmez, kullanılırsa paylaşım önizlemesi kırık görünür.
+const SOCIAL_IMAGE = `${SITE_URL}/og-image.png`
 
 interface SeoOptions {
   /** Sayfaya özel başlık — site adıyla birlikte gösterilir (ör. "Fiyatlandırma — CV Doktoru"). */
@@ -44,8 +48,10 @@ export function useSeo({ title, description, path }: SeoOptions) {
     setMetaTag("property", "og:title", fullTitle)
     setMetaTag("property", "og:description", description)
     setMetaTag("property", "og:url", url)
+    setMetaTag("property", "og:image", SOCIAL_IMAGE)
     setMetaTag("name", "twitter:title", fullTitle)
     setMetaTag("name", "twitter:description", description)
+    setMetaTag("name", "twitter:image", SOCIAL_IMAGE)
     setCanonical(url)
   }, [title, description, path])
 }

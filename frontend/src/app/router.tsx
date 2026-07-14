@@ -1,3 +1,4 @@
+/* oxlint-disable react/only-export-components -- route-level lazy factories are intentionally colocated */
 import { lazy } from "react"
 import { createBrowserRouter } from "react-router-dom"
 

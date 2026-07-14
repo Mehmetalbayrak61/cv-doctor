@@ -14,13 +14,11 @@ import { Link, NavLink, Outlet } from "react-router-dom"
 
 import { useAuth } from "@/features/auth/hooks/use-auth"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { RouteFallback } from "@/components/layout/route-fallback"
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
-import { UpgradeModalProvider } from "@/features/pricing/upgrade-modal-provider"
 import { cn } from "@/lib/utils"
 
 interface NavItem {
@@ -42,6 +40,8 @@ function SidebarNav({ items, alwaysShowLabels }: { items: NavItem[]; alwaysShowL
           key={item.to}
           to={item.to}
           end={item.end}
+          aria-label={item.label}
+          title={alwaysShowLabels ? undefined : item.label}
           className={({ isActive }) =>
             cn(
               "flex items-center gap-3 rounded-lg border-l-[2.5px] py-2.5 pr-3 pl-2.5 text-sm font-medium transition-colors duration-150",
@@ -66,18 +66,12 @@ function SidebarFooter({ alwaysShowLabels }: { alwaysShowLabels: boolean }) {
 
   return (
     <div className="border-border flex flex-col gap-3 border-t pt-4">
-      <Link
-        to="/pricing"
-        className={cn(
-          "bg-accent/60 hover:bg-accent flex items-center justify-between rounded-lg px-2.5 py-2 transition-colors",
-          alwaysShowLabels ? "" : "hidden lg:flex"
-        )}
-      >
-        <Badge variant="secondary">{t("plan.freeBadge")}</Badge>
-        <span className="text-primary text-xs font-medium">{t("plan.upgradeCta")}</span>
-      </Link>
       <div className="flex items-center gap-2.5">
-        <Link to="/account" className="flex min-w-0 flex-1 items-center gap-2.5">
+        <Link
+          to="/account"
+          aria-label={t("account.title")}
+          className="flex min-h-10 min-w-0 flex-1 items-center gap-2.5"
+        >
           <Avatar size="sm" className="shrink-0">
             <AvatarFallback>
               {user ? initialsFromUser(user.first_name, user.last_name) : "…"}
@@ -90,7 +84,7 @@ function SidebarFooter({ alwaysShowLabels }: { alwaysShowLabels: boolean }) {
         <button
           onClick={() => logout()}
           className={cn(
-            "text-muted-foreground hover:text-foreground flex shrink-0 items-center gap-1 text-xs",
+            "text-muted-foreground hover:text-foreground min-h-10 shrink-0 items-center gap-1 text-xs",
             alwaysShowLabels ? "" : "hidden lg:flex"
           )}
         >
@@ -122,6 +116,12 @@ export function DashboardShell() {
 
   return (
     <div className="bg-background flex min-h-screen">
+      <a
+        href="#main-content"
+        className="bg-background text-foreground focus:ring-ring sr-only z-50 rounded-md px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:ring-2"
+      >
+        {t("common.skipToContent")}
+      </a>
       {/* Masaüstü kalıcı sidebar: md-lg arası sadece ikon, lg+ tam etiketli. */}
       <aside className="border-border bg-card hidden shrink-0 flex-col border-r px-3 py-5 md:flex md:w-[76px] lg:w-64 lg:px-4">
         <Link to="/dashboard" className="mb-6 flex items-center gap-2 px-1.5 text-lg font-semibold">
@@ -166,13 +166,12 @@ export function DashboardShell() {
           </SheetContent>
         </Sheet>
 
-        <main className="flex-1">
+        <main id="main-content" className="flex-1">
           <Suspense fallback={<RouteFallback />}>
             <Outlet />
           </Suspense>
         </main>
       </div>
-      <UpgradeModalProvider />
     </div>
   )
 }

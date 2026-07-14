@@ -43,9 +43,9 @@
   --sidebar-ring: oklch(0.708 0 0);
   /* Skor/durum semantiği (dataviz status paleti): iyi / orta / kritik.
      Her zaman ikon + etiketle birlikte kullanılır, asla tek başına renkle değil. */
-  --success: oklch(0.6 0.15 149);
+  --success: oklch(0.43 0.12 149);
   --success-foreground: oklch(0.985 0 0);
-  --warning: oklch(0.72 0.16 76);
+  --warning: oklch(0.48 0.13 76);
   --warning-foreground: oklch(0.28 0.06 76);
 }
 

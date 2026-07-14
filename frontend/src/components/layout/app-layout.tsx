@@ -19,7 +19,6 @@ import {
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Footer } from "@/components/layout/footer"
-import { UpgradeModalProvider } from "@/features/pricing/upgrade-modal-provider"
 
 function initialsFromUser(firstName: string, lastName: string): string {
   return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()
@@ -32,6 +31,12 @@ export function AppLayout() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <a
+        href="#main-content"
+        className="bg-background text-foreground focus:ring-ring sr-only z-50 rounded-md px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:ring-2"
+      >
+        {t("common.skipToContent")}
+      </a>
       <header className="border-border bg-background/80 sticky top-0 z-40 border-b backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
           <Link to="/" className="flex items-center gap-2 text-lg font-semibold">
@@ -50,8 +55,10 @@ export function AppLayout() {
                 </Link>
               </Button>
             )}
-            <ThemeToggle />
-            <LanguageSwitcher />
+            <div className="hidden items-center gap-1 sm:flex">
+              <ThemeToggle />
+              <LanguageSwitcher />
+            </div>
             {token ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -96,10 +103,10 @@ export function AppLayout() {
               </DropdownMenu>
             ) : (
               <>
-                <Button asChild variant="outline">
+                <Button asChild variant="ghost" className="px-2 sm:px-3">
                   <Link to="/login">{t("nav.login")}</Link>
                 </Button>
-                <Button asChild>
+                <Button asChild className="hidden sm:inline-flex">
                   <Link to="/register">{t("nav.register")}</Link>
                 </Button>
               </>
@@ -107,13 +114,12 @@ export function AppLayout() {
           </nav>
         </div>
       </header>
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <Suspense fallback={<RouteFallback />}>
           <Outlet />
         </Suspense>
       </main>
       <Footer />
-      <UpgradeModalProvider />
     </div>
   )
 }

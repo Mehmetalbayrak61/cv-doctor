@@ -10,7 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 export function HeroSection() {
   const { t } = useTranslation()
   const sampleStrengths = t("landing.sampleReport.strengths", { returnObjects: true }) as string[]
-  const sampleKeywords = t("landing.sampleReport.missingKeywords", {
+  const sampleImprovements = t("landing.sampleReport.improvements", {
     returnObjects: true,
   }) as string[]
 
@@ -94,12 +94,12 @@ export function HeroSection() {
 
                 <div className="space-y-2">
                   <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                    {t("analysis.missingKeywords")}
+                    {t("landing.sampleReport.improvementsLabel")}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
-                    {sampleKeywords.map((keyword) => (
-                      <Badge key={keyword} variant="outline">
-                        {keyword}
+                    {sampleImprovements.map((item) => (
+                      <Badge key={item} variant="outline">
+                        {item}
                       </Badge>
                     ))}
                   </div>

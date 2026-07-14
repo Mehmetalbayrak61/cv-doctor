@@ -51,6 +51,9 @@ export function AtsScoreCard({ score, missingKeywordsCount, onOptimize, isOptimi
               {t("jobMatch.result.missingKeywords")}: {missingKeywordsCount}
             </p>
           )}
+          <p className="text-muted-foreground/70 text-[11px] leading-relaxed">
+            {t("jobMatch.result.aiEstimateDisclaimer")}
+          </p>
         </div>
         <Button variant="outline" disabled={isOptimizing} onClick={onOptimize} className="shrink-0">
           {isOptimizing ? <Loader2 className="animate-spin" /> : <ArrowRight />}

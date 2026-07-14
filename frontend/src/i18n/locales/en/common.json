@@ -26,7 +26,8 @@
     "cancel": "Cancel",
     "retry": "Retry",
     "back": "Back",
-    "close": "Close"
+    "close": "Close",
+    "skipToContent": "Skip to main content"
   },
   "errors": {
     "generic": "Something went wrong. Please try again."
@@ -113,11 +114,11 @@
     "subtitle": "Upload your CVs, run an analysis, and track the results.",
     "upload": {
       "title": "Click or drag a CV here to upload",
-      "hint": "PDF, DOC or DOCX · up to {{size}} MB",
+      "hint": "PDF or DOCX · up to {{size}} MB",
       "browse": "Choose File",
       "uploading": "Uploading…",
       "success": "\"{{name}}\" uploaded successfully.",
-      "errorType": "Only PDF, DOC or DOCX files can be uploaded.",
+      "errorType": "Only PDF or DOCX files can be uploaded.",
       "errorSize": "File size exceeds the {{size}} MB limit."
     },
     "verifyBanner": {
@@ -167,6 +168,7 @@
     },
     "suggestions": {
       "heading": "AI Suggestions",
+      "nextActionHeading": "Next Best Action",
       "priority": {
         "critical": "Critical",
         "tip": "Tip",
@@ -192,7 +194,7 @@
     "empty": {
       "title": "You haven't uploaded a CV yet",
       "description": "Upload your first CV — AI will analyze your strengths, weaknesses, and ATS compatibility in seconds.",
-      "step1": "Upload your CV (PDF, DOC, DOCX)",
+      "step1": "Upload your CV (PDF or DOCX)",
       "step2": "Let AI analyze it",
       "step3": "See your results and suggestions",
       "cta": "Upload CV"
@@ -201,6 +203,11 @@
   "analysis": {
     "overallScore": "Overall Score",
     "atsScore": "ATS Score",
+    "overallScoreDescription": "Content, writing, and professional presentation quality.",
+    "atsScoreDescription": "Fixed checks that affect structure, readability, and ATS compatibility.",
+    "scoreExplanation": "How was the ATS score calculated?",
+    "criticalIssues": "Fix These First",
+    "analyzing": "Analyzing…",
     "scoreStatus": {
       "good": "Good",
       "warning": "Fair",
@@ -208,9 +215,7 @@
     },
     "summary": "Overall Assessment",
     "strengths": "Strengths",
-    "weaknesses": "Weaknesses",
     "improvementSuggestions": "Improvement Suggestions",
-    "missingKeywords": "Missing Keywords",
     "suggestedJobTitles": "Suggested Job Titles",
     "correctedProfileSummary": "Improved Profile Summary",
     "qualityBreakdown": "Section-by-Section Quality",
@@ -226,6 +231,7 @@
     "cvNotFound": "CV not found.",
     "emptyTitle": "This CV hasn't been analyzed yet",
     "emptyDescription": "Click the button below to start the AI-powered analysis.",
+    "processingDescription": "Your CV is being read, fixed ATS checks are running, and guidance is being prepared. This may take a moment depending on the file length.",
     "analyzeNow": "Analyze",
     "errorTitle": "Couldn't load the analysis result.",
     "failedTitle": "Analysis failed",
@@ -234,22 +240,23 @@
   "landing": {
     "eyebrow": "AI-Powered Career Platform",
     "headline": "Upload Your CV, Let AI Get You Job-Ready.",
-    "subheadline": "Measure your ATS compatibility, match against job listings, strengthen your CV with AI, and get one step closer to more interview invitations.",
+    "subheadline": "Evaluate the content quality, structure, readability, and presentation criteria that affect ATS compatibility, then improve your CV with concrete guidance.",
     "ctaPrimary": "Analyze Your CV for Free",
-    "ctaSecondary": "See Demo",
-    "ctaHint": "No credit card required · Get started in a minute",
+    "ctaSecondary": "How It Works",
+    "ctaHint": "Free during beta · No credit card required",
     "sampleReportLabel": "Sample analysis report",
     "analysisCompleteBadge": "Analysis complete",
     "sampleReport": {
-      "strengths": ["5+ years of project management experience", "Measurable, numbers-backed achievements"],
-      "missingKeywords": ["Agile", "Stakeholder Management"]
+      "strengths": ["Experience sections are clear and chronological", "Measurable achievement statements are present"],
+      "improvementsLabel": "Priority improvements",
+      "improvements": ["Clarify the profile summary", "Present skills in a dedicated section"]
     },
     "trust": {
       "items": [
-        { "label": "AI-Powered Analysis", "description": "A GPT-based model reads your CV in seconds." },
-        { "label": "ATS Compatibility Check", "description": "Evaluated through the eyes of applicant tracking systems." },
-        { "label": "Your Data Stays Private", "description": "Your CV stays tied to your account only." },
-        { "label": "Results in Seconds", "description": "Get instant feedback, no waiting." }
+        { "label": "Explainable Analysis", "description": "Your score uses fixed criteria with visible reasons." },
+        { "label": "ATS Compatibility Checks", "description": "Structure, readability, and section completeness are evaluated." },
+        { "label": "Private to Your Account", "description": "Your CV is tied only to your account and can be deleted at any time." },
+        { "label": "PDF and DOCX Support", "description": "CVs with Turkish and English characters are read reliably." }
       ]
     },
     "howItWorks": {
@@ -258,7 +265,7 @@
       "steps": [
         {
           "title": "Upload Your CV",
-          "description": "Upload your CV in PDF, DOC, or DOCX format in seconds."
+          "description": "Upload your CV in PDF or DOCX format."
         },
         {
           "title": "Let AI Analyze It",
@@ -318,7 +325,7 @@
         },
         {
           "question": "What file formats can I upload?",
-          "answer": "You can upload PDF, DOC, and DOCX files, with full support for special characters."
+          "answer": "You can upload PDF and DOCX files, with full support for special characters."
         },
         {
           "question": "Why do I need to verify my email?",
@@ -488,6 +495,7 @@
     "result": {
       "compatibilityScore": "Compatibility",
       "atsMatchScore": "ATS Match",
+      "aiEstimateDisclaimer": "AI estimate — unlike the CV analysis ATS score, this is not verified by a rule-based engine.",
       "hiringProbability": "Hiring Probability",
       "seniorityFit": "Seniority Fit",
       "aiNote": "AI Note",
@@ -685,55 +693,22 @@
       ]
     }
   },
-  "plan": {
-    "freeBadge": "Free Plan",
-    "upgradeCta": "Upgrade to Pro"
-  },
   "pricing": {
     "eyebrow": "Pricing",
-    "title": "Free today, even more powerful soon.",
-    "subtitle": "The Free plan gives you every core feature of CV Doktoru. Pro is being prepared for heavier usage.",
-    "billingNote": "We're currently setting up our billing infrastructure. Pricing and purchasing for the Pro plan will go live soon — this page is informational for now.",
+    "title": "Free during beta.",
+    "subtitle": "Use CV Doktoru's current analysis and improvement tools free of charge throughout the beta.",
+    "billingNote": "No payment or credit card is required during beta. Usage limits help prevent abuse.",
     "free": {
-      "name": "Free",
+      "name": "Beta",
       "price": "$0",
       "period": "/mo",
-      "description": "The plan everyone uses today.",
+      "description": "Free access to all current core features.",
       "cta": "Your Current Plan",
       "features": [
-        "Unlimited CV analysis",
-        "Unlimited job matching",
-        "20 AI generations per hour (cover letters, ATS optimize, rewrites, etc.)",
+        "Explainable CV and ATS compatibility analysis",
+        "CV-to-job matching",
+        "20 total AI operations per hour",
         "Version history and AI output archive"
-      ]
-    },
-    "pro": {
-      "name": "Pro",
-      "price": "₺199",
-      "period": "/mo",
-      "description": "For heavy usage.",
-      "cta": "Coming Soon",
-      "features": [
-        "Unlimited AI generations",
-        "ATS Optimization",
-        "Job Match",
-        "Cover Letter Generation",
-        "Profile/Experience/Skills Rewrite",
-        "LinkedIn Summary Generation",
-        "Priority AI Processing"
-      ]
-    },
-    "proAnnual": {
-      "name": "Pro Annual",
-      "badge": "Most Popular",
-      "price": "₺1,799",
-      "period": "/yr",
-      "description": "Save up to 25% with annual billing.",
-      "cta": "Coming Soon",
-      "features": [
-        "Everything in Pro",
-        "25% savings vs. monthly",
-        "One annual payment"
       ]
     },
     "faq": {
@@ -741,31 +716,19 @@
       "heading": "Frequently Asked Questions",
       "items": [
         {
-          "question": "Can I upgrade to Pro right now?",
-          "answer": "Not yet — we're setting up our billing infrastructure. We'll announce it here as soon as Pro plans go live."
+          "question": "Do I need to pay during beta?",
+          "answer": "No. No payment or credit card is required during the beta period."
         },
         {
           "question": "What exactly counts toward the hourly limit of 20 AI generations?",
-          "answer": "Cover letters, ATS optimization, profile/experience/skills rewrites, LinkedIn summaries, interview prep, and salary estimates. CV analysis and job matching are not counted — those are unlimited."
+          "answer": "CV analysis, job matching, cover letters, ATS optimization, and rewrites all share this limit when they use a real AI call. The limit resets automatically every hour."
         },
         {
-          "question": "Can I keep using the Free plan?",
-          "answer": "Yes. The Free plan will remain available once Pro goes live."
+          "question": "How long will beta access last?",
+          "answer": "You will be notified in advance in the app and by email if the beta terms change."
         }
       ]
     }
-  },
-  "upgradeModal": {
-    "eyebrow": "Hourly Limit Reached",
-    "title": "You've used this hour's AI generations",
-    "description": "The Free plan allows 20 AI generations per hour. The limit resets automatically every hour.",
-    "benefitsHeading": "What changes with Pro",
-    "benefits": [
-      "No hourly AI generation limit",
-      "Priority support"
-    ],
-    "cta": "See Pro",
-    "dismiss": "Got it"
   },
   "account": {
     "title": "My Account",
@@ -840,6 +803,10 @@
     }
   },
   "seo": {
+    "landing": {
+      "title": "AI-Powered CV and ATS Analysis",
+      "description": "Analyze your CV with explainable criteria and see your ATS compatibility score and priority improvements."
+    },
     "privacy": {
       "title": "Privacy Policy",
       "description": "Learn how CV Doktoru collects, uses, and protects your personal data — our KVKK and GDPR compliant privacy policy."

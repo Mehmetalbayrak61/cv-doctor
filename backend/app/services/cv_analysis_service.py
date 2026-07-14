@@ -11,6 +11,7 @@ from app.models.user import User
 from app.repositories.ai_usage_repository import AIUsageRepository
 from app.repositories.cv_analysis_repository import CVAnalysisRepository
 from app.services.ai_usage_recorder import enforce_ai_rate_limit, record_ai_usage
+from app.services.cv_scoring_service import apply_scoring_rubric
 from app.services.cv_service import CVService
 from app.services.cv_text_service import CvTextService
 
@@ -33,6 +34,7 @@ class CVAnalysisService:
 
         try:
             result, usage = await self._provider.analyze(text)
+            result = apply_scoring_rubric(text, result)
         except AIProviderError as exc:
             await self._repo.create(
                 cv_document_id=document.id,

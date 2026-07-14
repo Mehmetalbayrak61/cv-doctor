@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
 
@@ -57,3 +57,9 @@ class JobMatchRepository:
             .order_by(JobMatch.created_at.desc())
         )
         return list(result.scalars().all())
+
+    async def count_by_user(self, user_id: uuid.UUID) -> int:
+        result = await self._db.execute(
+            select(func.count()).select_from(JobMatch).where(JobMatch.user_id == user_id)
+        )
+        return result.scalar_one()

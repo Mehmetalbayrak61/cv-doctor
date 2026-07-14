@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 
 import type { RecentAnalysis } from "../../hooks/use-dashboard-overview"
-import { ScoreRing } from "@/features/cv-analysis/components/score-ring"
 import { Card, CardContent } from "@/components/ui/card"
 import { formatRelativeDate } from "@/lib/format"
 
@@ -35,19 +34,15 @@ export function RecentAnalyses({ items }: { items: RecentAnalysis[] }) {
                   </p>
                 </div>
               </div>
-              <div className="flex justify-center gap-8">
-                <ScoreRing
-                  compact
-                  size={64}
-                  label={t("analysis.overallScore")}
-                  score={analysis.result?.overall_score ?? 0}
-                />
-                <ScoreRing
-                  compact
-                  size={64}
-                  label={t("analysis.atsScore")}
-                  score={analysis.result?.ats_score ?? 0}
-                />
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-muted/50 rounded-lg p-3">
+                  <p className="text-muted-foreground text-[11px] font-medium uppercase">{t("analysis.overallScore")}</p>
+                  <p className="mt-1 font-mono text-xl font-semibold tabular-nums">{analysis.result?.overall_score ?? 0}<span className="text-muted-foreground text-xs">/100</span></p>
+                </div>
+                <div className="bg-muted/50 rounded-lg p-3">
+                  <p className="text-muted-foreground text-[11px] font-medium uppercase">{t("analysis.atsScore")}</p>
+                  <p className="mt-1 font-mono text-xl font-semibold tabular-nums">{analysis.result?.ats_score ?? 0}<span className="text-muted-foreground text-xs">/100</span></p>
+                </div>
               </div>
             </CardContent>
           </Card>

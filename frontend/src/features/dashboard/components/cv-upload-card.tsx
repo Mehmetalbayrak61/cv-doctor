@@ -1,11 +1,10 @@
-import { useRef, useState, type DragEvent } from "react"
+import { useState, type DragEvent } from "react"
 import { useTranslation } from "react-i18next"
 import { toast } from "sonner"
 import { UploadCloud } from "lucide-react"
 
 import { ALLOWED_CV_EXTENSIONS, MAX_CV_UPLOAD_SIZE_BYTES, MAX_CV_UPLOAD_SIZE_MB } from "../constants"
 import { useUploadCv } from "../hooks/use-cvs"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { getApiErrorMessage } from "@/lib/api-error"
@@ -18,7 +17,6 @@ function getExtension(fileName: string): string {
 
 export function CvUploadCard() {
   const { t } = useTranslation()
-  const inputRef = useRef<HTMLInputElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [progress, setProgress] = useState(0)
   const uploadMutation = useUploadCv()
@@ -54,7 +52,7 @@ export function CvUploadCard() {
     )
   }
 
-  function handleDrop(event: DragEvent<HTMLDivElement>) {
+  function handleDrop(event: DragEvent<HTMLLabelElement>) {
     event.preventDefault()
     setIsDragging(false)
     const file = event.dataTransfer.files[0]
@@ -64,29 +62,25 @@ export function CvUploadCard() {
   return (
     <Card>
       <CardContent>
-        <div
+        <label
+          htmlFor="cv-upload-input"
           onDragOver={(event) => {
             event.preventDefault()
             setIsDragging(true)
           }}
           onDragLeave={() => setIsDragging(false)}
           onDrop={handleDrop}
-          onClick={() => inputRef.current?.click()}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(event) => {
-            if (event.key === "Enter" || event.key === " ") inputRef.current?.click()
-          }}
           className={cn(
-            "flex cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed px-6 py-10 text-center transition-colors",
+            "focus-within:border-ring focus-within:ring-ring/50 flex cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed px-4 py-8 text-center transition-colors focus-within:ring-3 sm:px-6 sm:py-10",
             isDragging ? "border-primary bg-accent" : "border-border hover:border-primary/50"
           )}
         >
           <input
-            ref={inputRef}
+            id="cv-upload-input"
             type="file"
             accept={ALLOWED_CV_EXTENSIONS.join(",")}
-            className="hidden"
+            className="sr-only"
+            disabled={uploadMutation.isPending}
             onChange={(event) => {
               const file = event.target.files?.[0]
               if (file) handleFile(file)
@@ -102,18 +96,9 @@ export function CvUploadCard() {
               {t("dashboard.upload.hint", { size: MAX_CV_UPLOAD_SIZE_MB })}
             </p>
           </div>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            disabled={uploadMutation.isPending}
-            onClick={(event) => {
-              event.stopPropagation()
-              inputRef.current?.click()
-            }}
-          >
+          <span className="border-border bg-background inline-flex min-h-11 items-center rounded-lg border px-3 text-sm font-medium md:min-h-10">
             {t("dashboard.upload.browse")}
-          </Button>
+          </span>
 
           {uploadMutation.isPending && (
             <div className="w-full max-w-xs space-y-1.5">
@@ -121,7 +106,7 @@ export function CvUploadCard() {
               <p className="text-muted-foreground text-xs">{t("dashboard.upload.uploading")}</p>
             </div>
           )}
-        </div>
+        </label>
       </CardContent>
     </Card>
   )

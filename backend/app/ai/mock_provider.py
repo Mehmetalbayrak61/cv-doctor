@@ -18,7 +18,7 @@ class MockAIProvider(CVAnalysisProvider):
             summary="Bu bir mock analiz sonucudur (OPENAI_API_KEY tanımlı değil).",
             strengths=["Net iletişim", "Düzenli iş deneyimi akışı"],
             weaknesses=["Ölçülebilir başarılar eksik"],
-            missing_keywords=["proje yönetimi", "liderlik"],
+            missing_keywords=[],
             improvement_suggestions=["Başarılarını sayısal verilerle destekle."],
             corrected_profile_summary=preview or "İçerik özeti oluşturulamadı.",
             suggested_job_titles=["Yazılım Geliştirici"],

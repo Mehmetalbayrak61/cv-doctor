@@ -26,7 +26,8 @@
     "cancel": "Vazgeç",
     "retry": "Tekrar Dene",
     "back": "Geri",
-    "close": "Kapat"
+    "close": "Kapat",
+    "skipToContent": "Ana içeriğe geç"
   },
   "errors": {
     "generic": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
@@ -113,11 +114,11 @@
     "subtitle": "CV'lerinizi yükleyin, analiz edin ve sonuçları takip edin.",
     "upload": {
       "title": "CV yüklemek için tıklayın veya sürükleyin",
-      "hint": "PDF, DOC veya DOCX · en fazla {{size}} MB",
+      "hint": "PDF veya DOCX · en fazla {{size}} MB",
       "browse": "Dosya Seç",
       "uploading": "Yükleniyor…",
       "success": "\"{{name}}\" başarıyla yüklendi.",
-      "errorType": "Sadece PDF, DOC veya DOCX dosyaları yüklenebilir.",
+      "errorType": "Sadece PDF veya DOCX dosyaları yüklenebilir.",
       "errorSize": "Dosya boyutu {{size}} MB sınırını aşıyor."
     },
     "verifyBanner": {
@@ -167,6 +168,7 @@
     },
     "suggestions": {
       "heading": "AI Önerileri",
+      "nextActionHeading": "Sonraki Yapılacak İş",
       "priority": {
         "critical": "Kritik",
         "tip": "Öneri",
@@ -192,7 +194,7 @@
     "empty": {
       "title": "Henüz bir CV yüklemediniz",
       "description": "İlk CV'nizi yükleyin — yapay zeka birkaç saniye içinde güçlü/zayıf yönlerinizi ve ATS uyumluluğunuzu analiz etsin.",
-      "step1": "CV'nizi yükleyin (PDF, DOC, DOCX)",
+      "step1": "CV'nizi yükleyin (PDF veya DOCX)",
       "step2": "Yapay zeka analiz etsin",
       "step3": "Sonuçları ve önerileri görün",
       "cta": "CV Yükle"
@@ -201,6 +203,11 @@
   "analysis": {
     "overallScore": "Genel Skor",
     "atsScore": "ATS Skoru",
+    "overallScoreDescription": "İçerik, anlatım ve profesyonel sunum kalitesi.",
+    "atsScoreDescription": "Yapı, okunabilirlik ve ATS uyumluluğunu etkileyen sabit kontroller.",
+    "scoreExplanation": "ATS skoru nasıl hesaplandı?",
+    "criticalIssues": "Önce Bunları Düzeltin",
+    "analyzing": "Analiz ediliyor…",
     "scoreStatus": {
       "good": "İyi",
       "warning": "Orta",
@@ -208,9 +215,7 @@
     },
     "summary": "Genel Değerlendirme",
     "strengths": "Güçlü Yönler",
-    "weaknesses": "Zayıf Yönler",
     "improvementSuggestions": "İyileştirme Önerileri",
-    "missingKeywords": "Eksik Anahtar Kelimeler",
     "suggestedJobTitles": "Önerilen Pozisyonlar",
     "correctedProfileSummary": "İyileştirilmiş Profil Özeti",
     "qualityBreakdown": "Bölüm Bazlı Kalite Analizi",
@@ -226,6 +231,7 @@
     "cvNotFound": "CV bulunamadı.",
     "emptyTitle": "Bu CV henüz analiz edilmedi",
     "emptyDescription": "Yapay zeka destekli analizi başlatmak için aşağıdaki butona tıklayın.",
+    "processingDescription": "CV okunuyor, sabit ATS kontrolleri uygulanıyor ve öneriler hazırlanıyor. Bu işlem dosyanın uzunluğuna göre biraz sürebilir.",
     "analyzeNow": "Analiz Et",
     "errorTitle": "Analiz sonucu yüklenemedi.",
     "failedTitle": "Analiz tamamlanamadı",
@@ -234,22 +240,23 @@
   "landing": {
     "eyebrow": "Yapay Zeka Destekli Kariyer Platformu",
     "headline": "CV'nizi Yükleyin, Yapay Zeka İşe Hazırlasın.",
-    "subheadline": "ATS uyumluluğunuzu ölçün, iş ilanlarıyla eşleştirin, CV'nizi yapay zekayla güçlendirin ve daha fazla mülakat davetine bir adım daha yaklaşın.",
+    "subheadline": "CV'nizin içerik kalitesini ve ATS uyumluluğunu etkileyen yapı, okunabilirlik ve sunum kriterlerini değerlendirin; somut önerilerle güçlendirin.",
     "ctaPrimary": "CV'ni Ücretsiz Analiz Et",
-    "ctaSecondary": "Demo Gör",
-    "ctaHint": "Kredi kartı gerekmez · 1 dakikada başlayın",
+    "ctaSecondary": "Nasıl Çalışır?",
+    "ctaHint": "Beta süresince ücretsiz · Kredi kartı gerekmez",
     "sampleReportLabel": "Örnek analiz raporu",
     "analysisCompleteBadge": "Analiz tamamlandı",
     "sampleReport": {
-      "strengths": ["5+ yıl proje yönetimi deneyimi", "Ölçülebilir, rakamlarla desteklenmiş başarılar"],
-      "missingKeywords": ["Agile", "Stakeholder Yönetimi"]
+      "strengths": ["Deneyim bölümleri açık ve kronolojik", "Ölçülebilir başarı ifadeleri bulunuyor"],
+      "improvementsLabel": "Öncelikli iyileştirmeler",
+      "improvements": ["Profil özetini netleştirin", "Yetenekleri ayrı bölümde sunun"]
     },
     "trust": {
       "items": [
-        { "label": "Yapay Zeka Destekli Analiz", "description": "GPT tabanlı model, CV'nizi saniyeler içinde okur." },
-        { "label": "ATS Uyumluluk Kontrolü", "description": "Aday takip sistemlerinin gözünden değerlendirir." },
-        { "label": "Verileriniz Gizli Tutulur", "description": "CV'niz yalnızca hesabınıza bağlı kalır." },
-        { "label": "Saniyeler İçinde Sonuç", "description": "Beklemeden, anında geri bildirim alın." }
+        { "label": "Açıklanabilir Analiz", "description": "Skorunuz sabit kriterler ve görünür gerekçelerle hesaplanır." },
+        { "label": "ATS Uyumluluk Kontrolü", "description": "Yapı, okunabilirlik ve bölüm bütünlüğü değerlendirilir." },
+        { "label": "Hesabınıza Özel", "description": "CV'niz yalnızca hesabınıza bağlıdır ve dilediğiniz zaman silinebilir." },
+        { "label": "PDF ve DOCX Desteği", "description": "Türkçe karakter içeren özgeçmişler güvenle okunur." }
       ]
     },
     "howItWorks": {
@@ -258,7 +265,7 @@
       "steps": [
         {
           "title": "CV'nizi Yükleyin",
-          "description": "PDF, DOC veya DOCX formatındaki CV'nizi saniyeler içinde yükleyin."
+          "description": "PDF veya DOCX formatındaki CV'nizi yükleyin."
         },
         {
           "title": "Yapay Zeka Analiz Etsin",
@@ -318,7 +325,7 @@
         },
         {
           "question": "Hangi dosya formatlarını yükleyebilirim?",
-          "answer": "PDF, DOC ve DOCX formatlarını, Türkçe karakter desteğiyle yükleyebilirsiniz."
+          "answer": "PDF ve DOCX formatlarını, Türkçe karakter desteğiyle yükleyebilirsiniz."
         },
         {
           "question": "E-postamı neden doğrulamam gerekiyor?",
@@ -488,6 +495,7 @@
     "result": {
       "compatibilityScore": "Uyumluluk",
       "atsMatchScore": "ATS Uyumu",
+      "aiEstimateDisclaimer": "AI tahmini — CV analizindeki ATS skorunun aksine kural tabanlı bir motorla doğrulanmaz.",
       "hiringProbability": "İşe Alınma Olasılığı",
       "seniorityFit": "Seviye Uygunluğu",
       "aiNote": "AI Notu",
@@ -685,55 +693,22 @@
       ]
     }
   },
-  "plan": {
-    "freeBadge": "Free Plan",
-    "upgradeCta": "Pro'ya Geç"
-  },
   "pricing": {
     "eyebrow": "Fiyatlandırma",
-    "title": "Şu an ücretsiz, yakında daha da güçlü.",
-    "subtitle": "Free plan ile CV Doktoru'nun tüm temel özelliklerini kullanabilirsiniz. Pro, daha yoğun kullanım için hazırlanıyor.",
-    "billingNote": "Ödeme altyapımızı şu anda hazırlıyoruz. Pro plan için ücretlendirme ve satın alma yakın zamanda aktif olacak — bu sayfa şu an bilgilendirme amaçlıdır.",
+    "title": "Beta süresince ücretsiz.",
+    "subtitle": "CV Doktoru'nun mevcut analiz ve iyileştirme araçlarını beta süresince ücretsiz kullanabilirsiniz.",
+    "billingNote": "Beta döneminde ödeme alınmaz ve kredi kartı gerekmez. Kullanım sınırları kötüye kullanımı önlemek için uygulanır.",
     "free": {
-      "name": "Free",
+      "name": "Beta",
       "price": "₺0",
       "period": "/ay",
-      "description": "Bugün herkesin kullandığı plan.",
+      "description": "Mevcut tüm temel özelliklere ücretsiz erişim.",
       "cta": "Mevcut Planınız",
       "features": [
-        "Sınırsız CV analizi",
-        "Sınırsız ilan eşleştirme",
-        "Saatte 20 AI üretimi (ön yazı, ATS optimize, yeniden yazma vb.)",
+        "Açıklanabilir CV ve ATS uyumluluk analizi",
+        "CV ile iş ilanı eşleştirme",
+        "Saatte toplam 20 AI işlemi",
         "Versiyon geçmişi ve AI çıktı arşivi"
-      ]
-    },
-    "pro": {
-      "name": "Pro",
-      "price": "₺199",
-      "period": "/ay",
-      "description": "Yoğun kullanım için.",
-      "cta": "Yakında",
-      "features": [
-        "Sınırsız AI üretimi",
-        "ATS Optimizasyonu",
-        "İş İlanı Eşleştirme (Job Match)",
-        "Ön Yazı Oluşturma",
-        "Profil/Deneyim/Yetenek Yeniden Yazma",
-        "LinkedIn Özeti Oluşturma",
-        "Öncelikli AI İşleme"
-      ]
-    },
-    "proAnnual": {
-      "name": "Pro Yıllık",
-      "badge": "En Popüler",
-      "price": "₺1.799",
-      "period": "/yıl",
-      "description": "Yıllık ödemede %25'e varan tasarruf.",
-      "cta": "Yakında",
-      "features": [
-        "Pro plandaki her şey",
-        "Aylık plana göre %25 tasarruf",
-        "Yıllık tek seferlik ödeme"
       ]
     },
     "faq": {
@@ -741,31 +716,19 @@
       "heading": "Sıkça Sorulan Sorular",
       "items": [
         {
-          "question": "Pro plana şu an geçebilir miyim?",
-          "answer": "Henüz hayır — ödeme altyapımızı hazırlıyoruz. Aktif olduğunda bu sayfadan duyuracağız."
+          "question": "Beta süresince ödeme yapmam gerekiyor mu?",
+          "answer": "Hayır. Beta döneminde ödeme veya kredi kartı gerekmez."
         },
         {
           "question": "Saatlik 20 AI üretim sınırı tam olarak neyi kapsıyor?",
-          "answer": "Ön yazı, ATS optimizasyonu, profil özeti/deneyim/yetenek yeniden yazma, LinkedIn özeti, mülakat hazırlığı ve maaş tahmini gibi AI ile üretilen çıktıları kapsar. CV analizi ve ilan eşleştirme bu sınıra dahil değildir, sınırsızdır."
+          "answer": "CV analizi, ilan eşleştirme, ön yazı, ATS optimizasyonu ve yeniden yazma dahil gerçek AI çağrısı kullanan işlemler bu ortak sınıra dahildir. Limit her saat otomatik yenilenir."
         },
         {
-          "question": "Free planı kullanmaya devam edebilir miyim?",
-          "answer": "Evet. Pro aktif olduktan sonra da Free plan kullanılabilir olmaya devam edecek."
+          "question": "Beta erişimim ne kadar sürecek?",
+          "answer": "Beta koşullarında bir değişiklik olduğunda önceden uygulama ve e-posta üzerinden bilgilendirileceksiniz."
         }
       ]
     }
-  },
-  "upgradeModal": {
-    "eyebrow": "Saatlik Limit Doldu",
-    "title": "Bu saatlik AI üretim hakkınızı kullandınız",
-    "description": "Free planda saatte 20 AI üretimi yapabilirsiniz. Limit her saat başı otomatik olarak yenilenir.",
-    "benefitsHeading": "Pro ile neler değişecek",
-    "benefits": [
-      "Saatlik AI üretim sınırı yok",
-      "Öncelikli destek"
-    ],
-    "cta": "Pro'yu İncele",
-    "dismiss": "Tamam, anladım"
   },
   "account": {
     "title": "Hesabım",
@@ -840,6 +803,10 @@
     }
   },
   "seo": {
+    "landing": {
+      "title": "Yapay Zeka Destekli CV ve ATS Analizi",
+      "description": "CV'nizi açıklanabilir kriterlerle analiz edin, ATS uyumluluk skorunuzu ve öncelikli iyileştirme önerilerini görün."
+    },
     "privacy": {
       "title": "Gizlilik Politikası",
       "description": "CV Doktoru'nun kişisel verilerinizi nasıl topladığını, kullandığını ve koruduğunu öğrenin — KVKK ve GDPR uyumlu gizlilik politikamız."

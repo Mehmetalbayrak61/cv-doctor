@@ -41,7 +41,6 @@ export function OverviewPage() {
                 overallScore={data.overallScore}
                 atsScore={data.atsScore}
                 jobMatchCount={data.jobMatchCount}
-                aiUsageCount={data.aiUsageCount}
               />
 
               <div className="grid gap-5 lg:grid-cols-[1.7fr_1fr] lg:items-start">
@@ -64,7 +63,11 @@ export function OverviewPage() {
                 </div>
 
                 <div className="space-y-8">
-                  <QuickActions latestCvId={data.latestCvId} />
+                  <QuickActions
+                    latestCvId={data.latestCvId}
+                    atsScore={data.atsScore}
+                    jobMatchCount={data.jobMatchCount}
+                  />
                   <AiSuggestions data={data} />
                 </div>
               </div>

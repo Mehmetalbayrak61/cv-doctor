@@ -20,13 +20,17 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 
 def create_access_token(subject: uuid.UUID) -> str:
-    expire = datetime.now(UTC) + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    payload: dict[str, Any] = {"sub": str(subject), "exp": expire, "type": "access"}
+    now = datetime.now(UTC)
+    expire = now + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    payload: dict[str, Any] = {"sub": str(subject), "exp": expire, "iat": now, "type": "access"}
     return jwt.encode(payload, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
 
 
-def decode_access_token(token: str) -> uuid.UUID | None:
-    """Token'ı doğrular ve içindeki kullanıcı id'sini döner. Geçersizse None döner."""
+def decode_access_token(token: str) -> tuple[uuid.UUID, datetime] | None:
+    """Token'ı doğrular; geçerliyse (kullanıcı id, token'ın üretildiği an) döner,
+    aksi halde None. `issued_at`, get_current_user'da `password_changed_at` ile
+    karşılaştırılıp şifre değişikliğinden ÖNCE üretilmiş token'ları geçersiz
+    kılmak için kullanılır — session store gerektirmeyen "logout all sessions"."""
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
     except JWTError:
@@ -36,10 +40,13 @@ def decode_access_token(token: str) -> uuid.UUID | None:
         return None
 
     subject = payload.get("sub")
-    if subject is None:
+    issued_at_ts = payload.get("iat")
+    if subject is None or issued_at_ts is None:
         return None
 
     try:
-        return uuid.UUID(subject)
+        user_id = uuid.UUID(subject)
     except ValueError:
         return None
+
+    return user_id, datetime.fromtimestamp(issued_at_ts, tz=UTC)

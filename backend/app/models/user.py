@@ -1,7 +1,8 @@
 import uuid
+from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Boolean, String
+from sqlalchemy import Boolean, DateTime, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -28,13 +29,24 @@ class User(TimestampMixin, Base):
     # Faz 7: e-posta doğrulanana kadar AI/maliyetli özellikler kilitli (bkz. VerifiedUser).
     is_email_verified: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # NULL = şifre hiç değiştirilmedi (kayıttan beri). Doluysa, bu andan ÖNCE
+    # üretilmiş access token'lar get_current_user tarafından geçersiz sayılır —
+    # şifre sıfırlandığında sızmış olabilecek eski token'ları iptal etmenin
+    # stateless (session store gerektirmeyen) yolu.
+    password_changed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
-    cv_documents: Mapped[list["CVDocument"]] = relationship(back_populates="user", cascade="all, delete-orphan")
+    cv_documents: Mapped[list["CVDocument"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
     job_descriptions: Mapped[list["JobDescription"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
-    subscription: Mapped["Subscription | None"] = relationship(back_populates="user", cascade="all, delete-orphan")
-    tokens: Mapped[list["UserToken"]] = relationship(back_populates="user", cascade="all, delete-orphan")
+    subscription: Mapped["Subscription | None"] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
+    tokens: Mapped[list["UserToken"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
     ai_usage_logs: Mapped[list["AIUsageLog"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )

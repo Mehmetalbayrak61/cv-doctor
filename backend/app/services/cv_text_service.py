@@ -1,3 +1,4 @@
+from app.core.config import settings
 from app.core.exceptions import NotFoundError, UnprocessableEntityError
 from app.models.cv_document import CVDocument
 from app.storage.factory import get_storage_backend
@@ -21,6 +22,13 @@ class CvTextService:
             raise NotFoundError("CV dosyası depoda bulunamadı.") from exc
 
         try:
-            return extract_text(content=content, mime_type=document.mime_type)
+            text = extract_text(content=content, mime_type=document.mime_type)
         except TextExtractionError as exc:
             raise UnprocessableEntityError(str(exc)) from exc
+
+        if len(text) > settings.MAX_CV_TEXT_CHARS:
+            raise UnprocessableEntityError(
+                "CV metni analiz sınırını aşıyor. Lütfen yalnızca özgeçmiş içeriğini içeren "
+                "daha kısa bir dosya yükleyin."
+            )
+        return text

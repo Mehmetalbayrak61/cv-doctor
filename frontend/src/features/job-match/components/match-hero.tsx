@@ -139,6 +139,9 @@ export function MatchHero({
                   %{result.hiring_probability}
                 </span>
               </p>
+              <p className="text-muted-foreground/70 text-[11px] leading-relaxed">
+                {t("jobMatch.result.aiEstimateDisclaimer")}
+              </p>
             </div>
           </div>
         )}

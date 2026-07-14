@@ -123,6 +123,9 @@ class AuthService:
             raise UnprocessableEntityError("Sıfırlama bağlantısı geçersiz veya süresi dolmuş.")
 
         user.hashed_password = hash_password(new_password)
+        # Bu andan önce üretilmiş tüm access token'ları geçersiz kılar
+        # (bkz. get_current_user) — stateless "logout all sessions".
+        user.password_changed_at = datetime.now(UTC)
         await self._token_repo.mark_used(token)
         await self._db.commit()
 

@@ -11,6 +11,16 @@ class QualityAssessment(BaseModel):
     comment: str
 
 
+class ScoreCriterion(BaseModel):
+    """Açıklanabilir skorun tek bir sabit kriteri."""
+
+    key: str
+    label: str
+    score: int = Field(ge=0, le=100)
+    weight: int = Field(ge=0, le=100)
+    findings: list[str] = Field(default_factory=list)
+
+
 class CVAnalysisResult(BaseModel):
     """AI sağlayıcısından beklenen, doğrulanmış analiz çıktısı.
 
@@ -18,8 +28,25 @@ class CVAnalysisResult(BaseModel):
     biçimini belgelemek için kullanılır.
     """
 
-    overall_score: int = Field(ge=0, le=100)
-    ats_score: int = Field(ge=0, le=100)
+    overall_score: int = Field(
+        ge=0,
+        le=100,
+        description=(
+            "AI destekli: backend sabit ağırlıklarla topluyor, ama alt bileşen "
+            "değerlerinin kendisi AI modelinin verdiği alt-skorlardır (bkz. "
+            "overall_breakdown)."
+        ),
+    )
+    ats_score: int = Field(
+        ge=0,
+        le=100,
+        description=(
+            "Deterministik: yalnızca CV metninin backend'de regex/kural tabanlı "
+            "analiziyle hesaplanır (bölüm başlıkları, iletişim bilgisi, tarih "
+            "yoğunluğu vb.) — AI modelinin önerdiği değer kullanılmaz, backend "
+            "tarafından tamamen yeniden hesaplanır (bkz. ats_breakdown)."
+        ),
+    )
     summary: str
     strengths: list[str]
     weaknesses: list[str]
@@ -32,6 +59,9 @@ class CVAnalysisResult(BaseModel):
     experience_quality: QualityAssessment
     education_quality: QualityAssessment
     skills_quality: QualityAssessment
+    scoring_method: str = "legacy"
+    ats_breakdown: list[ScoreCriterion] = Field(default_factory=list)
+    overall_breakdown: list[ScoreCriterion] = Field(default_factory=list)
 
 
 class CVAnalysisRead(BaseModel):

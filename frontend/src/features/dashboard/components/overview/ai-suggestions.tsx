@@ -65,7 +65,7 @@ function buildSuggestions(
     })
   }
 
-  return suggestions.slice(0, 3)
+  return suggestions.slice(0, 1)
 }
 
 export function AiSuggestions({ data }: { data: DashboardOverviewData }) {
@@ -77,7 +77,7 @@ export function AiSuggestions({ data }: { data: DashboardOverviewData }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">{t("overview.suggestions.heading")}</CardTitle>
+        <CardTitle className="text-base">{t("overview.suggestions.nextActionHeading")}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-2.5">
         {suggestions.map((s) => {

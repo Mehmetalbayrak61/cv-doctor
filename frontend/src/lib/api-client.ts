@@ -1,7 +1,5 @@
 import axios from "axios"
 
-import { openUpgradeModal } from "@/features/pricing/upgrade-modal-bus"
-import { isAiRateLimitError } from "@/lib/api-error"
 import { clearStoredToken, getStoredToken } from "@/lib/auth-token"
 
 /**
@@ -39,9 +37,6 @@ apiClient.interceptors.response.use(
       if (!window.location.pathname.startsWith("/login")) {
         window.location.assign("/login")
       }
-    }
-    if (isAiRateLimitError(error)) {
-      openUpgradeModal()
     }
     return Promise.reject(error)
   }

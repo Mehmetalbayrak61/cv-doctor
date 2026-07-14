@@ -98,11 +98,15 @@ export function CvDetailPage() {
         <EmptyState
           icon={FileSearch}
           title={t("analysis.emptyTitle")}
-          description={t("analysis.emptyDescription")}
+          description={
+            analyzeMutation.isPending
+              ? t("analysis.processingDescription")
+              : t("analysis.emptyDescription")
+          }
           action={
             <Button onClick={runAnalyze} disabled={analyzeMutation.isPending}>
               {analyzeMutation.isPending && <Loader2 className="size-4 animate-spin" />}
-              {t("analysis.analyzeNow")}
+              {analyzeMutation.isPending ? t("analysis.analyzing") : t("analysis.analyzeNow")}
             </Button>
           }
         />

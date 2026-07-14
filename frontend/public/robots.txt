@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /cvs
+Disallow: /jobs
+Disallow: /account
+Disallow: /admin
+Disallow: /verify-email
+Disallow: /reset-password
+
+Sitemap: https://app.cvdoktoru.com.tr/sitemap.xml
