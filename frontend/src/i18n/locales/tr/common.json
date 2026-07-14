@@ -573,43 +573,55 @@
       "sections": [
         {
           "title": "Veri Sorumlusu",
-          "body": "CV Doktoru olarak, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve ilgili olduğu ölçüde Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) kapsamında veri sorumlusu sıfatıyla hareket ederiz. Bu politika, hizmetimizi kullanırken hangi verilerinizi hangi amaçlarla işlediğimizi açıklar."
+          "body": "CV Doktoru olarak, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu sıfatıyla hareket ederiz; Avrupa Birliği'nde bulunan kullanıcılarımız için, ilgili olduğu ölçüde, Genel Veri Koruma Tüzüğü (GDPR) hükümleri de gözetilir. Bu politika, CV Doktoru'nu (web sitesi ve Android uygulaması dahil) kullanırken hangi kişisel verilerinizi, hangi amaçlarla işlediğimizi açıklar."
         },
         {
-          "title": "Topladığımız Veriler",
-          "body": "Hesabınızı oluştururken ad, soyad ve e-posta adresinizi; hizmeti kullanırken yüklediğiniz CV dosyalarını, bu dosyalardan çıkarılan metni, oluşturulan analiz ve eşleştirme sonuçlarını, girdiğiniz iş ilanı metinlerini ve hizmet kalitesini ölçmek için temel kullanım kayıtlarını (ör. AI kullanım sayısı) saklarız."
+          "title": "Topladığımız Kişisel Veriler",
+          "body": "Hesap oluştururken ad, soyad, e-posta adresi ve şifrenizi (geri döndürülemez biçimde şifrelenmiş olarak) alırız. Hizmeti kullanırken yüklediğiniz CV dosyalarını, bu dosyalardan çıkarılan metni, oluşturulan analiz ve ATS uyumluluk sonuçlarını, girdiğiniz iş ilanı metinlerini, talep ettiğiniz yapay zeka çıktılarını (ör. yeniden yazma, ön yazı, LinkedIn özeti) ve hesap güvenliğiyle ilgili temel kayıtları (ör. e-posta doğrulama durumu) işleriz."
         },
         {
-          "title": "Verilerinizi Nasıl Kullanırız",
-          "body": "Verileriniz yalnızca CV analizi, yapay zeka destekli öneriler ve iş ilanı eşleştirme hizmetini size sunmak, hesabınızı yönetmek ve hizmeti güvenli şekilde işletmek için kullanılır."
+          "title": "İşlenme Amaçları",
+          "body": "Kişisel verileriniz yalnızca; hesabınızı oluşturmak ve yönetmek, CV analizi/ATS uyumluluk/iş ilanı eşleştirme hizmetini sunmak, talep ettiğiniz yapay zeka destekli önerileri üretmek, hesap güvenliğini sağlamak ve yasal yükümlülüklerimizi yerine getirmek amacıyla işlenir. Verileriniz reklam amacıyla satılmaz ve pazarlama amacıyla üçüncü taraflarla paylaşılmaz."
         },
         {
           "title": "Yapay Zeka (OpenAI) Kullanımı",
-          "body": "Analiz, yeniden yazma ve eşleştirme sonuçları üretilirken CV içeriğiniz, yalnızca o anki isteği yanıtlamak amacıyla yapay zeka sağlayıcımıza (OpenAI) iletilir. Bu veri, pazarlama veya reklam amacıyla kullanılmaz ve başka bir üçüncü tarafla paylaşılmaz."
+          "body": "CV analizi, yeniden yazma önerileri ve iş ilanı eşleştirme sonuçları OpenAI'nin yapay zeka modelleri kullanılarak üretilir. Bu sırada CV içeriğiniz ve (varsa) girdiğiniz iş ilanı metni, yalnızca o anki talebinizi yanıtlamak amacıyla OpenAI'ye iletilir. Bu veriler pazarlama veya reklam amacıyla kullanılmaz ve OpenAI dışında başka bir üçüncü tarafla paylaşılmaz."
         },
         {
-          "title": "CV Dosyalarının İşlenmesi",
-          "body": "Yüklediğiniz CV dosyaları güvenli sunucularda saklanır ve yalnızca sizin hesabınıza bağlıdır; başka kullanıcılar tarafından görüntülenemez. Dosyalar, analiz ve eşleştirme özelliklerini sunmak dışında bir amaçla işlenmez."
-        },
-        {
-          "title": "Çerezler",
-          "body": "Oturumunuzu açık tutmak ve tema (açık/koyu mod) tercihinizi hatırlamak için tarayıcınızın yerel depolamasını (localStorage) kullanırız. Reklam veya izleme amaçlı üçüncü taraf çerezleri kullanılmaz."
+          "title": "Kullandığımız Üçüncü Taraf Hizmet Sağlayıcılar",
+          "body": "Hizmeti sunabilmek için yalnızca gerekli işlevleri yerine getiren sınırlı sayıda alt yüklenici ile çalışırız: analiz ve yapay zeka çıktıları için OpenAI; hesap doğrulama ve şifre sıfırlama gibi işlemsel e-postaların iletilmesi için Brevo; sunucu altyapımız için Railway (backend) ve Vercel (web arayüzü barındırma). Bu sağlayıcılar verilerinizi yalnızca CV Doktoru adına, hizmeti sunmak için gerekli ölçüde ve kendi altyapılarının bulunduğu ülkelerde (yurt dışında) işleyebilir; verileriniz bu sağlayıcılar tarafından kendi pazarlama amaçlarıyla kullanılmaz."
         },
         {
           "title": "Veri Güvenliği",
-          "body": "Verileriniz HTTPS ile şifreli olarak iletilir, şifreniz geri döndürülemez biçimde (hash'lenerek) saklanır. Erişim, yalnızca hizmetin çalışması için gerekli sistemlerle sınırlıdır."
+          "body": "Verileriniz sunucularımıza ve sunucularımızdan HTTPS ile şifreli olarak iletilir. Şifreniz geri döndürülemez biçimde (hash'lenerek) saklanır; e-posta doğrulama ve şifre sıfırlama bağlantıları da yalnızca hash değerleri üzerinden doğrulanır, ham hâlleri veritabanında tutulmaz. Verilere erişim, hizmetin çalışması için gerekli sistemlerle sınırlıdır."
         },
         {
-          "title": "Veri Saklama ve Hesap Silme",
-          "body": "Verileriniz hesabınız aktif olduğu sürece saklanır. Hesap ayarlarınızdan hesabınızı kalıcı olarak silebilirsiniz; bu işlem CV'leriniz, analizleriniz, eşleştirmeleriniz ve yapay zeka çıktılarınız dahil tüm verilerinizi geri döndürülemez şekilde kaldırır."
+          "title": "Hesap Silme",
+          "body": "Hesabınızı hesap ayarlarınızdan kalıcı olarak silebilirsiniz. Hesabınızı sildiğinizde yüklediğiniz CV dosyaları sunucularımızdan fiziksel olarak kaldırılır ve hesabınıza bağlı tüm veriler (analizler, iş ilanı eşleştirmeleri, yapay zeka çıktıları dahil) veritabanından kalıcı olarak silinir. Bu işlem geri alınamaz."
         },
         {
-          "title": "KVKK ve GDPR Kapsamındaki Haklarınız",
-          "body": "Verilerinize erişme, düzeltilmesini isteme, silinmesini talep etme ve işlenmesine itiraz etme hakkına sahipsiniz. Bu haklarınızı kullanmak için bizimle iletişime geçebilirsiniz."
+          "title": "Veri Saklama Süresi",
+          "body": "Verileriniz, hesabınız aktif olduğu sürece saklanır; hesabınızı silmediğiniz sürece herhangi bir otomatik silme uygulanmaz. E-posta doğrulama bağlantıları 24 saat, şifre sıfırlama bağlantıları 1 saat sonra otomatik olarak geçersiz hale gelir."
+        },
+        {
+          "title": "Çerezler ve Yerel Depolama",
+          "body": "CV Doktoru, oturumunuzu açık tutmak için çerez değil, tarayıcınızın/uygulamanızın yerel depolamasını (localStorage) kullanır; buna oturum jetonu ve tema (açık/koyu mod) tercihiniz dahildir. Reklam, izleme veya analitik amaçlı hiçbir üçüncü taraf çerezi veya SDK'sı kullanılmaz."
+        },
+        {
+          "title": "KVKK Kapsamındaki Haklarınız",
+          "body": "6698 sayılı Kanun'un 11. maddesi uyarınca; kişisel verinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini isteme, işlenmesini gerektiren sebepler ortadan kalktığında silinmesini isteme ve bu işlemlerin verilerinizin aktarıldığı üçüncü kişilere bildirilmesini isteme haklarına sahipsiniz."
+        },
+        {
+          "title": "GDPR Kapsamındaki Haklarınız (Avrupa Birliği Kullanıcıları İçin)",
+          "body": "Avrupa Birliği'nde bulunan kullanıcılarımız, GDPR kapsamında ayrıca verilerine erişim, düzeltme, silme (\"unutulma hakkı\"), işlemenin kısıtlanması, veri taşınabilirliği ve işlemeye itiraz etme haklarına sahiptir; ayrıca ilgili bir denetleyici otoriteye şikâyette bulunma hakkı da saklıdır."
+        },
+        {
+          "title": "Politika Değişiklikleri",
+          "body": "Bu politikayı, hizmetimizdeki değişiklikler veya yasal gerekliliklere uyum amacıyla zaman zaman güncelleyebiliriz. Güncel sürüm her zaman bu sayfada yayımlanır."
         },
         {
           "title": "İletişim",
-          "body": "Gizlilikle ilgili sorularınız için destek@cvdoktoru.com.tr adresinden bize ulaşabilirsiniz."
+          "body": "Gizlilikle ilgili sorularınız veya haklarınızı kullanma talepleriniz için destek@cvdoktoru.com.tr adresinden bize ulaşabilirsiniz."
         }
       ]
     },

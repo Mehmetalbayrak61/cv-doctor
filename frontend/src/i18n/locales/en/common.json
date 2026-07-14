@@ -573,43 +573,55 @@
       "sections": [
         {
           "title": "Data Controller",
-          "body": "CV Doktoru acts as the data controller under Turkey's Personal Data Protection Law No. 6698 (KVKK) and, where applicable, the EU General Data Protection Regulation (GDPR). This policy explains what data we process while you use our service and for what purposes."
+          "body": "CV Doktoru acts as the data controller under Turkey's Personal Data Protection Law No. 6698 (KVKK); for users located in the European Union, the EU General Data Protection Regulation (GDPR) is also observed where applicable. This policy explains what personal data we process when you use CV Doktoru — including our website and Android app — and for what purposes."
         },
         {
-          "title": "Data We Collect",
-          "body": "When you create an account, we store your name and email address. When you use the service, we store the CV files you upload, the text extracted from them, the analysis and matching results generated, the job descriptions you enter, and basic usage records (e.g. AI usage counts) needed to operate the service."
+          "title": "Personal Data We Collect",
+          "body": "When you create an account, we collect your first name, last name, email address, and password (stored irreversibly encrypted). When you use the service, we process the CV files you upload, the text extracted from them, the generated analysis and ATS compatibility results, the job descriptions you enter, the AI outputs you request (e.g. rewrites, cover letters, LinkedIn summaries), and basic account-security records (e.g. email verification status)."
         },
         {
-          "title": "How We Use Your Data",
-          "body": "Your data is used solely to provide the CV analysis, AI-powered recommendations, and job matching service, to manage your account, and to operate the service securely."
+          "title": "Purposes of Processing",
+          "body": "Your personal data is processed solely to create and manage your account, provide the CV analysis / ATS compatibility / job matching service, generate the AI-powered suggestions you request, keep your account secure, and meet our legal obligations. Your data is never sold for advertising purposes and is never shared with third parties for marketing purposes."
         },
         {
           "title": "Use of AI (OpenAI)",
-          "body": "When generating analysis, rewrite, or matching results, your CV content is sent to our AI provider (OpenAI) only to respond to that specific request. This data is not used for marketing or advertising and is not shared with any other third party."
+          "body": "CV analysis, rewrite suggestions, and job matching results are generated using OpenAI's AI models. During this process, your CV content and (if provided) the job description text are sent to OpenAI only to respond to that specific request. This data is not used for marketing or advertising and is not shared with any third party other than OpenAI."
         },
         {
-          "title": "Processing of CV Files",
-          "body": "The CV files you upload are stored on secure servers and are tied to your account only; other users cannot view them. Files are not processed for any purpose beyond providing the analysis and matching features."
-        },
-        {
-          "title": "Cookies",
-          "body": "We use your browser's local storage to keep you signed in and to remember your theme (light/dark) preference. We do not use third-party advertising or tracking cookies."
+          "title": "Third-Party Service Providers We Use",
+          "body": "To operate the service, we work with a limited number of subprocessors, each performing only the function required: OpenAI for analysis and AI outputs; Brevo for delivering transactional emails such as account verification and password reset; and Railway (backend) and Vercel (frontend hosting) for our server infrastructure. These providers process your data only on CV Doktoru's behalf, only to the extent needed to deliver the service, and may process it in the countries where their own infrastructure is located; they do not use your data for their own marketing purposes."
         },
         {
           "title": "Data Security",
-          "body": "Your data is transmitted over encrypted HTTPS connections, and your password is stored irreversibly hashed. Access is limited to the systems required for the service to function."
+          "body": "Your data is transmitted to and from our servers over encrypted HTTPS connections. Your password is stored irreversibly hashed; email verification and password reset links are likewise verified only against a hashed value and their raw form is never stored in our database. Access to your data is limited to the systems required for the service to function."
         },
         {
-          "title": "Data Retention and Account Deletion",
-          "body": "Your data is retained as long as your account is active. You can permanently delete your account from your account settings; this removes all your data — including your CVs, analyses, matches, and AI outputs — irreversibly."
+          "title": "Account Deletion",
+          "body": "You can permanently delete your account from your account settings. When you do, the CV files you uploaded are physically removed from our servers, and all data tied to your account — including analyses, job matches, and AI outputs — is permanently deleted from our database. This action cannot be undone."
         },
         {
-          "title": "Your Rights Under KVKK and GDPR",
-          "body": "You have the right to access your data, request its correction, request its deletion, and object to its processing. Contact us to exercise these rights."
+          "title": "Data Retention Period",
+          "body": "Your data is retained for as long as your account remains active; no automatic deletion is applied unless you delete your account yourself. Email verification links automatically expire after 24 hours, and password reset links after 1 hour."
+        },
+        {
+          "title": "Cookies and Local Storage",
+          "body": "CV Doktoru does not use cookies to keep you signed in; instead it uses your browser's or app's local storage (localStorage), which holds your session token and your theme (light/dark) preference. No third-party advertising, tracking, or analytics cookies or SDKs are used."
+        },
+        {
+          "title": "Your Rights Under KVKK",
+          "body": "Under Article 11 of Law No. 6698, you have the right to learn whether your personal data is being processed, to request information about such processing, to learn the purpose of processing and whether it is used consistently with that purpose, to know the third parties to whom your data is transferred domestically or abroad, to request correction if it is processed incompletely or incorrectly, to request deletion once the reasons for processing no longer apply, and to request that these actions be notified to the third parties to whom your data has been transferred."
+        },
+        {
+          "title": "Your Rights Under GDPR (for EU Users)",
+          "body": "Users located in the European Union additionally have the right, under GDPR, to access, rectify, and erase (\"right to be forgotten\") their data, to restrict processing, to data portability, and to object to processing; you also retain the right to lodge a complaint with the relevant supervisory authority."
+        },
+        {
+          "title": "Changes to This Policy",
+          "body": "We may update this policy from time to time to reflect changes to our service or to comply with legal requirements. The current version is always published on this page."
         },
         {
           "title": "Contact",
-          "body": "For privacy-related questions, reach us at destek@cvdoktoru.com.tr."
+          "body": "For privacy-related questions or to exercise your rights, reach us at destek@cvdoktoru.com.tr."
         }
       ]
     },
