@@ -78,14 +78,18 @@ class Settings(BaseSettings):
 
     # Faz 7: auth endpointleri için IP başına 15 dakikalık deneme limiti
     AUTH_RATE_LIMIT_PER_15_MIN: int = 10
-    # X-Forwarded-For'da güvenilir (uygulamanın önündeki gerçek proxy'nin eklediği)
-    # hop sayısı. 0 (varsayılan) = X-Forwarded-For'a HİÇ güvenilmez, her zaman ham
-    # soket bağlantısının IP'si kullanılır — bu, header spoofing'e karşı güvenli
-    # varsayılandır. Railway/Render/Fly.io gibi PaaS'lerde veya tek katmanlı bir
-    # Nginx/Caddy reverse proxy arkasında deploy edilirken 1'e ayarlanmalı: bu
-    # durumda güvenilir proxy, gerçek istemci IP'sini her zaman header'ın EN SONUNA
-    # ekler, bu yüzden yalnızca sondan bu kadar hop'a güvenilir — öncesindeki
-    # değerler istemci tarafından uydurulmuş olabilir ve asla kullanılmaz.
+    # Uygulamanın bilinen, güvenilir bir reverse proxy'nin (Railway vb.) arkasında
+    # çalışıp çalışmadığını işaretler. 0 (varsayılan) = hiçbir proxy header'ına
+    # güvenilmez, her zaman ham soket bağlantısının IP'si kullanılır — header
+    # spoofing'e karşı güvenli varsayılan. Railway'de production için 1'e
+    # ayarlanır: bu durumda `X-Real-Ip` header'ı okunur (bkz.
+    # app/core/rate_limit_ip.py — canlıda doğrulandı: Railway edge'i bu header'ı
+    # istemcinin göndereceği her değeri yok sayıp gerçek istemci IP'siyle
+    # değiştiriyor; `request.client.host` ise Railway'in TÜM istemciler arasında
+    # paylaşılan, dönen dahili NAT havuzundan geldiği için ASLA istemci kimliği
+    # olarak kullanılamaz). Railway dışında (ör. tek katmanlı Nginx arkasında)
+    # kullanılacaksa, o proxy'nin de `X-Real-Ip`'yi güvenilir şekilde (istemci
+    # tarafından ezilemeyecek şekilde) ayarladığından emin olunmalı.
     TRUSTED_PROXY_COUNT: int = 0
 
     # Boşsa Sentry hiç başlatılmaz (bkz. main.py) — hata izleme opsiyonel.

@@ -18,27 +18,39 @@ _attempts: dict[str, list[float]] = defaultdict(list)
 
 
 def _client_ip(request: Request) -> str:
-    """Ham TCP bağlantısının IP'sini döndürür — X-Forwarded-For istemci tarafından
-    serbestçe uydurulabildiği için varsayılan olarak HİÇ okunmaz (bkz.
-    settings.TRUSTED_PROXY_COUNT). Yalnızca bu uygulamanın önünde bilinen sayıda
-    güvenilir proxy hop'u olduğu açıkça yapılandırılmışsa, header'ın SONUNDAN o
-    kadar hop'a — yani güvenilir proxy'nin bizzat eklediği değere — güvenilir;
-    öncesindeki her şey sahte olabilir ve asla kullanılmaz."""
+    """Gerçek istemci IP'sini döndürür.
+
+    Railway'de ham TCP bağlantısının IP'si (`request.client.host`) İSTEMCİYE AİT
+    DEĞİL — Railway'in edge proxy'si ile container arasındaki dahili, dönen bir
+    NAT/routing havuzundan gelir (canlıda doğrulandı: `100.64.0.0/10` aralığında,
+    aynı gerçek istemcinin art arda istekleri bile FARKLI adres gösteriyor, ve bu
+    havuz TÜM istemciler arasında paylaşılıyor — yani ham IP'yi anahtar olarak
+    kullanmak farklı kullanıcıları aynı rate-limit kovasında birleştirip
+    birbirini yanlışlıkla bloke edebiliyor).
+
+    `X-Forwarded-For` de güvenilir değil: canlıda doğrulandı ki Railway'in edge'i
+    bu header'ı `<gerçek istemci IP>, <Railway'in kendi dahili hop'u>` şeklinde
+    KENDİSİ oluşturuyor (istemcinin gönderdiği değeri tamamen yok sayıyor) — fakat
+    ikinci (son) hop da dahili havuzdan geldiği için dönüyor; sabit sayıda hop
+    "sondan güven" modeli bu yüzden yanlış sonuç veriyordu (bkz. git geçmişi).
+
+    Bunun yerine Railway'in `X-Real-Ip` header'ı kullanılır: canlıda doğrulandı ki
+    bu header (a) her zaman tek, gerçek istemci IP'sine eşit değer taşıyor, (b)
+    istemci tarafından ayarlanan değer Railway edge'i tarafından tamamen yok
+    sayılıp gerçek değerle değiştiriliyor (spoofing denendi, etkisiz), (c) art
+    arda isteklerde STABİL kalıyor. `settings.TRUSTED_PROXY_COUNT` (0/1) sadece bu
+    header'ın okunup okunmayacağını (yani uygulamanın Railway gibi bilinen bir
+    reverse proxy'nin arkasında çalıştığını) açık şekilde işaretlemek için
+    kullanılır; header yoksa (örn. yerel geliştirme) ham bağlantı IP'sine düşülür.
+    """
     direct_ip = request.client.host if request.client else "unknown"
-    trusted_hops = settings.TRUSTED_PROXY_COUNT
-    if trusted_hops <= 0:
+    if settings.TRUSTED_PROXY_COUNT <= 0:
         return direct_ip
 
-    forwarded = request.headers.get("x-forwarded-for")
-    if not forwarded:
-        return direct_ip
-
-    hops = [hop.strip() for hop in forwarded.split(",") if hop.strip()]
-    if len(hops) < trusted_hops:
-        # Beklenenden az hop var — güvenilir proxy zincirinin dışından gelmiş
-        # olabilir, ham bağlantı IP'sine düş.
-        return direct_ip
-    return hops[-trusted_hops]
+    real_ip = request.headers.get("x-real-ip")
+    if real_ip and real_ip.strip():
+        return real_ip.strip()
+    return direct_ip
 
 
 async def enforce_auth_rate_limit(request: Request) -> None:
