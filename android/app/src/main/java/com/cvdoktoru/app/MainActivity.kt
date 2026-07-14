@@ -13,6 +13,10 @@ import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.cvdoktoru.app.databinding.ActivityMainBinding
 import com.cvdoktoru.app.network.NetworkMonitor
 import com.cvdoktoru.app.webview.AppWebChromeClient
@@ -40,12 +44,32 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_CvDoktoru)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setUpEdgeToEdgeInsets()
 
         setUpWebView()
         setUpBackNavigation()
         binding.retryButton.setOnClickListener { attemptLoad() }
 
         attemptLoad()
+    }
+
+    /**
+     * API 35+'te `android:statusBarColor`/`fitsSystemWindows` artık yok sayılıyor ve
+     * içerik zorla edge-to-edge çiziliyor — bu düzeltme olmadan WebView'in üst
+     * navigasyonu (ör. "Giriş Yap") durum çubuğunun dokunma alanının ALTINDA değil
+     * İÇİNDE render oluyor ve dokunuşlar uygulamaya değil sistem durum çubuğuna gidiyor
+     * (Pixel 7 / API 37 emülatöründe doğrulandı). Kök içeriği durum/gezinme çubuğu
+     * kadar içeri boşluklayıp durum çubuğu ikonlarını koyu (uygulamanın beyaz arka
+     * planına uygun) yaparak düzeltilir.
+     */
+    private fun setUpEdgeToEdgeInsets() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            insets
+        }
     }
 
     private fun setUpWebView() {
